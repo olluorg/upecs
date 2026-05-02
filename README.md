@@ -1,73 +1,67 @@
-# React + TypeScript + Vite
+# 🧩 PECS Card Constructor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**PECS Card Constructor** — это веб-приложение для создания персонализированных наборов карточек системы PECS (Picture Exchange Communication System). Инструмент позволяет быстро собрать набор необходимых карточек из встроенной библиотеки или добавить свои собственные, настроить их внешний вид и экспортировать готовый лист для печати в формате PDF.
 
-Currently, two official plugins are available:
+## ✨ Основные возможности
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **📦 Богатая библиотека**: Просмотр и фильтрация доступных карточек по категориям и поиску.
+- **🎨 Персонализация**: 
+  - Возможность добавлять собственные карточки с любыми изображениями и подписями.
+  - Управление своим набором через интуитивный интерфейс.
+- **🖱️ Drag-and-Drop**: Удобная организация карточек в наборе с помощью перетаскивания.
+- **🖨️ Гибкая настройка печати**:
+  - Выбор размера сетки (2x2, 3x3, 4x4).
+  - Настройка ориентации листа (книжная/альбомная).
+  - Переключатель отображения текстовых подписей.
+- **📄 Экспорт в PDF**: Генерация качественного PDF-файла, готового к печати.
+- **💾 Локальное хранение**: Все ваши наборы и настройки сохраняются в браузере (IndexedDB) и не пропадают после перезагрузки страницы.
+- **📖 Обучающие материалы**: Встроенные инструкции и советы по печати для новых пользователей.
 
-## React Compiler
+## 🛠 Стек технологий
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend**: [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- **Сборка**: [Vite](https://vitejs.dev/)
+- **Менеджер пакетов**: [Bun](https://bun.sh/)
+- **Библиотеки**:
+  - `jspdf` — для генерации PDF-документов.
+  - `@dnd-kit` — для реализации функционала Drag-and-Drop.
+  - `IndexedDB` — для персистентного хранения данных на стороне клиента.
 
-## Expanding the ESLint configuration
+## 🚀 Быстрый старт
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Требования
+Для запуска проекта рекомендуется использовать [Bun](https://bun.sh/), так как в проекте используется `bun.lock`.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Установка и запуск
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. Клонируйте репозиторий:
+   ```bash
+   git clone <url-вашего-репозитория>
+   cd pecs-app
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2. Установите зависимости:
+   ```bash
+   bun install
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. Запустите сервер для разработки:
+   ```bash
+   bun run dev
+   ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+4. Откройте приложение в браузере по адресу `http://localhost:5173`.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📖 Как пользоваться
+
+1. **Сбор набора**: Перейдите в раздел **«Библиотека»**, найдите нужные карточки и добавьте их в свой список.
+2. **Редактирование**: В разделе **«Набор»** вы можете менять порядок карточек, удалять лишние или добавлять свои уникальные карточки через кнопку «Добавить свою».
+3. **Настройка печати**: Перейдите в раздел **«Печать»** или используйте боковую панель, чтобы выбрать размер карточек и ориентацию страницы.
+4. **Печать**: Нажмите «Скачать PDF», чтобы получить готовый файл для печати.
+
+## 📁 Структура проекта
+
+- `src/components` — UI-компоненты (Модальные окна, Библиотека, Панель настроек).
+- `src/data` — Встроенная база данных карточек (`cards.json`).
+- `src/utils` — Вспомогательные функции (генерация PDF, работа с IndexedDB).
+- `src/types` — Определения типов TypeScript для всего приложения.
