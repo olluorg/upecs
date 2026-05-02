@@ -1,0 +1,291 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - img [ref=e7]
+      - generic [ref=e9]:
+        - strong [ref=e10]: PECS
+        - generic [ref=e11]: КОНСТРУКТОР
+    - navigation [ref=e12]:
+      - button "Как это работает?" [ref=e13] [cursor=pointer]:
+        - img [ref=e14]
+        - generic [ref=e17]: Как это работает?
+      - button "Печать и советы" [ref=e18] [cursor=pointer]:
+        - img [ref=e19]
+        - generic [ref=e23]: Печать и советы
+      - generic [ref=e24]: RU
+  - generic [ref=e25]:
+    - complementary [ref=e26]:
+      - navigation [ref=e27]:
+        - button "Библиотека Все карточки" [ref=e28] [cursor=pointer]:
+          - img [ref=e30]
+          - generic [ref=e33]:
+            - generic [ref=e34]: Библиотека
+            - generic [ref=e35]: Все карточки
+        - button "Мой набор Выбранные карточки" [ref=e36] [cursor=pointer]:
+          - img [ref=e38]
+          - generic [ref=e41]:
+            - generic [ref=e42]: Мой набор
+            - generic [ref=e43]: Выбранные карточки
+        - button "Настройки печати Размер, подписи, ориентация" [ref=e44] [cursor=pointer]:
+          - img [ref=e46]
+          - generic [ref=e49]:
+            - generic [ref=e50]: Настройки печати
+            - generic [ref=e51]: Размер, подписи, ориентация
+        - button "Инструкция Как использовать PECS" [ref=e52] [cursor=pointer]:
+          - img [ref=e54]
+          - generic [ref=e57]:
+            - generic [ref=e58]: Инструкция
+            - generic [ref=e59]: Как использовать PECS
+      - generic [ref=e60]:
+        - generic [ref=e61]:
+          - img [ref=e63]
+          - text: PECS помогает детям выразить свои желания
+        - paragraph [ref=e65]: Начните с 2–3 карточек, которые ребёнок очень хочет. Постепенно добавляйте новые.
+      - generic [ref=e66]:
+        - img [ref=e68]
+        - generic [ref=e70]:
+          - generic [ref=e71]: Сделано с заботой
+          - generic [ref=e72]: Бесплатный инструмент для помощи детям и родителям
+    - main [ref=e73]:
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - heading "Библиотека карточек" [level=1] [ref=e77]
+            - paragraph [ref=e78]: Выбирайте карточки и добавляйте их в свой набор
+          - generic [ref=e79]:
+            - img [ref=e80]
+            - textbox "Поиск карточек..." [ref=e83]
+        - generic [ref=e84]:
+          - button "Все" [ref=e85] [cursor=pointer]
+          - button "Еда" [ref=e86] [cursor=pointer]
+          - button "Напитки" [ref=e87] [cursor=pointer]
+          - button "Действия" [ref=e88] [cursor=pointer]
+          - button "Люди" [ref=e89] [cursor=pointer]
+          - button "Игрушки" [ref=e90] [cursor=pointer]
+          - button "Потребности" [ref=e91] [cursor=pointer]
+          - button "Эмоции" [ref=e92] [cursor=pointer]
+          - button "Другое" [ref=e93] [cursor=pointer]
+        - generic [ref=e94]:
+          - button "Добавить Печенье Печенье" [ref=e95] [cursor=pointer]:
+            - button "Добавить" [ref=e96]:
+              - img [ref=e97]
+            - img "Печенье" [ref=e100]
+            - generic [ref=e101]: Печенье
+          - button "Добавить Конфета Конфета" [ref=e102] [cursor=pointer]:
+            - button "Добавить" [ref=e103]:
+              - img [ref=e104]
+            - generic [ref=e108]: Конфета
+            - generic [ref=e109]: Конфета
+          - button "Добавить Чипсы Чипсы" [ref=e110] [cursor=pointer]:
+            - button "Добавить" [ref=e111]:
+              - img [ref=e112]
+            - generic [ref=e116]: Чипсы
+            - generic [ref=e117]: Чипсы
+          - button "Добавить Яблоко Яблоко" [ref=e118] [cursor=pointer]:
+            - button "Добавить" [ref=e119]:
+              - img [ref=e120]
+            - img "Яблоко" [ref=e123]
+            - generic [ref=e124]: Яблоко
+          - button "Добавить Банан Банан" [ref=e125] [cursor=pointer]:
+            - button "Добавить" [ref=e126]:
+              - img [ref=e127]
+            - generic [ref=e131]: Банан
+            - generic [ref=e132]: Банан
+          - button "Добавить Хлеб Хлеб" [ref=e133] [cursor=pointer]:
+            - button "Добавить" [ref=e134]:
+              - img [ref=e135]
+            - generic [ref=e139]: Хлеб
+            - generic [ref=e140]: Хлеб
+          - button "Добавить Сыр Сыр" [ref=e141] [cursor=pointer]:
+            - button "Добавить" [ref=e142]:
+              - img [ref=e143]
+            - generic [ref=e147]: Сыр
+            - generic [ref=e148]: Сыр
+          - button "Добавить Морковь Морковь" [ref=e149] [cursor=pointer]:
+            - button "Добавить" [ref=e150]:
+              - img [ref=e151]
+            - generic [ref=e155]: Морковь
+            - generic [ref=e156]: Морковь
+          - button "Добавить Курица Курица" [ref=e157] [cursor=pointer]:
+            - button "Добавить" [ref=e158]:
+              - img [ref=e159]
+            - generic [ref=e163]: Курица
+            - generic [ref=e164]: Курица
+          - button "Добавить Паста Паста" [ref=e165] [cursor=pointer]:
+            - button "Добавить" [ref=e166]:
+              - img [ref=e167]
+            - generic [ref=e171]: Паста
+            - generic [ref=e172]: Паста
+          - button "Добавить Мороженое Мороженое" [ref=e173] [cursor=pointer]:
+            - button "Добавить" [ref=e174]:
+              - img [ref=e175]
+            - generic [ref=e179]: Мороженое
+            - generic [ref=e180]: Мороженое
+          - button "Добавить Сок Сок" [ref=e181] [cursor=pointer]:
+            - button "Добавить" [ref=e182]:
+              - img [ref=e183]
+            - img "Сок" [ref=e186]
+            - generic [ref=e187]: Сок
+          - button "Добавить Вода Вода" [ref=e188] [cursor=pointer]:
+            - button "Добавить" [ref=e189]:
+              - img [ref=e190]
+            - img "Вода" [ref=e193]
+            - generic [ref=e194]: Вода
+          - button "Добавить Йогурт Йогурт" [ref=e195] [cursor=pointer]:
+            - button "Добавить" [ref=e196]:
+              - img [ref=e197]
+            - generic [ref=e201]: Йогурт
+            - generic [ref=e202]: Йогурт
+          - button "Добавить Мяч Мяч" [ref=e203] [cursor=pointer]:
+            - button "Добавить" [ref=e204]:
+              - img [ref=e205]
+            - img "Мяч" [ref=e208]
+            - generic [ref=e209]: Мяч
+          - button "Добавить Машинка Машинка" [ref=e210] [cursor=pointer]:
+            - button "Добавить" [ref=e211]:
+              - img [ref=e212]
+            - img "Машинка" [ref=e215]
+            - generic [ref=e216]: Машинка
+          - button "Добавить Планшет Планшет" [ref=e217] [cursor=pointer]:
+            - button "Добавить" [ref=e218]:
+              - img [ref=e219]
+            - img "Планшет" [ref=e222]
+            - generic [ref=e223]: Планшет
+          - button "Добавить Мультики Мультики" [ref=e224] [cursor=pointer]:
+            - button "Добавить" [ref=e225]:
+              - img [ref=e226]
+            - generic [ref=e230]: Мультики
+            - generic [ref=e231]: Мультики
+          - button "Добавить Дай Дай" [ref=e232] [cursor=pointer]:
+            - button "Добавить" [ref=e233]:
+              - img [ref=e234]
+            - generic [ref=e238]: Дай
+            - generic [ref=e239]: Дай
+          - button "Добавить Ещё Ещё" [ref=e240] [cursor=pointer]:
+            - button "Добавить" [ref=e241]:
+              - img [ref=e242]
+            - img "Ещё" [ref=e245]
+            - generic [ref=e246]: Ещё
+          - button "Добавить Открыть Открыть" [ref=e247] [cursor=pointer]:
+            - button "Добавить" [ref=e248]:
+              - img [ref=e249]
+            - generic [ref=e253]: Открыть
+            - generic [ref=e254]: Открыть
+          - button "Добавить Помоги Помоги" [ref=e255] [cursor=pointer]:
+            - button "Добавить" [ref=e256]:
+              - img [ref=e257]
+            - img "Помоги" [ref=e260]
+            - generic [ref=e261]: Помоги
+          - button "Добавить Стоп Стоп" [ref=e262] [cursor=pointer]:
+            - button "Добавить" [ref=e263]:
+              - img [ref=e264]
+            - img "Стоп" [ref=e267]
+            - generic [ref=e268]: Стоп
+          - button "Добавить Хочу Хочу" [ref=e269] [cursor=pointer]:
+            - button "Добавить" [ref=e270]:
+              - img [ref=e271]
+            - generic [ref=e275]: Хочу
+            - generic [ref=e276]: Хочу
+          - button "Добавить Мама Мама" [ref=e277] [cursor=pointer]:
+            - button "Добавить" [ref=e278]:
+              - img [ref=e279]
+            - img "Мама" [ref=e282]
+            - generic [ref=e283]: Мама
+          - button "Добавить Папа Папа" [ref=e284] [cursor=pointer]:
+            - button "Добавить" [ref=e285]:
+              - img [ref=e286]
+            - img "Папа" [ref=e289]
+            - generic [ref=e290]: Папа
+          - button "Добавить Пить Пить" [ref=e291] [cursor=pointer]:
+            - button "Добавить" [ref=e292]:
+              - img [ref=e293]
+            - generic [ref=e297]: Пить
+            - generic [ref=e298]: Пить
+          - button "Добавить Есть Есть" [ref=e299] [cursor=pointer]:
+            - button "Добавить" [ref=e300]:
+              - img [ref=e301]
+            - generic [ref=e305]: Есть
+            - generic [ref=e306]: Есть
+          - button "Добавить Туалет Туалет" [ref=e307] [cursor=pointer]:
+            - button "Добавить" [ref=e308]:
+              - img [ref=e309]
+            - generic [ref=e313]: Туалет
+            - generic [ref=e314]: Туалет
+          - button "Добавить Спать Спать" [ref=e315] [cursor=pointer]:
+            - button "Добавить" [ref=e316]:
+              - img [ref=e317]
+            - generic [ref=e321]: Спать
+            - generic [ref=e322]: Спать
+          - button "Добавить Радость Радость" [ref=e323] [cursor=pointer]:
+            - button "Добавить" [ref=e324]:
+              - img [ref=e325]
+            - generic [ref=e329]: Радость
+            - generic [ref=e330]: Радость
+          - button "Добавить Грусть Грусть" [ref=e331] [cursor=pointer]:
+            - button "Добавить" [ref=e332]:
+              - img [ref=e333]
+            - generic [ref=e337]: Грусть
+            - generic [ref=e338]: Грусть
+          - button "Добавить Злость Злость" [ref=e339] [cursor=pointer]:
+            - button "Добавить" [ref=e340]:
+              - img [ref=e341]
+            - generic [ref=e345]: Злость
+            - generic [ref=e346]: Злость
+          - button "Добавить Страх Страх" [ref=e347] [cursor=pointer]:
+            - button "Добавить" [ref=e348]:
+              - img [ref=e349]
+            - generic [ref=e353]: Страх
+            - generic [ref=e354]: Страх
+        - generic [ref=e357]: "Совет: начните с 2–3 карточек, которые ребёнок очень хочет. Уберите остальные и постепенно добавляйте новые."
+    - complementary [ref=e358]:
+      - generic [ref=e359]:
+        - generic [ref=e360]:
+          - heading "Мой набор (0)" [level=3] [ref=e361]:
+            - text: Мой набор
+            - generic [ref=e362]: (0)
+          - button "Очистить" [disabled] [ref=e363]:
+            - img [ref=e364]
+            - generic [ref=e367]: Очистить
+        - paragraph [ref=e368]: Перетаскивайте карточки для изменения порядка
+        - button "Добавить карточку" [ref=e370] [cursor=pointer]:
+          - img [ref=e371]
+          - generic [ref=e373]: Добавить карточку
+        - status [ref=e374]
+        - generic [ref=e377]: "Выбрано: 0 карточек"
+        - button "Скачать PDF" [disabled] [ref=e378]:
+          - img [ref=e379]
+          - generic [ref=e381]: Скачать PDF
+        - button "Предпросмотр PDF" [disabled] [ref=e382]:
+          - img [ref=e383]
+          - generic [ref=e386]: Предпросмотр PDF
+      - generic [ref=e388]:
+        - heading "Настройки печати" [level=4] [ref=e389]
+        - generic [ref=e390]:
+          - generic [ref=e391]: Размер карточек на странице
+          - generic [ref=e392]:
+            - button "2x2 (крупные)" [ref=e393] [cursor=pointer]:
+              - generic [ref=e395]:
+                - strong [ref=e396]: 2x2
+                - generic [ref=e397]: (крупные)
+            - button "3x3 (стандарт)" [ref=e398] [cursor=pointer]:
+              - generic [ref=e400]:
+                - strong [ref=e401]: 3x3
+                - generic [ref=e402]: (стандарт)
+            - button "4x4 (мелкие)" [ref=e403] [cursor=pointer]:
+              - generic [ref=e405]:
+                - strong [ref=e406]: 4x4
+                - generic [ref=e407]: (мелкие)
+        - generic [ref=e408]:
+          - generic [ref=e409]: Подписи
+          - generic [ref=e410]:
+            - button "A С подписями" [ref=e411] [cursor=pointer]:
+              - strong [ref=e412]: A
+              - text: С подписями
+            - button "A Без подписей" [ref=e413] [cursor=pointer]:
+              - generic [ref=e414]: A
+              - text: Без подписей
+        - generic [ref=e415]:
+          - generic [ref=e416]: Ориентация
+          - generic [ref=e417]:
+            - button "Книжная" [ref=e418] [cursor=pointer]: Книжная
+            - button "Альбомная" [ref=e420] [cursor=pointer]: Альбомная
