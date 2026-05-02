@@ -269,8 +269,7 @@ export default function App() {
       <WelcomeModal
         open={showWelcome}
         onClose={() => dismissWelcome()}
-        onChoose={dismissWelcome}
-        setCount={selectedIds.length}
+        onOpenDocs={() => dismissWelcome("instructions")}
       />
       <AddCustomCardModal
         open={modal === "addCustom"}

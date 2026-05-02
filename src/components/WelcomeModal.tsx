@@ -1,64 +1,64 @@
 import Modal from "./Modal";
-import { IconList, IconHand, IconDownload } from "./Icons";
-
-type Action = "library" | "myset" | "settings";
 
 type Props = {
   open: boolean;
   onClose: () => void;
-  onChoose: (action: Action) => void;
-  setCount: number;
+  onOpenDocs: () => void;
 };
 
-export default function WelcomeModal({ open, onClose, onChoose, setCount }: Props) {
+export default function WelcomeModal({ open, onClose, onOpenDocs }: Props) {
   return (
-    <Modal open={open} title="Что хотите сделать?" onClose={onClose} width={520}>
-      <div className="welcome">
-        <p className="muted">
-          Выбирайте готовые карточки из библиотеки и создавайте свои наборы для
-          вашего ребёнка.
+    <Modal
+      open={open}
+      title="Добро пожаловать в PECS Конструктор"
+      onClose={onClose}
+      width={520}
+    >
+      <div className="welcome-v2">
+        <p>
+          Это бесплатный конструктор карточек <strong>PECS</strong> — системы
+          общения через изображения. Подходит для детей с аутизмом, задержкой
+          речи и любых ситуаций, когда слова пока не работают, а просьбу
+          выразить нужно.
         </p>
 
-        <div className="welcome-list">
-          <button className="welcome-item" onClick={() => onChoose("library")}>
-            <span className="welcome-icon blue">
-              <IconList size={20} />
-            </span>
+        <div className="welcome-steps">
+          <div className="welcome-step">
+            <span className="welcome-step-num">1</span>
             <div>
-              <strong>Выбрать карточки из библиотеки</strong>
-              <span>Просмотр и выбор готовых карточек</span>
-            </div>
-          </button>
-
-          <button className="welcome-item" onClick={() => onChoose("myset")}>
-            <span className="welcome-icon green">
-              <IconHand size={20} />
-            </span>
-            <div>
-              <strong>Мой набор</strong>
+              <strong>Выберите карточки</strong>
               <span>
-                Смотреть выбранные карточки ({setCount})
+                Из готовой библиотеки или загрузите свои фотографии
               </span>
             </div>
-          </button>
-
-          <button className="welcome-item" onClick={() => onChoose("settings")}>
-            <span className="welcome-icon purple">
-              <IconDownload size={20} />
-            </span>
+          </div>
+          <div className="welcome-step">
+            <span className="welcome-step-num">2</span>
             <div>
-              <strong>Скачать PDF</strong>
-              <span>Скачать и распечатать ваш набор</span>
+              <strong>Соберите набор</strong>
+              <span>
+                Перетаскивайте карточки в правую панель и меняйте порядок
+              </span>
             </div>
-          </button>
+          </div>
+          <div className="welcome-step">
+            <span className="welcome-step-num">3</span>
+            <div>
+              <strong>Распечатайте PDF</strong>
+              <span>
+                Сетка 2×2, 3×3 или 4×4, с подписями или без — на обычной A4
+              </span>
+            </div>
+          </div>
         </div>
 
-        <div className="hint">
-          <span className="hint-dot" />
-          <span>
-            <b>Совет:</b> начните с 2–3 карточек, которые действительно
-            интересуют вашего ребёнка.
-          </span>
+        <div className="welcome-actions">
+          <button className="btn-ghost" onClick={onOpenDocs}>
+            Узнать больше о PECS
+          </button>
+          <button className="btn-primary" onClick={onClose}>
+            Начать
+          </button>
         </div>
       </div>
     </Modal>

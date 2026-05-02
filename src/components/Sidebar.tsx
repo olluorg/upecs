@@ -29,8 +29,8 @@ const items: { id: View; label: string; sub: string; icon: ReactNode }[] = [
   },
   {
     id: "instructions",
-    label: "Инструкция",
-    sub: "Как использовать PECS",
+    label: "Документация",
+    sub: "Что такое PECS, фазы, советы",
     icon: <IconInfo size={18} />,
   },
 ];
