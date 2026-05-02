@@ -262,6 +262,12 @@ h4 {
   color: var(--muted);
   line-height: 1.4;
 }
+.promo img {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  border-radius: 8px;
+}
 .side-footer {
   display: flex;
   gap: 8px;

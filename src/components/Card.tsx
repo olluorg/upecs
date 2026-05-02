@@ -26,8 +26,6 @@ export default function Card({ card, selected, onAdd }: Props) {
       style={style}
       className={`card-tile ${selected ? "is-selected" : ""}`}
       onClick={onAdd}
-      role="button"
-      tabIndex={0}
       {...attributes}
       {...listeners}
     >
