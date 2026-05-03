@@ -158,6 +158,12 @@
     "image": "/cards/walk.png",
     "category": "actions"
   },
+  {
+    "id": "look",
+    "label": "Смотреть",
+    "image": "/cards/look.png",
+    "category": "actions"
+  },
 
   {
     "id": "mom",
