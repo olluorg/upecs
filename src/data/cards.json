@@ -1,42 +1,224 @@
 [
-  { "id": "cookie",   "label": "Печенье",   "image": "/cards/cookie.png",   "category": "food" },
-  { "id": "candy",    "label": "Конфета",   "image": "/cards/candy.png",    "category": "food" },
-  { "id": "chips",    "label": "Чипсы",     "image": "/cards/chips.png",    "category": "food" },
-  { "id": "apple",    "label": "Яблоко",    "image": "/cards/apple.png",    "category": "food" },
-  { "id": "banana",   "label": "Банан",     "image": "/cards/banana.png",   "category": "food" },
-  { "id": "bread",    "label": "Хлеб",      "image": "/cards/bread.png",    "category": "food" },
-  { "id": "cheese",   "label": "Сыр",       "image": "/cards/cheese.png",   "category": "food" },
-  { "id": "carrot",   "label": "Морковь",   "image": "/cards/carrot.png",   "category": "food" },
-  { "id": "chicken",  "label": "Курица",    "image": "/cards/chicken.png",  "category": "food" },
-  { "id": "pasta",    "label": "Паста",     "image": "/cards/pasta.png",    "category": "food" },
-  { "id": "icecream", "label": "Мороженое", "image": "/cards/icecream.png", "category": "food" },
+  {
+    "id": "cookie",
+    "label": "Печенье",
+    "image": "/cards/cookie.png",
+    "category": "food"
+  },
+  {
+    "id": "candy",
+    "label": "Конфета",
+    "image": "/cards/candy.png",
+    "category": "food"
+  },
+  {
+    "id": "chips",
+    "label": "Чипсы",
+    "image": "/cards/chips.png",
+    "category": "food"
+  },
+  {
+    "id": "apple",
+    "label": "Яблоко",
+    "image": "/cards/apple.png",
+    "category": "food"
+  },
+  {
+    "id": "banana",
+    "label": "Банан",
+    "image": "/cards/banana.png",
+    "category": "food"
+  },
+  {
+    "id": "bread",
+    "label": "Хлеб",
+    "image": "/cards/bread.png",
+    "category": "food"
+  },
+  {
+    "id": "cheese",
+    "label": "Сыр",
+    "image": "/cards/cheese.png",
+    "category": "food"
+  },
+  {
+    "id": "carrot",
+    "label": "Морковь",
+    "image": "/cards/carrot.png",
+    "category": "food"
+  },
+  {
+    "id": "chicken",
+    "label": "Курица",
+    "image": "/cards/chicken.png",
+    "category": "food"
+  },
+  {
+    "id": "pasta",
+    "label": "Паста",
+    "image": "/cards/pasta.png",
+    "category": "food"
+  },
+  {
+    "id": "icecream",
+    "label": "Мороженое",
+    "image": "/cards/icecream.png",
+    "category": "food"
+  },
 
-  { "id": "juice",    "label": "Сок",       "image": "/cards/juice.png",    "category": "drink" },
-  { "id": "water",    "label": "Вода",      "image": "/cards/water.png",    "category": "drink" },
-  { "id": "yogurt",   "label": "Йогурт",    "image": "/cards/yogurt.png",   "category": "drink" },
+  {
+    "id": "juice",
+    "label": "Сок",
+    "image": "/cards/juice.png",
+    "category": "drink"
+  },
+  {
+    "id": "water",
+    "label": "Вода",
+    "image": "/cards/water.png",
+    "category": "drink"
+  },
+  {
+    "id": "yogurt",
+    "label": "Йогурт",
+    "image": "/cards/yogurt.png",
+    "category": "drink"
+  },
 
-  { "id": "ball",     "label": "Мяч",       "image": "/cards/ball.png",     "category": "toys" },
-  { "id": "car",      "label": "Машинка",   "image": "/cards/car.png",      "category": "toys" },
-  { "id": "tablet",   "label": "Планшет",   "image": "/cards/tablet.png",   "category": "toys" },
-  { "id": "cartoons", "label": "Мультики",  "image": "/cards/cartoons.png", "category": "toys" },
+  {
+    "id": "ball",
+    "label": "Мяч",
+    "image": "/cards/ball.png",
+    "category": "toys"
+  },
+  {
+    "id": "car",
+    "label": "Машинка",
+    "image": "/cards/car.png",
+    "category": "toys"
+  },
+  {
+    "id": "tablet",
+    "label": "Планшет",
+    "image": "/cards/tablet.png",
+    "category": "toys"
+  },
+  {
+    "id": "cartoons",
+    "label": "Мультики",
+    "image": "/cards/cartoons.png",
+    "category": "toys"
+  },
 
-  { "id": "give",     "label": "Дай",       "image": "/cards/give.png",     "category": "actions" },
-  { "id": "more",     "label": "Ещё",       "image": "/cards/more.png",     "category": "actions" },
-  { "id": "open",     "label": "Открыть",   "image": "/cards/open.png",     "category": "actions" },
-  { "id": "help",     "label": "Помоги",    "image": "/cards/help.png",     "category": "actions" },
-  { "id": "stop",     "label": "Стоп",      "image": "/cards/stop.png",     "category": "actions" },
-  { "id": "want",     "label": "Хочу",      "image": "/cards/want.png",     "category": "actions" },
+  {
+    "id": "give",
+    "label": "Дай",
+    "image": "/cards/give.png",
+    "category": "actions"
+  },
+  {
+    "id": "more",
+    "label": "Ещё",
+    "image": "/cards/more.png",
+    "category": "actions"
+  },
+  {
+    "id": "open",
+    "label": "Открыть",
+    "image": "/cards/open.png",
+    "category": "actions"
+  },
+  {
+    "id": "help",
+    "label": "Помоги",
+    "image": "/cards/help.png",
+    "category": "actions"
+  },
+  {
+    "id": "stop",
+    "label": "Стоп",
+    "image": "/cards/stop.png",
+    "category": "actions"
+  },
+  {
+    "id": "want",
+    "label": "Хочу",
+    "image": "/cards/want.png",
+    "category": "actions"
+  },
+  {
+    "id": "play",
+    "label": "Играть",
+    "image": "/cards/play.png",
+    "category": "actions"
+  },
+  {
+    "id": "walk",
+    "label": "Гулять",
+    "image": "/cards/walk.png",
+    "category": "actions"
+  },
 
-  { "id": "mom",      "label": "Мама",      "image": "/cards/mom.png",      "category": "people" },
-  { "id": "dad",      "label": "Папа",      "image": "/cards/dad.png",      "category": "people" },
+  {
+    "id": "mom",
+    "label": "Мама",
+    "image": "/cards/mom.png",
+    "category": "people"
+  },
+  {
+    "id": "dad",
+    "label": "Папа",
+    "image": "/cards/dad.png",
+    "category": "people"
+  },
 
-  { "id": "drink_v",  "label": "Пить",      "image": "/cards/drink_v.png",  "category": "needs" },
-  { "id": "eat",      "label": "Есть",      "image": "/cards/eat.png",      "category": "needs" },
-  { "id": "toilet",   "label": "Туалет",    "image": "/cards/toilet.png",   "category": "needs" },
-  { "id": "sleep",    "label": "Спать",     "image": "/cards/sleep.png",    "category": "needs" },
+  {
+    "id": "drink_v",
+    "label": "Пить",
+    "image": "/cards/drink_v.png",
+    "category": "needs"
+  },
+  {
+    "id": "eat",
+    "label": "Есть",
+    "image": "/cards/eat.png",
+    "category": "needs"
+  },
+  {
+    "id": "toilet",
+    "label": "Туалет",
+    "image": "/cards/toilet.png",
+    "category": "needs"
+  },
+  {
+    "id": "sleep",
+    "label": "Спать",
+    "image": "/cards/sleep.png",
+    "category": "needs"
+  },
 
-  { "id": "happy",    "label": "Радость",   "image": "/cards/happy.png",    "category": "emotions" },
-  { "id": "sad",      "label": "Грусть",    "image": "/cards/sad.png",      "category": "emotions" },
-  { "id": "angry",    "label": "Злость",    "image": "/cards/angry.png",    "category": "emotions" },
-  { "id": "fear",     "label": "Страх",     "image": "/cards/fear.png",     "category": "emotions" }
+  {
+    "id": "happy",
+    "label": "Радость",
+    "image": "/cards/happy.png",
+    "category": "emotions"
+  },
+  {
+    "id": "sad",
+    "label": "Грусть",
+    "image": "/cards/sad.png",
+    "category": "emotions"
+  },
+  {
+    "id": "angry",
+    "label": "Злость",
+    "image": "/cards/angry.png",
+    "category": "emotions"
+  },
+  {
+    "id": "fear",
+    "label": "Страх",
+    "image": "/cards/fear.png",
+    "category": "emotions"
+  }
 ]
