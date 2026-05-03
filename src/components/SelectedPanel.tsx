@@ -8,7 +8,9 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import type { Card as CardT } from "../types";
-import { IconClose, IconDrag, IconPlus, IconTrash, IconDownload, IconEye } from "./Icons";
+import { IconClose, IconDrag, IconPlus, IconTrash, IconDownload, IconEye, IconPrint } from "./Icons";
+
+type SetOption = { id: string; name: string };
 
 type Props = {
   cards: CardT[];
@@ -17,6 +19,10 @@ type Props = {
   onAddCustom: () => void;
   onDownloadPdf: () => void;
   onPreviewPdf: () => void;
+  onPrint: () => void;
+  sets: SetOption[];
+  currentSetId: string;
+  onSwitchSet: (id: string) => void;
 };
 
 export default function SelectedPanel({
@@ -26,15 +32,35 @@ export default function SelectedPanel({
   onAddCustom,
   onDownloadPdf,
   onPreviewPdf,
+  onPrint,
+  sets,
+  currentSetId,
+  onSwitchSet,
 }: Props) {
   const { setNodeRef, isOver } = useDroppable({ id: "drop-selected" });
 
   return (
     <div ref={setNodeRef} className={`sel-panel ${isOver ? "is-over" : ""}`}>
       <div className="sel-head">
-        <h3>
-          Мой набор <span className="sel-count-pill">({cards.length})</span>
-        </h3>
+        <div className="sel-title">
+          {sets.length > 1 ? (
+            <select
+              className="set-switcher"
+              value={currentSetId}
+              onChange={(e) => onSwitchSet(e.target.value)}
+              aria-label="Переключить набор"
+            >
+              {sets.map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.name}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <h3>{sets[0]?.name ?? "Мой набор"}</h3>
+          )}
+          <span className="sel-count-pill">({cards.length})</span>
+        </div>
         <button className="link-btn danger" onClick={onClear} disabled={cards.length === 0}>
           <IconTrash size={14} />
           <span>Очистить</span>
@@ -73,6 +99,15 @@ export default function SelectedPanel({
       >
         <IconDownload size={16} />
         <span>Скачать PDF</span>
+      </button>
+
+      <button
+        className="btn-ghost block"
+        onClick={onPrint}
+        disabled={cards.length === 0}
+      >
+        <IconPrint size={16} />
+        <span>Печать</span>
       </button>
 
       <button

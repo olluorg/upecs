@@ -1,6 +1,6 @@
 import type { PrintSize, Orientation } from "../types";
 import PrintSettings from "./PrintSettings";
-import { IconDownload, IconEye } from "./Icons";
+import { IconDownload, IconEye, IconPrint } from "./Icons";
 
 type Props = {
   size: PrintSize;
@@ -12,6 +12,7 @@ type Props = {
   selectedCount: number;
   onDownloadPdf: () => void;
   onPreviewPdf: () => void;
+  onPrint: () => void;
 };
 
 export default function PrintSettingsView(props: Props) {
@@ -45,6 +46,13 @@ export default function PrintSettingsView(props: Props) {
               disabled={props.selectedCount === 0}
             >
               <IconEye size={14} /> Предпросмотр PDF
+            </button>
+            <button
+              className="btn-ghost"
+              onClick={props.onPrint}
+              disabled={props.selectedCount === 0}
+            >
+              <IconPrint size={14} /> Печать
             </button>
             <button
               className="btn-primary"

@@ -11,7 +11,13 @@ export type CategoryDef = {
   label: string;
 };
 
-export type View = "library" | "myset" | "settings" | "instructions";
+export type View = "library" | "myset" | "sets" | "settings" | "instructions";
+
+export type CardSet = {
+  id: string;
+  name: string;
+  cardIds: string[];
+};
 export type PrintSize = "2x2" | "3x3" | "4x4";
 export type Orientation = "portrait" | "landscape";
 

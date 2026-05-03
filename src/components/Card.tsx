@@ -1,16 +1,24 @@
 import { useState } from "react";
-import type { CSSProperties } from "react";
+import type { CSSProperties, KeyboardEvent as RKeyboardEvent } from "react";
 import { useDraggable } from "@dnd-kit/core";
 import type { Card as CardT } from "../types";
-import { IconPlus } from "./Icons";
+import { IconPlus, IconCheck } from "./Icons";
 
 type Props = {
   card: CardT;
   selected: boolean;
-  onAdd: () => void;
+  onToggle: () => void;
+  tabIndex?: number;
+  onMouseEnter?: () => void;
 };
 
-export default function Card({ card, selected, onAdd }: Props) {
+export default function Card({
+  card,
+  selected,
+  onToggle,
+  tabIndex,
+  onMouseEnter,
+}: Props) {
   const [failed, setFailed] = useState(false);
   const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
     id: `lib:${card.id}`,
@@ -20,25 +28,37 @@ export default function Card({ card, selected, onAdd }: Props) {
     opacity: isDragging ? 0.4 : 1,
   };
 
+  const handleKey = (e: RKeyboardEvent<HTMLDivElement>) => {
+    if (e.key === " " || e.key === "Enter") {
+      e.preventDefault();
+      onToggle();
+    }
+  };
+
   return (
     <div
       ref={setNodeRef}
       style={style}
       className={`card-tile ${selected ? "is-selected" : ""}`}
-      onClick={onAdd}
+      onClick={onToggle}
+      onKeyDown={handleKey}
+      onMouseEnter={onMouseEnter}
       {...attributes}
       {...listeners}
+      tabIndex={tabIndex ?? 0}
     >
       <button
         className={`card-add ${selected ? "is-on" : ""}`}
         onClick={(e) => {
           e.stopPropagation();
-          onAdd();
+          onToggle();
         }}
         onPointerDown={(e) => e.stopPropagation()}
-        aria-label={selected ? "Уже в наборе" : "Добавить"}
+        onKeyDown={(e) => e.stopPropagation()}
+        aria-label={selected ? "Убрать из набора" : "Добавить в набор"}
+        tabIndex={-1}
       >
-        <IconPlus size={14} />
+        {selected ? <IconCheck size={14} /> : <IconPlus size={14} />}
       </button>
 
       <div className="card-img">

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Card as CardT } from "../types";
 import { CATEGORIES } from "../data/categories";
 import Card from "./Card";
@@ -11,10 +11,18 @@ type Props = {
   setCategory: (c: string) => void;
   query: string;
   setQuery: (q: string) => void;
-  onAdd: (id: string) => void;
+  onToggle: (id: string) => void;
 };
 
 const PER_PAGE = 24;
+const NAV_KEYS = new Set([
+  "ArrowRight",
+  "ArrowLeft",
+  "ArrowDown",
+  "ArrowUp",
+  "Home",
+  "End",
+]);
 
 export default function Library({
   cards,
@@ -23,9 +31,13 @@ export default function Library({
   setCategory,
   query,
   setQuery,
-  onAdd,
+  onToggle,
 }: Props) {
   const [page, setPage] = useState(1);
+  const [tabIdx, setTabIdx] = useState(0);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const tabIdxRef = useRef(0);
+  const mouseInGridRef = useRef(false);
 
   useEffect(() => {
     setPage(1);
@@ -36,6 +48,85 @@ export default function Library({
   const safePage = Math.min(page, totalPages);
   const start = (safePage - 1) * PER_PAGE;
   const pageCards = cards.slice(start, start + PER_PAGE);
+
+  // Reset cursor on page/category/query change
+  useEffect(() => {
+    setTabIdx(0);
+    tabIdxRef.current = 0;
+  }, [safePage, category, query]);
+
+  const updateTab = (i: number) => {
+    tabIdxRef.current = i;
+    setTabIdx(i);
+  };
+
+  // Window-level arrow navigation. Intercepts only when:
+  // - user is typing in input/textarea → skip
+  // - focus is inside the grid (keyboard navigation) → handle
+  // - mouse is currently hovering the grid (mouse-then-keyboard) → handle
+  // - otherwise → let browser do default scrolling
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (!NAV_KEYS.has(e.key)) return;
+      const t = e.target as HTMLElement | null;
+      if (
+        t &&
+        (t.tagName === "INPUT" ||
+          t.tagName === "TEXTAREA" ||
+          t.isContentEditable)
+      ) {
+        return;
+      }
+
+      const grid = gridRef.current;
+      if (!grid) return;
+      const focusInGrid = !!t && grid.contains(t);
+      if (!focusInGrid && !mouseInGridRef.current) return;
+
+      const tiles = Array.from(
+        grid.querySelectorAll<HTMLElement>(".card-tile"),
+      );
+      if (tiles.length === 0) return;
+
+      let from = Math.min(Math.max(tabIdxRef.current, 0), tiles.length - 1);
+      if (focusInGrid && t) {
+        const tile = t.closest(".card-tile");
+        if (tile) {
+          const i = tiles.indexOf(tile as HTMLElement);
+          if (i >= 0) from = i;
+        }
+      }
+
+      const cols = computeCols(grid, tiles[0]);
+      let next = from;
+      switch (e.key) {
+        case "ArrowRight":
+          next = from + 1;
+          break;
+        case "ArrowLeft":
+          next = from - 1;
+          break;
+        case "ArrowDown":
+          next = from + cols;
+          break;
+        case "ArrowUp":
+          next = from - cols;
+          break;
+        case "Home":
+          next = 0;
+          break;
+        case "End":
+          next = tiles.length - 1;
+          break;
+      }
+      if (next < 0 || next >= tiles.length) return;
+      e.preventDefault();
+      updateTab(next);
+      tiles[next]?.focus();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   return (
     <div className="library">
@@ -72,19 +163,34 @@ export default function Library({
         <div className="empty">Ничего не найдено</div>
       ) : (
         <>
-          <div className="cards-grid">
-            {pageCards.map((c) => (
+          <div
+            ref={gridRef}
+            className="cards-grid"
+            onMouseEnter={() => {
+              mouseInGridRef.current = true;
+            }}
+            onMouseLeave={() => {
+              mouseInGridRef.current = false;
+            }}
+          >
+            {pageCards.map((c, i) => (
               <Card
                 key={c.id}
                 card={c}
                 selected={selectedIds.includes(c.id)}
-                onAdd={() => onAdd(c.id)}
+                onToggle={() => onToggle(c.id)}
+                tabIndex={i === tabIdx ? 0 : -1}
+                onMouseEnter={() => updateTab(i)}
               />
             ))}
           </div>
 
           {totalPages > 1 && (
-            <Pagination page={safePage} totalPages={totalPages} onChange={setPage} />
+            <Pagination
+              page={safePage}
+              totalPages={totalPages}
+              onChange={setPage}
+            />
           )}
 
           <div className="pager-info">
@@ -102,6 +208,14 @@ export default function Library({
       </div>
     </div>
   );
+}
+
+function computeCols(grid: HTMLElement, sample: HTMLElement): number {
+  const gridStyle = window.getComputedStyle(grid);
+  const gap = parseFloat(gridStyle.columnGap || gridStyle.gap || "0");
+  const sampleW = sample.offsetWidth;
+  if (!sampleW) return 1;
+  return Math.max(1, Math.floor((grid.clientWidth + gap) / (sampleW + gap)));
 }
 
 function Pagination({

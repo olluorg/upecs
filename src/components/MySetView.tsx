@@ -7,7 +7,9 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import type { Card } from "../types";
-import { IconClose, IconDrag, IconPlus, IconTrash, IconDownload, IconEye } from "./Icons";
+import { IconClose, IconDrag, IconPlus, IconTrash, IconDownload, IconEye, IconPrint } from "./Icons";
+
+type SetOption = { id: string; name: string };
 
 type Props = {
   cards: Card[];
@@ -16,6 +18,10 @@ type Props = {
   onAddCustom: () => void;
   onDownloadPdf: () => void;
   onPreviewPdf: () => void;
+  onPrint: () => void;
+  sets: SetOption[];
+  currentSetId: string;
+  onSwitchSet: (id: string) => void;
 };
 
 export default function MySetView({
@@ -25,13 +31,33 @@ export default function MySetView({
   onAddCustom,
   onDownloadPdf,
   onPreviewPdf,
+  onPrint,
+  sets,
+  currentSetId,
+  onSwitchSet,
 }: Props) {
   return (
     <div className="myset">
       <div className="library-head">
         <div>
-          <h1>
-            Мой набор <span className="muted small">({cards.length})</span>
+          <h1 className="myset-title">
+            {sets.length > 1 ? (
+              <select
+                className="set-switcher big"
+                value={currentSetId}
+                onChange={(e) => onSwitchSet(e.target.value)}
+                aria-label="Переключить набор"
+              >
+                {sets.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.name}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <span>{sets[0]?.name ?? "Мой набор"}</span>
+            )}
+            <span className="muted small">({cards.length})</span>
           </h1>
           <p className="muted">Перетаскивайте карточки, чтобы изменить порядок</p>
         </div>
@@ -41,6 +67,9 @@ export default function MySetView({
           </button>
           <button className="btn-ghost" onClick={onPreviewPdf} disabled={cards.length === 0}>
             <IconEye size={14} /> Предпросмотр
+          </button>
+          <button className="btn-ghost" onClick={onPrint} disabled={cards.length === 0}>
+            <IconPrint size={14} /> Печать
           </button>
           <button className="btn-primary" onClick={onDownloadPdf} disabled={cards.length === 0}>
             <IconDownload size={14} /> Скачать PDF

@@ -2,16 +2,17 @@ import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import type { Card, PrintOpts } from "../types";
 import { downloadPdf, pdfBlob } from "../utils/generatePdf";
-import { IconDownload } from "./Icons";
+import { IconDownload, IconPrint } from "./Icons";
 
 type Props = {
   open: boolean;
   onClose: () => void;
   cards: Card[];
   opts: PrintOpts;
+  onPrint: () => void;
 };
 
-export default function PdfPreviewModal({ open, onClose, cards, opts }: Props) {
+export default function PdfPreviewModal({ open, onClose, cards, opts, onPrint }: Props) {
   const [url, setUrl] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
@@ -58,6 +59,14 @@ export default function PdfPreviewModal({ open, onClose, cards, opts }: Props) {
 
       <div className="form-actions">
         <button className="btn-ghost" onClick={onClose}>Назад</button>
+        <button
+          className="btn-ghost"
+          onClick={onPrint}
+          disabled={cards.length === 0}
+        >
+          <IconPrint size={16} />
+          <span>Печать</span>
+        </button>
         <button
           className="btn-primary"
           onClick={() => downloadPdf(cards, opts)}

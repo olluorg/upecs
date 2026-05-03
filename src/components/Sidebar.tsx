@@ -1,11 +1,19 @@
 import type { ReactNode } from "react";
 import type { View } from "../types";
-import { IconHome, IconList, IconSettings, IconInfo, IconHeart } from "./Icons";
+import {
+  IconHome,
+  IconList,
+  IconSettings,
+  IconInfo,
+  IconHeart,
+  IconFolder,
+} from "./Icons";
 
 type Props = {
   view: View;
   setView: (v: View) => void;
   selectedCount: number;
+  setsCount: number;
 };
 
 const items: { id: View; label: string; sub: string; icon: ReactNode }[] = [
@@ -22,6 +30,12 @@ const items: { id: View; label: string; sub: string; icon: ReactNode }[] = [
     icon: <IconList size={18} />,
   },
   {
+    id: "sets",
+    label: "Мои наборы",
+    sub: "Создавать и переключать",
+    icon: <IconFolder size={18} />,
+  },
+  {
     id: "settings",
     label: "Настройки печати",
     sub: "Размер, подписи, ориентация",
@@ -35,7 +49,7 @@ const items: { id: View; label: string; sub: string; icon: ReactNode }[] = [
   },
 ];
 
-export default function Sidebar({ view, setView, selectedCount }: Props) {
+export default function Sidebar({ view, setView, selectedCount, setsCount }: Props) {
   return (
     <aside className="sidebar">
       <nav className="side-nav">
@@ -51,6 +65,9 @@ export default function Sidebar({ view, setView, selectedCount }: Props) {
                 {it.label}
                 {it.id === "myset" && selectedCount > 0 && (
                   <span className="side-badge">{selectedCount}</span>
+                )}
+                {it.id === "sets" && setsCount > 1 && (
+                  <span className="side-badge">{setsCount}</span>
                 )}
               </span>
               <span className="side-sub">{it.sub}</span>

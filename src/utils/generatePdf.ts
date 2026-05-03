@@ -29,6 +29,35 @@ export async function pdfBlob(cards: Card[], opts: PrintOpts): Promise<Blob> {
   return doc.output("blob");
 }
 
+export async function printPdf(cards: Card[], opts: PrintOpts): Promise<void> {
+  if (cards.length === 0) return;
+  const doc = await buildPdf(cards, opts);
+  doc.autoPrint();
+  const blob = doc.output("blob");
+  const url = URL.createObjectURL(blob);
+
+  const iframe = document.createElement("iframe");
+  iframe.style.cssText =
+    "position:fixed;right:0;bottom:0;width:1px;height:1px;border:0;opacity:0;pointer-events:none;";
+  iframe.src = url;
+  iframe.onload = () => {
+    window.setTimeout(() => {
+      try {
+        iframe.contentWindow?.focus();
+        iframe.contentWindow?.print();
+      } catch {
+        window.open(url, "_blank");
+      }
+    }, 200);
+  };
+  document.body.appendChild(iframe);
+
+  window.setTimeout(() => {
+    if (iframe.parentElement) iframe.parentElement.removeChild(iframe);
+    URL.revokeObjectURL(url);
+  }, 60_000);
+}
+
 async function drawCards(doc: jsPDF, cards: Card[], opts: PrintOpts) {
   const grid = GRID[opts.size];
   const perPage = grid * grid;

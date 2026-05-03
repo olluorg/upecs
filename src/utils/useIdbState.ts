@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { idbGet, idbSet } from "./idb";
 
 type Setter<T> = (next: T | ((prev: T) => T)) => void;
@@ -47,11 +47,11 @@ export function useIdbState<T>(
     idbSet(key, value).catch(() => {});
   }, [key, value, loaded]);
 
-  const setter: Setter<T> = (next) => {
+  const setter = useCallback<Setter<T>>((next) => {
     setValue((prev) =>
       typeof next === "function" ? (next as (p: T) => T)(prev) : next,
     );
-  };
+  }, []);
 
   return [value, setter, loaded];
 }
