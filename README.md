@@ -36,7 +36,7 @@
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone <url-вашего-репозитория>
+   git clone git@github.com:olluorg/upecs.git
    cd pecs-app
    ```
 
