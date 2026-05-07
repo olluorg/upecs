@@ -9,12 +9,15 @@ type Props = {
   open: boolean;
   onClose: () => void;
   onAdd: (card: Card) => void;
+  initialCard?: Card;
+  onEdit?: (card: Card) => void;
 };
 
 const STAGE = 240;
 const OUTPUT = 768;
 
-export default function AddCustomCardModal({ open, onClose, onAdd }: Props) {
+export default function AddCustomCardModal({ open, onClose, onAdd, initialCard, onEdit }: Props) {
+  const isEdit = !!initialCard;
   const [label, setLabel] = useState("");
   const [category, setCategory] = useState("other");
   const [imgSrc, setImgSrc] = useState<string | null>(null);
@@ -43,6 +46,21 @@ export default function AddCustomCardModal({ open, onClose, onAdd }: Props) {
     setPreviewUrl(null);
     if (fileRef.current) fileRef.current.value = "";
   };
+
+  useEffect(() => {
+    if (!open) return;
+    if (initialCard) {
+      setLabel(initialCard.label);
+      setCategory(initialCard.category);
+      setImgSrc(initialCard.image || null);
+      setScale(1);
+      setRotation(0);
+      setOffset({ x: 0, y: 0 });
+    } else {
+      reset();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, initialCard?.id]);
 
   useEffect(() => {
     if (!imgSrc) {
@@ -127,13 +145,17 @@ export default function AddCustomCardModal({ open, onClose, onAdd }: Props) {
       });
     }
     const card: Card = {
-      id: `custom_${Date.now()}`,
+      id: isEdit ? initialCard!.id : `custom_${Date.now()}`,
       label: label.trim(),
       image: imageData,
       category,
       custom: true,
     };
-    onAdd(card);
+    if (isEdit) {
+      onEdit!(card);
+    } else {
+      onAdd(card);
+    }
     reset();
     onClose();
   };
@@ -148,7 +170,7 @@ export default function AddCustomCardModal({ open, onClose, onAdd }: Props) {
   return (
     <Modal
       open={open}
-      title="Добавить свою карточку"
+      title={isEdit ? "Редактировать карточку" : "Добавить свою карточку"}
       onClose={handleClose}
       width={620}
     >
@@ -315,7 +337,7 @@ export default function AddCustomCardModal({ open, onClose, onAdd }: Props) {
             onClick={handleSave}
             disabled={!label.trim()}
           >
-            Добавить
+            {isEdit ? "Сохранить" : "Добавить"}
           </button>
         </div>
       </div>

@@ -159,6 +159,21 @@ export const IconFolder = ({ size, className }: Props) => (
   </svg>
 );
 
+export const IconDots = ({ size, className }: Props) => (
+  <svg {...def(size)} className={className}>
+    <circle cx="5" cy="12" r="1.2" fill="currentColor" stroke="none" />
+    <circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none" />
+    <circle cx="19" cy="12" r="1.2" fill="currentColor" stroke="none" />
+  </svg>
+);
+
+export const IconPencil = ({ size, className }: Props) => (
+  <svg {...def(size)} className={className}>
+    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+    <path d="M18.5 2.5a2.1 2.1 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+  </svg>
+);
+
 export const IconCheck = ({ size, className }: Props) => (
   <svg {...def(size)} className={className}>
     <path d="M5 12l5 5 9-11" />

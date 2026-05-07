@@ -12,6 +12,8 @@ type Props = {
   query: string;
   setQuery: (q: string) => void;
   onToggle: (id: string) => void;
+  onEditCard?: (card: CardT) => void;
+  onDeleteCard?: (id: string) => void;
 };
 
 const PER_PAGE = 24;
@@ -32,6 +34,8 @@ export default function Library({
   query,
   setQuery,
   onToggle,
+  onEditCard,
+  onDeleteCard,
 }: Props) {
   const [page, setPage] = useState(1);
   const [tabIdx, setTabIdx] = useState(0);
@@ -181,6 +185,8 @@ export default function Library({
                 onToggle={() => onToggle(c.id)}
                 tabIndex={i === tabIdx ? 0 : -1}
                 onMouseEnter={() => updateTab(i)}
+                onEdit={c.custom && onEditCard ? () => onEditCard(c) : undefined}
+                onDelete={c.custom && onDeleteCard ? () => onDeleteCard(c.id) : undefined}
               />
             ))}
           </div>

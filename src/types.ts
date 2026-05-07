@@ -25,6 +25,7 @@ export type ModalKind =
   | "how"
   | "tips"
   | "addCustom"
+  | "editCustom"
   | "pdfPreview"
   | null;
 

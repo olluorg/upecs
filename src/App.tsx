@@ -70,6 +70,7 @@ export default function App() {
   const [category, setCategory] = useState("all");
   const [query, setQuery] = useState("");
   const [modal, setModal] = useState<ModalKind>(null);
+  const [editingCard, setEditingCard] = useState<Card | null>(null);
   const [activeDragCard, setActiveDragCard] = useState<Card | null>(null);
   const [activeDragKind, setActiveDragKind] = useState<"lib" | "sort" | null>(null);
 
@@ -169,6 +170,15 @@ export default function App() {
   const addCustom = (card: Card) => {
     setCustomCards((prev) => [...prev, card]);
     updateCurrent((prev) => (prev.includes(card.id) ? prev : [...prev, card.id]));
+  };
+
+  const editCustom = (card: Card) => {
+    setCustomCards((prev) => prev.map((c) => (c.id === card.id ? card : c)));
+  };
+
+  const deleteCustomCard = (id: string) => {
+    setCustomCards((prev) => prev.filter((c) => c.id !== id));
+    setSets((prev) => prev.map((s) => ({ ...s, cardIds: s.cardIds.filter((cid) => cid !== id) })));
   };
 
   // Set ops
@@ -328,6 +338,8 @@ export default function App() {
                 query={query}
                 setQuery={setQuery}
                 onToggle={toggleCard}
+                onEditCard={(card) => { setEditingCard(card); setModal("editCustom"); }}
+                onDeleteCard={deleteCustomCard}
               />
             )}
             {view === "myset" && (
@@ -466,6 +478,13 @@ export default function App() {
         open={modal === "addCustom"}
         onClose={() => setModal(null)}
         onAdd={addCustom}
+      />
+      <AddCustomCardModal
+        open={modal === "editCustom"}
+        onClose={() => { setModal(null); setEditingCard(null); }}
+        onAdd={addCustom}
+        initialCard={editingCard ?? undefined}
+        onEdit={editCustom}
       />
       <PdfPreviewModal
         open={modal === "pdfPreview"}
