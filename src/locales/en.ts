@@ -3,6 +3,7 @@ import type { Translations } from "./index";
 const en: Translations = {
   lang: "EN",
   langFull: "English",
+  pageTitle: "PECS Builder — free cards for augmentative and alternative communication",
 
   nav: {
     library: "Library",

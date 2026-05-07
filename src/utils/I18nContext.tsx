@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { LOCALES, type Translations } from "../locales";
 
 const STORAGE_KEY = "lang";
@@ -32,6 +32,10 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     localStorage.setItem(STORAGE_KEY, next);
     setLangState(next);
   };
+
+  useEffect(() => {
+    document.title = LOCALES[lang].pageTitle;
+  }, [lang]);
 
   return (
     <I18nContext.Provider value={{ t: LOCALES[lang], lang, setLang }}>

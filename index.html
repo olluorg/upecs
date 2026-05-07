@@ -4,6 +4,17 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Set lang attribute before React loads so search engines see the correct language -->
+    <script>
+      (function () {
+        var supported = ['ru', 'en'];
+        var stored = localStorage.getItem('lang');
+        var browser = (navigator.language || '').split('-')[0];
+        var lang = (stored && supported.indexOf(stored) >= 0) ? stored
+                 : (supported.indexOf(browser) >= 0 ? browser : 'ru');
+        document.documentElement.lang = lang;
+      })();
+    </script>
 
     <!-- Основные мета-теги -->
     <title>PECS Конструктор — бесплатные карточки для альтернативной коммуникации</title>
@@ -12,6 +23,9 @@
     <meta name="robots" content="index, follow" />
     <meta name="author" content="upecs.ru" />
     <link rel="canonical" href="https://upecs.ru/" />
+    <link rel="alternate" hreflang="ru" href="https://upecs.ru/" />
+    <link rel="alternate" hreflang="en" href="https://upecs.ru/" />
+    <link rel="alternate" hreflang="x-default" href="https://upecs.ru/" />
 
     <!-- Open Graph / соцсети -->
     <meta property="og:type" content="website" />
