@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { IconStar, IconHand, IconUsers, IconHeart, IconSparkles } from "./Icons";
 import { useT } from "../utils/I18nContext";
 
@@ -11,6 +12,13 @@ const TOOL_ICONS = [
 export default function InstructionsView() {
   const t = useT();
   const d = t.instructions;
+
+  useEffect(() => {
+    const section = window.location.hash.replace(/^#\/?/, "").split("/")[1];
+    if (section) {
+      document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
 
   return (
     <div className="docs">
@@ -26,7 +34,16 @@ export default function InstructionsView() {
         <ol>
           {d.sections.map((s, i) => (
             <li key={s.id}>
-              <a href={`#${s.id}`}>{i + 1}. {s.tocLabel}</a>
+              <a
+                href={`#instructions/${s.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.hash = `instructions/${s.id}`;
+                  document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                {i + 1}. {s.tocLabel}
+              </a>
             </li>
           ))}
         </ol>

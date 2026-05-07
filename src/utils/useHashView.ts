@@ -4,7 +4,7 @@ import type { View } from "../types";
 const VIEWS: View[] = ["library", "myset", "sets", "settings", "instructions"];
 
 function parseHash(): View {
-  const hash = window.location.hash.replace(/^#\/?/, "");
+  const hash = window.location.hash.replace(/^#\/?/, "").split("/")[0];
   return (VIEWS.includes(hash as View) ? hash : "library") as View;
 }
 
