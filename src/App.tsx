@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   DndContext,
   DragOverlay,
@@ -28,6 +28,7 @@ import SetsView from "./components/SetsView";
 import PrintSettingsView from "./components/PrintSettingsView";
 import InstructionsView from "./components/InstructionsView";
 import PrintSettings from "./components/PrintSettings";
+import CommBoardView from "./components/CommBoardView";
 import AddCustomCardModal from "./components/AddCustomCardModal";
 import PdfPreviewModal from "./components/PdfPreviewModal";
 import HowItWorksModal from "./components/HowItWorksModal";
@@ -67,9 +68,13 @@ export default function App() {
     "welcome",
     false,
   );
+  const [lastBoardSetId, setLastBoardSetId, lastBoardLoaded] = useIdbState<string>("lastBoardSetId", "");
 
   const t = useT();
-  const [view, setView] = useHashView();
+  const [view, commBoardSetId, setView] = useHashView();
+  const boardSourceView = useRef<View>(
+    (sessionStorage.getItem("boardSourceView") as View | null) ?? "library",
+  );
   const [category, setCategory] = useState("all");
   const [query, setQuery] = useState("");
   const [modal, setModal] = useState<ModalKind>(null);
@@ -116,7 +121,8 @@ export default function App() {
     sizeLoaded &&
     labelsLoaded &&
     orientLoaded &&
-    welcomeLoaded;
+    welcomeLoaded &&
+    lastBoardLoaded;
   const appReady = allLoaded && sets.length > 0;
 
   const allCards: Card[] = useMemo(
@@ -286,6 +292,29 @@ export default function App() {
     }
   };
 
+  const openBoard = (setId: string) => {
+    boardSourceView.current = view;
+    sessionStorage.setItem("boardSourceView", view);
+    setLastBoardSetId(setId);
+    setView("commboard", setId);
+  };
+
+  if (appReady && view === "commboard") {
+    const resolvedSetId = commBoardSetId ?? lastBoardSetId ?? currentSetId;
+    const boardSet = sets.find((s) => s.id === resolvedSetId) ?? currentSet;
+    const boardCards = boardSet
+      ? boardSet.cardIds
+          .map((id) => allCards.find((c) => c.id === id))
+          .filter((c): c is Card => Boolean(c))
+      : [];
+    return (
+      <CommBoardView
+        cards={boardCards}
+        onBack={() => setView(boardSourceView.current)}
+      />
+    );
+  }
+
   const showWelcome = welcomeLoaded && !welcomeSeen;
   const dismissWelcome = (action?: View) => {
     setWelcomeSeen(true);
@@ -359,6 +388,7 @@ export default function App() {
                 sets={setOptions}
                 currentSetId={currentSetId}
                 onSwitchSet={switchSet}
+                onOpenBoard={() => openBoard(currentSetId)}
               />
             )}
             {view === "sets" && (
@@ -373,6 +403,10 @@ export default function App() {
                 onRename={renameSet}
                 onDuplicate={duplicateSet}
                 onDelete={deleteSet}
+                onOpenBoard={(id) => {
+                  switchSet(id);
+                  openBoard(id);
+                }}
               />
             )}
             {view === "settings" && (
@@ -402,6 +436,7 @@ export default function App() {
                 onDownloadPdf={onDownloadPdf}
                 onPreviewPdf={onPreviewPdf}
                 onPrint={onPrint}
+                onOpenBoard={() => openBoard(currentSetId)}
                 sets={setOptions}
                 currentSetId={currentSetId}
                 onSwitchSet={switchSet}

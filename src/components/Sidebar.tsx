@@ -12,7 +12,7 @@ import { useT } from "../utils/I18nContext";
 
 type Props = {
   view: View;
-  setView: (v: View) => void;
+  setView: (v: View, setId?: string) => void;
   selectedCount: number;
   setsCount: number;
 };

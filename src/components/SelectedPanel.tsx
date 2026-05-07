@@ -8,7 +8,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import type { Card as CardT } from "../types";
-import { IconClose, IconDrag, IconPlus, IconTrash, IconDownload, IconEye, IconPrint } from "./Icons";
+import { IconClose, IconDrag, IconPlus, IconTrash, IconDownload, IconEye, IconPrint, IconGrid } from "./Icons";
 import { useT } from "../utils/I18nContext";
 import { getCardLabel } from "../utils/cardLabel";
 
@@ -22,6 +22,7 @@ type Props = {
   onDownloadPdf: () => void;
   onPreviewPdf: () => void;
   onPrint: () => void;
+  onOpenBoard: () => void;
   sets: SetOption[];
   currentSetId: string;
   onSwitchSet: (id: string) => void;
@@ -35,6 +36,7 @@ export default function SelectedPanel({
   onDownloadPdf,
   onPreviewPdf,
   onPrint,
+  onOpenBoard,
   sets,
   currentSetId,
   onSwitchSet,
@@ -107,6 +109,11 @@ export default function SelectedPanel({
       <button className="btn-ghost block" onClick={onPreviewPdf} disabled={cards.length === 0}>
         <IconEye size={16} />
         <span>{s.preview}</span>
+      </button>
+
+      <button className="btn-ghost block" onClick={onOpenBoard} disabled={cards.length === 0}>
+        <IconGrid size={16} />
+        <span>{t.commboard.openBoard}</span>
       </button>
     </div>
   );

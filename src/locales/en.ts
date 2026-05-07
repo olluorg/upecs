@@ -268,6 +268,18 @@ const en: Translations = {
       "Start with 2–3 favourite cards. Gradually add new ones as your child masters them, to avoid overwhelming them.",
   },
 
+  commboard: {
+    title: "Communication Board",
+    back: "Back",
+    speak: "Speak",
+    say: "Say",
+    clear: "Clear",
+    promptTitle: "I want...",
+    promptSub: "Select cards to build a message",
+    openBoard: "Open board",
+    empty: "No cards in this set. Add cards to your set to use the board.",
+  },
+
   instructions: {
     title: "Documentation",
     subtitle: "What is PECS, how it works and where to start",

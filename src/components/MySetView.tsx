@@ -17,6 +17,7 @@ import {
   IconPrint,
   IconChevronLeft,
   IconChevronRight,
+  IconGrid,
 } from "./Icons";
 import { useT } from "../utils/I18nContext";
 import { getCardLabel } from "../utils/cardLabel";
@@ -35,6 +36,7 @@ type Props = {
   sets: SetOption[];
   currentSetId: string;
   onSwitchSet: (id: string) => void;
+  onOpenBoard: () => void;
 };
 
 export default function MySetView({
@@ -49,6 +51,7 @@ export default function MySetView({
   sets,
   currentSetId,
   onSwitchSet,
+  onOpenBoard,
 }: Props) {
   const t = useT();
   const m = t.myset;
@@ -88,6 +91,9 @@ export default function MySetView({
           </button>
           <button className="btn-ghost" onClick={onPrint} disabled={cards.length === 0}>
             <IconPrint size={14} /> {m.print}
+          </button>
+          <button className="btn-ghost" onClick={onOpenBoard} disabled={cards.length === 0}>
+            <IconGrid size={14} /> {t.commboard.openBoard}
           </button>
           <button className="btn-primary" onClick={onDownloadPdf} disabled={cards.length === 0}>
             <IconDownload size={14} /> {m.download}

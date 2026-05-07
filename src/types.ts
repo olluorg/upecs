@@ -11,7 +11,7 @@ export type CategoryDef = {
   label: string;
 };
 
-export type View = "library" | "myset" | "sets" | "settings" | "instructions";
+export type View = "library" | "myset" | "sets" | "settings" | "instructions" | "commboard";
 
 export type CardSet = {
   id: string;
