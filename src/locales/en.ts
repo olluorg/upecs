@@ -278,6 +278,11 @@ const en: Translations = {
     promptSub: "Select cards to build a message",
     openBoard: "Open board",
     empty: "No cards in this set. Add cards to your set to use the board.",
+    aiComposing: "Composing...",
+    aiLabel: "AI",
+    aiComposed: "AI composed:",
+    aiUnavailable: "Chrome AI is not available in this browser",
+    aiDownloading: "Model is downloading, try again in a moment",
   },
 
   instructions: {

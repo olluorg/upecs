@@ -1890,11 +1890,17 @@ h4 {
   font-weight: 700;
 }
 
+.commboard-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
 .commboard-speak-toggle {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-shrink: 0;
   color: var(--muted);
   font-size: 14px;
 }
@@ -2098,6 +2104,55 @@ h4 {
   border-left: 1px solid var(--border);
 }
 
+.composed-banner {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 20px;
+  background: var(--primary-soft);
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--primary);
+  flex-shrink: 0;
+  animation: fade-in 0.2s ease;
+}
+
+.composed-banner em {
+  font-style: normal;
+  font-weight: 600;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ai-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border-strong);
+  color: var(--muted);
+  background: transparent;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+
+.ai-toggle-btn.active {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.ai-toggle-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 .commboard-say-btn {
   display: flex;
   align-items: center;
@@ -2108,8 +2163,22 @@ h4 {
   background: #16a34a;
 }
 
-.commboard-say-btn:hover {
+.commboard-say-btn:hover:not(:disabled) {
   background: #15803d;
+}
+
+.ai-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 /* Board body */

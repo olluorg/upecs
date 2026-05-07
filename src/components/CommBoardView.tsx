@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import {
   DndContext,
@@ -23,6 +23,7 @@ import type { Card } from "../types";
 import { CATEGORIES } from "../data/categories";
 import { useT } from "../utils/I18nContext";
 import { getCardLabel } from "../utils/cardLabel";
+import { checkAIAvailability, composeSentence } from "../utils/chromeAI";
 import {
   IconChevronLeft,
   IconVolume,
@@ -31,12 +32,14 @@ import {
   IconMessageSquare,
   IconGrid,
   IconClose,
+  IconSparkles,
 } from "./Icons";
 
 type SentenceItem = { uid: string; card: Card };
 type DragPayload =
   | { type: "grid"; card: Card }
   | { type: "sentence"; item: SentenceItem };
+type AIStatus = "unavailable" | "ready" | "downloading";
 
 type Props = {
   cards: Card[];
@@ -75,13 +78,27 @@ export default function CommBoardView({ cards, onBack }: Props) {
       return [];
     }
   });
+  const [aiStatus, setAIStatus] = useState<AIStatus>("unavailable");
+  const [aiEnabled, setAIEnabled] = useState(true);
+  const [composing, setComposing] = useState(false);
+  const [composedText, setComposedText] = useState("");
+  const composedTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     sessionStorage.setItem(
       "commboard_sentence",
       JSON.stringify(sentence.map((item) => item.card.id)),
     );
+    setComposedText("");
   }, [sentence]);
+
+  useEffect(() => {
+    checkAIAvailability().then((status) => {
+      if (status === "readily") setAIStatus("ready");
+      else if (status === "after-download") setAIStatus("downloading");
+      else setAIStatus("unavailable");
+    });
+  }, []);
   const [autoSpeak, setAutoSpeak] = useState(true);
   const [activeCategory, setActiveCategory] = useState("all");
   const [dragPayload, setDragPayload] = useState<DragPayload | null>(null);
@@ -117,9 +134,26 @@ export default function CommBoardView({ cards, onBack }: Props) {
     setSentence((prev) => prev.filter((item) => item.uid !== uid));
   };
 
-  const saySentence = () => {
-    const text = sentence.map((item) => getCardLabel(t, item.card)).join(" ");
-    if (text) speak(text);
+  const saySentence = async () => {
+    const words = sentence.map((item) => getCardLabel(t, item.card));
+    if (!words.length) return;
+
+    if (aiEnabled && aiStatus === "ready") {
+      setComposing(true);
+      try {
+        const composed = await composeSentence(words, t.lang as "RU" | "EN");
+        setComposedText(composed);
+        speak(composed);
+        if (composedTimer.current) clearTimeout(composedTimer.current);
+        composedTimer.current = setTimeout(() => setComposedText(""), 6000);
+      } catch {
+        speak(words.join(" "));
+      } finally {
+        setComposing(false);
+      }
+    } else {
+      speak(words.join(" "));
+    }
   };
 
   const handleDragStart = (e: DragStartEvent) => {
@@ -184,14 +218,27 @@ export default function CommBoardView({ cards, onBack }: Props) {
             <span>{cb.back}</span>
           </button>
           <h1 className="commboard-title">{cb.title}</h1>
-          <div className="commboard-speak-toggle">
-            {autoSpeak ? <IconVolume size={18} /> : <IconVolumeOff size={18} />}
-            <span>{cb.speak}</span>
-            <button
-              className={`toggle-pill ${autoSpeak ? "on" : ""}`}
-              onClick={() => setAutoSpeak((v) => !v)}
-              aria-label={cb.speak}
-            />
+          <div className="commboard-header-controls">
+            {aiStatus !== "unavailable" && (
+              <button
+                className={`ai-toggle-btn ${aiEnabled && aiStatus === "ready" ? "active" : ""}`}
+                onClick={() => setAIEnabled((v) => !v)}
+                disabled={aiStatus === "downloading"}
+                title={aiStatus === "downloading" ? cb.aiDownloading : cb.aiLabel}
+              >
+                <IconSparkles size={14} />
+                <span>{cb.aiLabel}</span>
+              </button>
+            )}
+            <div className="commboard-speak-toggle">
+              {autoSpeak ? <IconVolume size={18} /> : <IconVolumeOff size={18} />}
+              <span>{cb.speak}</span>
+              <button
+                className={`toggle-pill ${autoSpeak ? "on" : ""}`}
+                onClick={() => setAutoSpeak((v) => !v)}
+                aria-label={cb.speak}
+              />
+            </div>
           </div>
         </div>
 
@@ -203,7 +250,15 @@ export default function CommBoardView({ cards, onBack }: Props) {
           onRemove={removeFromSentence}
           onClear={() => setSentence([])}
           onSay={saySentence}
+          composing={composing}
         />
+        {composedText && (
+          <div className="composed-banner">
+            <IconSparkles size={13} />
+            <span>{cb.aiComposed}</span>
+            <em>{composedText}</em>
+          </div>
+        )}
 
         <div className="commboard-body">
           <div className="commboard-cats">
@@ -289,14 +344,16 @@ function SentenceBar({
   onRemove,
   onClear,
   onSay,
+  composing,
 }: {
   sentence: SentenceItem[];
-  cb: { promptTitle: string; promptSub: string; clear: string; say: string };
+  cb: ReturnType<typeof useT>["commboard"];
   t: ReturnType<typeof useT>;
   isDraggingFromGrid: boolean;
   onRemove: (uid: string) => void;
   onClear: () => void;
   onSay: () => void;
+  composing: boolean;
 }) {
   const { setNodeRef, isOver } = useDroppable({ id: "sentence-zone" });
 
@@ -346,10 +403,19 @@ function SentenceBar({
         <button
           className="btn-primary commboard-say-btn"
           onClick={onSay}
-          disabled={sentence.length === 0}
+          disabled={sentence.length === 0 || composing}
         >
-          <IconMessageSquare size={16} />
-          {cb.say}
+          {composing ? (
+            <>
+              <span className="ai-spinner" />
+              {cb.aiComposing}
+            </>
+          ) : (
+            <>
+              <IconMessageSquare size={16} />
+              {cb.say}
+            </>
+          )}
         </button>
       </div>
     </div>
