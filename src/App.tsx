@@ -35,6 +35,7 @@ import PrintTipsModal from "./components/PrintTipsModal";
 import WelcomeModal from "./components/WelcomeModal";
 import { IconHeart } from "./components/Icons";
 import { useIdbState } from "./utils/useIdbState";
+import { useHashView } from "./utils/useHashView";
 import { idbGet } from "./utils/idb";
 import { downloadPdf, printPdf } from "./utils/generatePdf";
 
@@ -65,7 +66,7 @@ export default function App() {
     false,
   );
 
-  const [view, setView] = useState<View>("library");
+  const [view, setView] = useHashView();
   const [category, setCategory] = useState("all");
   const [query, setQuery] = useState("");
   const [modal, setModal] = useState<ModalKind>(null);
