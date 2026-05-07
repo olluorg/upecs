@@ -35,7 +35,7 @@ export default function InstructionsView() {
       <div className="docs-callout">{d.disclaimer}</div>
 
       {d.sections.map((sec) => {
-        if (sec.id === "what") {
+        if ("body" in sec) {
           return (
             <section key={sec.id} id={sec.id}>
               <h2>{sec.heading}</h2>
@@ -45,17 +45,7 @@ export default function InstructionsView() {
             </section>
           );
         }
-        if (sec.id === "whom") {
-          return (
-            <section key={sec.id} id={sec.id}>
-              <h2>{sec.heading}</h2>
-              <p>{sec.intro}</p>
-              <ul>{sec.list.map((item, i) => <li key={i}>{item}</li>)}</ul>
-              <p>{sec.outro}</p>
-            </section>
-          );
-        }
-        if (sec.id === "phases") {
+        if ("phases" in sec) {
           return (
             <section key={sec.id} id={sec.id}>
               <h2>{sec.heading}</h2>
@@ -69,35 +59,20 @@ export default function InstructionsView() {
             </section>
           );
         }
-        if (sec.id === "start") {
+        if ("items" in sec) {
           return (
             <section key={sec.id} id={sec.id}>
               <h2>{sec.heading}</h2>
-              <ol>
-                {sec.steps.map((step, i) => (
-                  <li key={i}>
-                    <strong>{step.strong}</strong>{" "}{step.text}
-                  </li>
-                ))}
-              </ol>
+              {sec.items.map((item, i) => (
+                <div key={i}>
+                  <h3>{item.q}</h3>
+                  <p>{item.a}</p>
+                </div>
+              ))}
             </section>
           );
         }
-        if (sec.id === "tips") {
-          return (
-            <section key={sec.id} id={sec.id}>
-              <h2>{sec.heading}</h2>
-              <ul>
-                {sec.list.map((item, i) => (
-                  <li key={i}>
-                    <strong>{item.strong}</strong>{" "}{item.text}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          );
-        }
-        if (sec.id === "tool") {
+        if ("note" in sec) {
           return (
             <section key={sec.id} id={sec.id}>
               <h2>{sec.heading}</h2>
@@ -116,16 +91,41 @@ export default function InstructionsView() {
             </section>
           );
         }
-        if (sec.id === "faq") {
+        if ("outro" in sec) {
           return (
             <section key={sec.id} id={sec.id}>
               <h2>{sec.heading}</h2>
-              {sec.items.map((item, i) => (
-                <div key={i}>
-                  <h3>{item.q}</h3>
-                  <p>{item.a}</p>
-                </div>
-              ))}
+              <p>{sec.intro}</p>
+              <ul>{sec.list.map((item, i) => <li key={i}>{item}</li>)}</ul>
+              <p>{sec.outro}</p>
+            </section>
+          );
+        }
+        if ("steps" in sec) {
+          return (
+            <section key={sec.id} id={sec.id}>
+              <h2>{sec.heading}</h2>
+              <ol>
+                {sec.steps.map((step, i) => (
+                  <li key={i}>
+                    <strong>{step.strong}</strong>{" "}{step.text}
+                  </li>
+                ))}
+              </ol>
+            </section>
+          );
+        }
+        if ("list" in sec) {
+          return (
+            <section key={sec.id} id={sec.id}>
+              <h2>{sec.heading}</h2>
+              <ul>
+                {sec.list.map((item, i) => (
+                  <li key={i}>
+                    <strong>{item.strong}</strong>{" "}{item.text}
+                  </li>
+                ))}
+              </ul>
             </section>
           );
         }
