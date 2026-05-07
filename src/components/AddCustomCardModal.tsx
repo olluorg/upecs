@@ -4,6 +4,7 @@ import Modal from "./Modal";
 import { CATEGORIES } from "../data/categories";
 import type { Card } from "../types";
 import { renderCardImage } from "../utils/renderCardImage";
+import { useT } from "../utils/I18nContext";
 
 type Props = {
   open: boolean;
@@ -17,7 +18,10 @@ const STAGE = 240;
 const OUTPUT = 768;
 
 export default function AddCustomCardModal({ open, onClose, onAdd, initialCard, onEdit }: Props) {
+  const t = useT();
+  const a = t.addCard;
   const isEdit = !!initialCard;
+
   const [label, setLabel] = useState("");
   const [category, setCategory] = useState("other");
   const [imgSrc, setImgSrc] = useState<string | null>(null);
@@ -28,12 +32,7 @@ export default function AddCustomCardModal({ open, onClose, onAdd, initialCard, 
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   const fileRef = useRef<HTMLInputElement>(null);
-  const dragRef = useRef<{
-    sx: number;
-    sy: number;
-    bx: number;
-    by: number;
-  } | null>(null);
+  const dragRef = useRef<{ sx: number; sy: number; bx: number; by: number } | null>(null);
 
   const reset = () => {
     setLabel("");
@@ -63,10 +62,7 @@ export default function AddCustomCardModal({ open, onClose, onAdd, initialCard, 
   }, [open, initialCard?.id]);
 
   useEffect(() => {
-    if (!imgSrc) {
-      setImg(null);
-      return;
-    }
+    if (!imgSrc) { setImg(null); return; }
     const i = new Image();
     i.onload = () => {
       setImg(i);
@@ -78,21 +74,10 @@ export default function AddCustomCardModal({ open, onClose, onAdd, initialCard, 
   }, [imgSrc]);
 
   useEffect(() => {
-    if (!img) {
-      setPreviewUrl(null);
-      return;
-    }
+    if (!img) { setPreviewUrl(null); return; }
     const id = window.setTimeout(() => {
       setPreviewUrl(
-        renderCardImage({
-          img,
-          scale,
-          rotation,
-          offsetX: offset.x,
-          offsetY: offset.y,
-          stageSize: STAGE,
-          outputSize: OUTPUT,
-        }),
+        renderCardImage({ img, scale, rotation, offsetX: offset.x, offsetY: offset.y, stageSize: STAGE, outputSize: OUTPUT }),
       );
     }, 30);
     return () => window.clearTimeout(id);
@@ -109,12 +94,7 @@ export default function AddCustomCardModal({ open, onClose, onAdd, initialCard, 
   const onPointerDown = (e: RPointerEvent<HTMLDivElement>) => {
     if (!img) return;
     e.currentTarget.setPointerCapture(e.pointerId);
-    dragRef.current = {
-      sx: e.clientX,
-      sy: e.clientY,
-      bx: offset.x,
-      by: offset.y,
-    };
+    dragRef.current = { sx: e.clientX, sy: e.clientY, bx: offset.x, by: offset.y };
   };
   const onPointerMove = (e: RPointerEvent<HTMLDivElement>) => {
     const d = dragRef.current;
@@ -122,9 +102,7 @@ export default function AddCustomCardModal({ open, onClose, onAdd, initialCard, 
     setOffset({ x: d.bx + (e.clientX - d.sx), y: d.by + (e.clientY - d.sy) });
   };
   const onPointerUp = (e: RPointerEvent<HTMLDivElement>) => {
-    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
-      e.currentTarget.releasePointerCapture(e.pointerId);
-    }
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) e.currentTarget.releasePointerCapture(e.pointerId);
     dragRef.current = null;
   };
 
@@ -134,15 +112,7 @@ export default function AddCustomCardModal({ open, onClose, onAdd, initialCard, 
     if (img && previewUrl) {
       imageData = previewUrl;
     } else if (img) {
-      imageData = renderCardImage({
-        img,
-        scale,
-        rotation,
-        offsetX: offset.x,
-        offsetY: offset.y,
-        stageSize: STAGE,
-        outputSize: OUTPUT,
-      });
+      imageData = renderCardImage({ img, scale, rotation, offsetX: offset.x, offsetY: offset.y, stageSize: STAGE, outputSize: OUTPUT });
     }
     const card: Card = {
       id: isEdit ? initialCard!.id : `custom_${Date.now()}`,
@@ -151,37 +121,24 @@ export default function AddCustomCardModal({ open, onClose, onAdd, initialCard, 
       category,
       custom: true,
     };
-    if (isEdit) {
-      onEdit!(card);
-    } else {
-      onAdd(card);
-    }
+    if (isEdit) { onEdit!(card); } else { onAdd(card); }
     reset();
     onClose();
   };
 
-  const handleClose = () => {
-    reset();
-    onClose();
-  };
+  const handleClose = () => { reset(); onClose(); };
 
   const fitScale = img ? Math.min(STAGE / img.width, STAGE / img.height) : 1;
 
   return (
     <Modal
       open={open}
-      title={isEdit ? "Редактировать карточку" : "Добавить свою карточку"}
+      title={isEdit ? a.titleEdit : a.titleAdd}
       onClose={handleClose}
       width={620}
     >
       <div className="form">
-        <input
-          ref={fileRef}
-          type="file"
-          accept="image/*"
-          onChange={handleFile}
-          style={{ display: "none" }}
-        />
+        <input ref={fileRef} type="file" accept="image/*" onChange={handleFile} style={{ display: "none" }} />
 
         <div className="add-card-grid">
           <div className="card-editor">
@@ -197,30 +154,16 @@ export default function AddCustomCardModal({ open, onClose, onAdd, initialCard, 
                 <>
                   <div
                     className="editor-image-wrap"
-                    style={{
-                      transform: `translate(${offset.x}px, ${offset.y}px) rotate(${rotation}deg) scale(${scale})`,
-                    }}
+                    style={{ transform: `translate(${offset.x}px, ${offset.y}px) rotate(${rotation}deg) scale(${scale})` }}
                   >
-                    <img
-                      src={imgSrc!}
-                      alt=""
-                      draggable={false}
-                      style={{
-                        width: img.width * fitScale,
-                        height: img.height * fitScale,
-                      }}
-                    />
+                    <img src={imgSrc!} alt="" draggable={false} style={{ width: img.width * fitScale, height: img.height * fitScale }} />
                   </div>
                   <div className="editor-frame" />
                 </>
               ) : (
-                <button
-                  type="button"
-                  className="editor-empty"
-                  onClick={() => fileRef.current?.click()}
-                >
-                  <span>Нажмите, чтобы загрузить изображение</span>
-                  <small>JPEG, PNG, любой размер</small>
+                <button type="button" className="editor-empty" onClick={() => fileRef.current?.click()}>
+                  <span>{a.uploadPrompt}</span>
+                  <small>{a.uploadHint}</small>
                 </button>
               )}
             </div>
@@ -228,56 +171,24 @@ export default function AddCustomCardModal({ open, onClose, onAdd, initialCard, 
             {img && (
               <div className="editor-controls">
                 <div className="ctrl">
-                  <label>Масштаб</label>
-                  <input
-                    type="range"
-                    min="0.2"
-                    max="4"
-                    step="0.05"
-                    value={scale}
-                    onChange={(e) => setScale(parseFloat(e.target.value))}
-                  />
+                  <label>{a.scale}</label>
+                  <input type="range" min="0.2" max="4" step="0.05" value={scale} onChange={(e) => setScale(parseFloat(e.target.value))} />
                   <span className="ctrl-val">{scale.toFixed(2)}×</span>
                 </div>
                 <div className="ctrl">
-                  <label>Поворот</label>
-                  <input
-                    type="range"
-                    min="-180"
-                    max="180"
-                    step="1"
-                    value={rotation}
-                    onChange={(e) => setRotation(parseInt(e.target.value, 10))}
-                  />
+                  <label>{a.rotation}</label>
+                  <input type="range" min="-180" max="180" step="1" value={rotation} onChange={(e) => setRotation(parseInt(e.target.value, 10))} />
                   <span className="ctrl-val">{rotation}°</span>
                 </div>
                 <div className="editor-buttons">
-                  <button
-                    type="button"
-                    className="btn-ghost small-btn"
-                    onClick={() =>
-                      setRotation((r) => normalizeRotation(r + 90))
-                    }
-                  >
-                    Повернуть 90°
+                  <button type="button" className="btn-ghost small-btn" onClick={() => setRotation((r) => normalizeRotation(r + 90))}>
+                    {a.rotate90}
                   </button>
-                  <button
-                    type="button"
-                    className="btn-ghost small-btn"
-                    onClick={() => {
-                      setScale(1);
-                      setRotation(0);
-                      setOffset({ x: 0, y: 0 });
-                    }}
-                  >
-                    Сбросить
+                  <button type="button" className="btn-ghost small-btn" onClick={() => { setScale(1); setRotation(0); setOffset({ x: 0, y: 0 }); }}>
+                    {a.reset}
                   </button>
-                  <button
-                    type="button"
-                    className="btn-ghost small-btn"
-                    onClick={() => fileRef.current?.click()}
-                  >
-                    Заменить файл
+                  <button type="button" className="btn-ghost small-btn" onClick={() => fileRef.current?.click()}>
+                    {a.replaceFile}
                   </button>
                 </div>
               </div>
@@ -285,59 +196,41 @@ export default function AddCustomCardModal({ open, onClose, onAdd, initialCard, 
           </div>
 
           <div className="card-preview-wrap">
-            <div className="card-preview-label">Превью карточки</div>
+            <div className="card-preview-label">{a.previewLabel}</div>
             <div className="card-tile preview-tile">
               <div className="card-img">
-                {previewUrl ? (
-                  <img src={previewUrl} alt="" />
-                ) : (
-                  <div className="img-placeholder">
-                    <span>{label || "Название"}</span>
-                  </div>
+                {previewUrl ? <img src={previewUrl} alt="" /> : (
+                  <div className="img-placeholder"><span>{label || a.previewName}</span></div>
                 )}
               </div>
-              <div className="card-label">{label || "Название"}</div>
+              <div className="card-label">{label || a.previewName}</div>
             </div>
-            <small className="muted center">
-              Так карточка будет выглядеть в наборе и в PDF
-            </small>
+            <small className="muted center">{a.previewHint}</small>
           </div>
         </div>
 
         <label className="form-row">
-          <span>Название</span>
-          <input
-            value={label}
-            onChange={(e) => setLabel(e.target.value)}
-            placeholder="Например: Мама"
-          />
+          <span>{a.nameLabel}</span>
+          <input value={label} onChange={(e) => setLabel(e.target.value)} placeholder={a.namePlaceholder} />
         </label>
 
         <label className="form-row">
-          <span>Категория</span>
+          <span>{a.categoryLabel}</span>
           <select value={category} onChange={(e) => setCategory(e.target.value)}>
             {CATEGORIES.filter((c) => c.id !== "all").map((c) => (
               <option key={c.id} value={c.id}>
-                {c.label}
+                {t.categories[c.id] ?? c.label}
               </option>
             ))}
           </select>
         </label>
 
-        <small className="muted">
-          Без картинки карточка появится как серый плейсхолдер с подписью.
-        </small>
+        <small className="muted">{a.noImageNote}</small>
 
         <div className="form-actions">
-          <button className="btn-ghost" onClick={handleClose}>
-            Отмена
-          </button>
-          <button
-            className="btn-primary"
-            onClick={handleSave}
-            disabled={!label.trim()}
-          >
-            {isEdit ? "Сохранить" : "Добавить"}
+          <button className="btn-ghost" onClick={handleClose}>{a.cancel}</button>
+          <button className="btn-primary" onClick={handleSave} disabled={!label.trim()}>
+            {isEdit ? a.save : a.add}
           </button>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import type { PrintSize, Orientation } from "../types";
 import PrintSettings from "./PrintSettings";
 import { IconDownload, IconEye, IconPrint } from "./Icons";
+import { useT } from "../utils/I18nContext";
 
 type Props = {
   size: PrintSize;
@@ -16,12 +17,15 @@ type Props = {
 };
 
 export default function PrintSettingsView(props: Props) {
+  const t = useT();
+  const s = t.settings;
+
   return (
     <div className="settings-view">
       <div className="library-head">
         <div>
-          <h1>Настройки печати</h1>
-          <p className="muted">Выберите размер сетки, ориентацию и подписи</p>
+          <h1>{s.title}</h1>
+          <p className="muted">{s.subtitle}</p>
         </div>
       </div>
 
@@ -37,7 +41,7 @@ export default function PrintSettingsView(props: Props) {
 
         <div className="settings-summary">
           <div>
-            В наборе: <b>{props.selectedCount} карточек</b>
+            {s.inSet} <b>{props.selectedCount} {s.cards}</b>
           </div>
           <div className="myset-actions">
             <button
@@ -45,21 +49,21 @@ export default function PrintSettingsView(props: Props) {
               onClick={props.onPreviewPdf}
               disabled={props.selectedCount === 0}
             >
-              <IconEye size={14} /> Предпросмотр PDF
+              <IconEye size={14} /> {s.preview}
             </button>
             <button
               className="btn-ghost"
               onClick={props.onPrint}
               disabled={props.selectedCount === 0}
             >
-              <IconPrint size={14} /> Печать
+              <IconPrint size={14} /> {s.print}
             </button>
             <button
               className="btn-primary"
               onClick={props.onDownloadPdf}
               disabled={props.selectedCount === 0}
             >
-              <IconDownload size={14} /> Скачать PDF
+              <IconDownload size={14} /> {s.download}
             </button>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import type { PrintSize, Orientation } from "../types";
+import { useT } from "../utils/I18nContext";
 
 type Props = {
   size: PrintSize;
@@ -9,12 +10,6 @@ type Props = {
   setOrientation: (o: Orientation) => void;
 };
 
-const SIZES: { id: PrintSize; sub: string }[] = [
-  { id: "2x2", sub: "крупные" },
-  { id: "3x3", sub: "стандарт" },
-  { id: "4x4", sub: "мелкие" },
-];
-
 export default function PrintSettings({
   size,
   setSize,
@@ -23,23 +18,32 @@ export default function PrintSettings({
   orientation,
   setOrientation,
 }: Props) {
+  const t = useT();
+  const s = t.settings;
+
+  const SIZES: { id: PrintSize; sub: string }[] = [
+    { id: "2x2", sub: s.large },
+    { id: "3x3", sub: s.standard },
+    { id: "4x4", sub: s.small },
+  ];
+
   return (
     <div className="settings">
-      <h4>Настройки печати</h4>
+      <h4>{s.title}</h4>
 
       <div className="field">
-        <div className="field-label">Размер карточек на странице</div>
+        <div className="field-label">{s.cardSize}</div>
         <div className="seg-3">
-          {SIZES.map((s) => (
+          {SIZES.map((sz) => (
             <button
-              key={s.id}
-              className={`seg ${size === s.id ? "active" : ""}`}
-              onClick={() => setSize(s.id)}
+              key={sz.id}
+              className={`seg ${size === sz.id ? "active" : ""}`}
+              onClick={() => setSize(sz.id)}
             >
-              <div className="seg-grid" data-grid={s.id} />
+              <div className="seg-grid" data-grid={sz.id} />
               <div className="seg-text">
-                <strong>{s.id}</strong>
-                <span>({s.sub})</span>
+                <strong>{sz.id}</strong>
+                <span>({sz.sub})</span>
               </div>
             </button>
           ))}
@@ -47,37 +51,37 @@ export default function PrintSettings({
       </div>
 
       <div className="field">
-        <div className="field-label">Подписи</div>
+        <div className="field-label">{s.labelsField}</div>
         <div className="seg-2">
           <button
             className={`seg ${showLabels ? "active" : ""}`}
             onClick={() => setShowLabels(true)}
           >
-            <strong>A</strong> С подписями
+            <strong>A</strong> {s.withLabels}
           </button>
           <button
             className={`seg ${!showLabels ? "active" : ""}`}
             onClick={() => setShowLabels(false)}
           >
-            <span className="strike">A</span> Без подписей
+            <span className="strike">A</span> {s.withoutLabels}
           </button>
         </div>
       </div>
 
       <div className="field">
-        <div className="field-label">Ориентация</div>
+        <div className="field-label">{s.orientation}</div>
         <div className="seg-2">
           <button
             className={`seg ${orientation === "portrait" ? "active" : ""}`}
             onClick={() => setOrientation("portrait")}
           >
-            <span className="orient portrait" /> Книжная
+            <span className="orient portrait" /> {s.portrait}
           </button>
           <button
             className={`seg ${orientation === "landscape" ? "active" : ""}`}
             onClick={() => setOrientation("landscape")}
           >
-            <span className="orient landscape" /> Альбомная
+            <span className="orient landscape" /> {s.landscape}
           </button>
         </div>
       </div>

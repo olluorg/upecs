@@ -36,6 +36,8 @@ import WelcomeModal from "./components/WelcomeModal";
 import { IconHeart } from "./components/Icons";
 import { useIdbState } from "./utils/useIdbState";
 import { useHashView } from "./utils/useHashView";
+import { useT } from "./utils/I18nContext";
+import { getCardLabel } from "./utils/cardLabel";
 import { idbGet } from "./utils/idb";
 import { downloadPdf, printPdf } from "./utils/generatePdf";
 
@@ -66,6 +68,7 @@ export default function App() {
     false,
   );
 
+  const t = useT();
   const [view, setView] = useHashView();
   const [category, setCategory] = useState("all");
   const [query, setQuery] = useState("");
@@ -87,7 +90,7 @@ export default function App() {
       if (canceled) return;
       const initial: CardSet = {
         id: newId("set"),
-        name: "Мой набор",
+        name: t.selected.fallbackName,
         cardIds: Array.isArray(legacy) ? legacy : [],
       };
       setSets([initial]);
@@ -96,7 +99,7 @@ export default function App() {
     return () => {
       canceled = true;
     };
-  }, [setsLoaded, sets, setSets, setCurrentSetId]);
+  }, [setsLoaded, sets, setSets, setCurrentSetId, t]);
 
   // Make sure currentSetId always points to a real set
   useEffect(() => {
@@ -209,7 +212,7 @@ export default function App() {
       if (next.length === 0) {
         const empty: CardSet = {
           id: newId("set"),
-          name: "Мой набор",
+          name: t.selected.fallbackName,
           cardIds: [],
         };
         setCurrentSetId(empty.id);
@@ -227,9 +230,10 @@ export default function App() {
     () => ({ size, orientation, showLabels }),
     [size, orientation, showLabels],
   );
-  const onDownloadPdf = () => downloadPdf(selectedCards, printOpts);
+  const getLabel = useMemo(() => (card: Card) => getCardLabel(t, card), [t]);
+  const onDownloadPdf = () => downloadPdf(selectedCards, printOpts, getLabel);
   const onPreviewPdf = () => setModal("pdfPreview");
-  const onPrint = () => printPdf(selectedCards, printOpts);
+  const onPrint = () => printPdf(selectedCards, printOpts, getLabel);
 
   const showRightPanel = view === "library";
 
@@ -299,7 +303,7 @@ export default function App() {
           </span>
           <div className="logo-text">
             <strong>PECS</strong>
-            <span>КОНСТРУКТОР</span>
+            <span>{t.header.logoSub}</span>
           </div>
         </div>
         <div className="splash-spinner" />
@@ -417,55 +421,41 @@ export default function App() {
         </div>
 
         <DragOverlay dropAnimation={null}>
-          {activeDragCard && (
-            <div
-              className={`card-tile drag-preview ${activeDragKind === "lib" ? "from-lib" : ""}`}
-            >
-              <div className="card-img">
-                {activeDragCard.image ? (
-                  <img src={activeDragCard.image} alt={activeDragCard.label} />
-                ) : (
-                  <div className="img-placeholder">
-                    <span>{activeDragCard.label}</span>
-                  </div>
-                )}
+          {activeDragCard && (() => {
+            const dragLabel = getCardLabel(t, activeDragCard);
+            return (
+              <div className={`card-tile drag-preview ${activeDragKind === "lib" ? "from-lib" : ""}`}>
+                <div className="card-img">
+                  {activeDragCard.image ? (
+                    <img src={activeDragCard.image} alt={dragLabel} />
+                  ) : (
+                    <div className="img-placeholder">
+                      <span>{dragLabel}</span>
+                    </div>
+                  )}
+                </div>
+                <div className="card-label">{dragLabel}</div>
               </div>
-              <div className="card-label">{activeDragCard.label}</div>
-            </div>
-          )}
+            );
+          })()}
         </DragOverlay>
       </DndContext>
 
       <nav className="mobile-nav">
-        <button
-          className={view === "library" ? "active" : ""}
-          onClick={() => setView("library")}
-        >
-          Библиотека
+        <button className={view === "library" ? "active" : ""} onClick={() => setView("library")}>
+          {t.mobile.library}
         </button>
-        <button
-          className={view === "myset" ? "active" : ""}
-          onClick={() => setView("myset")}
-        >
-          Набор {selectedIds.length > 0 && <span className="m-badge">{selectedIds.length}</span>}
+        <button className={view === "myset" ? "active" : ""} onClick={() => setView("myset")}>
+          {t.mobile.myset}{selectedIds.length > 0 && <span className="m-badge">{selectedIds.length}</span>}
         </button>
-        <button
-          className={view === "sets" ? "active" : ""}
-          onClick={() => setView("sets")}
-        >
-          Наборы
+        <button className={view === "sets" ? "active" : ""} onClick={() => setView("sets")}>
+          {t.mobile.sets}
         </button>
-        <button
-          className={view === "settings" ? "active" : ""}
-          onClick={() => setView("settings")}
-        >
-          Печать
+        <button className={view === "settings" ? "active" : ""} onClick={() => setView("settings")}>
+          {t.mobile.settings}
         </button>
-        <button
-          className={view === "instructions" ? "active" : ""}
-          onClick={() => setView("instructions")}
-        >
-          Помощь
+        <button className={view === "instructions" ? "active" : ""} onClick={() => setView("instructions")}>
+          {t.mobile.help}
         </button>
       </nav>
 
@@ -492,6 +482,7 @@ export default function App() {
         cards={selectedCards}
         opts={printOpts}
         onPrint={onPrint}
+        getLabel={getLabel}
       />
       <HowItWorksModal open={modal === "how"} onClose={() => setModal(null)} />
       <PrintTipsModal open={modal === "tips"} onClose={() => setModal(null)} />

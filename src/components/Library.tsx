@@ -3,6 +3,7 @@ import type { Card as CardT } from "../types";
 import { CATEGORIES } from "../data/categories";
 import Card from "./Card";
 import { IconSearch } from "./Icons";
+import { useT } from "../utils/I18nContext";
 
 type Props = {
   cards: CardT[];
@@ -37,6 +38,7 @@ export default function Library({
   onEditCard,
   onDeleteCard,
 }: Props) {
+  const t = useT();
   const [page, setPage] = useState(1);
   const [tabIdx, setTabIdx] = useState(0);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -53,7 +55,6 @@ export default function Library({
   const start = (safePage - 1) * PER_PAGE;
   const pageCards = cards.slice(start, start + PER_PAGE);
 
-  // Reset cursor on page/category/query change
   useEffect(() => {
     setTabIdx(0);
     tabIdxRef.current = 0;
@@ -64,27 +65,22 @@ export default function Library({
     setTabIdx(i);
   };
 
-  // Window-level arrow navigation. Intercepts only when:
-  // - user is typing in input/textarea → skip
-  // - focus is inside the grid (keyboard navigation) → handle
-  // - mouse is currently hovering the grid (mouse-then-keyboard) → handle
-  // - otherwise → let browser do default scrolling
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (!NAV_KEYS.has(e.key)) return;
-      const t = e.target as HTMLElement | null;
+      const tgt = e.target as HTMLElement | null;
       if (
-        t &&
-        (t.tagName === "INPUT" ||
-          t.tagName === "TEXTAREA" ||
-          t.isContentEditable)
+        tgt &&
+        (tgt.tagName === "INPUT" ||
+          tgt.tagName === "TEXTAREA" ||
+          tgt.isContentEditable)
       ) {
         return;
       }
 
       const grid = gridRef.current;
       if (!grid) return;
-      const focusInGrid = !!t && grid.contains(t);
+      const focusInGrid = !!tgt && grid.contains(tgt);
       if (!focusInGrid && !mouseInGridRef.current) return;
 
       const tiles = Array.from(
@@ -93,8 +89,8 @@ export default function Library({
       if (tiles.length === 0) return;
 
       let from = Math.min(Math.max(tabIdxRef.current, 0), tiles.length - 1);
-      if (focusInGrid && t) {
-        const tile = t.closest(".card-tile");
+      if (focusInGrid && tgt) {
+        const tile = tgt.closest(".card-tile");
         if (tile) {
           const i = tiles.indexOf(tile as HTMLElement);
           if (i >= 0) from = i;
@@ -104,24 +100,12 @@ export default function Library({
       const cols = computeCols(grid, tiles[0]);
       let next = from;
       switch (e.key) {
-        case "ArrowRight":
-          next = from + 1;
-          break;
-        case "ArrowLeft":
-          next = from - 1;
-          break;
-        case "ArrowDown":
-          next = from + cols;
-          break;
-        case "ArrowUp":
-          next = from - cols;
-          break;
-        case "Home":
-          next = 0;
-          break;
-        case "End":
-          next = tiles.length - 1;
-          break;
+        case "ArrowRight": next = from + 1; break;
+        case "ArrowLeft":  next = from - 1; break;
+        case "ArrowDown":  next = from + cols; break;
+        case "ArrowUp":    next = from - cols; break;
+        case "Home":       next = 0; break;
+        case "End":        next = tiles.length - 1; break;
       }
       if (next < 0 || next >= tiles.length) return;
       e.preventDefault();
@@ -136,15 +120,13 @@ export default function Library({
     <div className="library">
       <div className="library-head">
         <div>
-          <h1>Библиотека карточек</h1>
-          <p className="muted">
-            Выбирайте карточки и добавляйте их в свой набор
-          </p>
+          <h1>{t.library.title}</h1>
+          <p className="muted">{t.library.subtitle}</p>
         </div>
         <div className="search">
           <IconSearch size={16} />
           <input
-            placeholder="Поиск карточек..."
+            placeholder={t.library.searchPlaceholder}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -158,24 +140,20 @@ export default function Library({
             className={`pill ${category === c.id ? "active" : ""}`}
             onClick={() => setCategory(c.id)}
           >
-            {c.label}
+            {t.categories[c.id] ?? c.label}
           </button>
         ))}
       </div>
 
       {total === 0 ? (
-        <div className="empty">Ничего не найдено</div>
+        <div className="empty">{t.library.nothingFound}</div>
       ) : (
         <>
           <div
             ref={gridRef}
             className="cards-grid"
-            onMouseEnter={() => {
-              mouseInGridRef.current = true;
-            }}
-            onMouseLeave={() => {
-              mouseInGridRef.current = false;
-            }}
+            onMouseEnter={() => { mouseInGridRef.current = true; }}
+            onMouseLeave={() => { mouseInGridRef.current = false; }}
           >
             {pageCards.map((c, i) => (
               <Card
@@ -200,7 +178,7 @@ export default function Library({
           )}
 
           <div className="pager-info">
-            Показано {start + 1}–{Math.min(start + PER_PAGE, total)} из {total}
+            {t.library.showing(start + 1, Math.min(start + PER_PAGE, total), total)}
           </div>
         </>
       )}
@@ -208,8 +186,7 @@ export default function Library({
       <div className="hint">
         <span className="hint-dot" />
         <span>
-          <b>Совет:</b> начните с 2–3 карточек, которые ребёнок очень хочет.
-          Уберите остальные и постепенно добавляйте новые.
+          <b>Tip:</b> {t.library.tip}
         </span>
       </div>
     </div>
@@ -240,15 +217,13 @@ function Pagination({
         className="pager-nav"
         onClick={() => onChange(page - 1)}
         disabled={page === 1}
-        aria-label="Предыдущая"
+        aria-label="Prev"
       >
         ‹
       </button>
       {items.map((p, i) =>
         p === "..." ? (
-          <span key={`d${i}`} className="pager-dots">
-            …
-          </span>
+          <span key={`d${i}`} className="pager-dots">…</span>
         ) : (
           <button
             key={p}
@@ -263,7 +238,7 @@ function Pagination({
         className="pager-nav"
         onClick={() => onChange(page + 1)}
         disabled={page === totalPages}
-        aria-label="Следующая"
+        aria-label="Next"
       >
         ›
       </button>
@@ -272,14 +247,8 @@ function Pagination({
 }
 
 function pageItems(current: number, total: number): (number | "...")[] {
-  if (total <= 7) {
-    return Array.from({ length: total }, (_, i) => i + 1);
-  }
-  if (current <= 4) {
-    return [1, 2, 3, 4, 5, "...", total];
-  }
-  if (current >= total - 3) {
-    return [1, "...", total - 4, total - 3, total - 2, total - 1, total];
-  }
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+  if (current <= 4) return [1, 2, 3, 4, 5, "...", total];
+  if (current >= total - 3) return [1, "...", total - 4, total - 3, total - 2, total - 1, total];
   return [1, "...", current - 1, current, current + 1, "...", total];
 }

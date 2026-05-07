@@ -8,6 +8,7 @@ import {
   IconHeart,
   IconFolder,
 } from "./Icons";
+import { useT } from "../utils/I18nContext";
 
 type Props = {
   view: View;
@@ -16,40 +17,17 @@ type Props = {
   setsCount: number;
 };
 
-const items: { id: View; label: string; sub: string; icon: ReactNode }[] = [
-  {
-    id: "library",
-    label: "Библиотека",
-    sub: "Все карточки",
-    icon: <IconHome size={18} />,
-  },
-  {
-    id: "myset",
-    label: "Мой набор",
-    sub: "Выбранные карточки",
-    icon: <IconList size={18} />,
-  },
-  {
-    id: "sets",
-    label: "Мои наборы",
-    sub: "Создавать и переключать",
-    icon: <IconFolder size={18} />,
-  },
-  {
-    id: "settings",
-    label: "Настройки печати",
-    sub: "Размер, подписи, ориентация",
-    icon: <IconSettings size={18} />,
-  },
-  {
-    id: "instructions",
-    label: "Документация",
-    sub: "Что такое PECS, фазы, советы",
-    icon: <IconInfo size={18} />,
-  },
-];
-
 export default function Sidebar({ view, setView, selectedCount, setsCount }: Props) {
+  const t = useT();
+
+  const items: { id: View; label: string; sub: string; icon: ReactNode }[] = [
+    { id: "library",      label: t.nav.library,      sub: t.nav.librarySub,      icon: <IconHome size={18} /> },
+    { id: "myset",        label: t.nav.myset,        sub: t.nav.mysetSub,        icon: <IconList size={18} /> },
+    { id: "sets",         label: t.nav.sets,         sub: t.nav.setsSub,         icon: <IconFolder size={18} /> },
+    { id: "settings",     label: t.nav.settings,     sub: t.nav.settingsSub,     icon: <IconSettings size={18} /> },
+    { id: "instructions", label: t.nav.instructions, sub: t.nav.instructionsSub, icon: <IconInfo size={18} /> },
+  ];
+
   return (
     <aside className="sidebar">
       <nav className="side-nav">
@@ -81,12 +59,9 @@ export default function Sidebar({ view, setView, selectedCount, setsCount }: Pro
           <span className="promo-heart">
             <IconHeart size={16} />
           </span>
-          PECS помогает детям выразить свои желания
+          {t.nav.promo}
         </div>
-        <p className="promo-text">
-          Начните с 2–3 карточек, которые ребёнок очень хочет. Постепенно
-          добавляйте новые.
-        </p>
+        <p className="promo-text">{t.nav.promoText}</p>
         <img src="/boy.png" alt="" />
       </div>
 
@@ -95,10 +70,8 @@ export default function Sidebar({ view, setView, selectedCount, setsCount }: Pro
           <IconHeart size={14} />
         </span>
         <div>
-          <div className="footer-title">Сделано с заботой</div>
-          <div className="footer-sub">
-            Бесплатный инструмент для помощи детям и родителям
-          </div>
+          <div className="footer-title">{t.nav.footerTitle}</div>
+          <div className="footer-sub">{t.nav.footerSub}</div>
         </div>
       </div>
     </aside>

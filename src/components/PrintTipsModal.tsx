@@ -1,41 +1,33 @@
 import Modal from "./Modal";
+import { useT } from "../utils/I18nContext";
 
 type Props = { open: boolean; onClose: () => void };
 
 export default function PrintTipsModal({ open, onClose }: Props) {
+  const t = useT();
+  const p = t.printTips;
+
   return (
-    <Modal open={open} title="Печать и советы" onClose={onClose} width={520}>
+    <Modal open={open} title={p.title} onClose={onClose} width={520}>
       <div className="tips">
-        <h4>Бумага и плотность</h4>
-        <p>
-          Печатайте на плотной матовой бумаге (160–250 г/м²) или фотобумаге.
-          Так карточки прослужат дольше.
-        </p>
+        <h4>{p.paperTitle}</h4>
+        <p>{p.paperText}</p>
 
-        <h4>Ламинирование</h4>
-        <p>
-          После печати заламинируйте карточки или оклейте прозрачным скотчем —
-          они станут устойчивыми к воде и заломам.
-        </p>
+        <h4>{p.laminateTitle}</h4>
+        <p>{p.laminateText}</p>
 
-        <h4>Крепление</h4>
-        <p>
-          С обратной стороны приклейте липучку (велкро). Это позволит собирать
-          из карточек предложения и переносить их между папкой и доской.
-        </p>
+        <h4>{p.mountTitle}</h4>
+        <p>{p.mountText}</p>
 
-        <h4>Размер сетки</h4>
+        <h4>{p.sizeTitle}</h4>
         <ul>
-          <li><b>2×2</b> — крупные карточки, удобно начинать.</li>
-          <li><b>3×3</b> — стандарт, хороший баланс.</li>
-          <li><b>4×4</b> — компактные, для ребёнка постарше.</li>
+          <li><b>2×2</b> — {p.size2x2}</li>
+          <li><b>3×3</b> — {p.size3x3}</li>
+          <li><b>4×4</b> — {p.size4x4}</li>
         </ul>
 
-        <h4>Совет</h4>
-        <p>
-          Начните с 2–3 любимых карточек. Постепенно добавляйте новые
-          по мере освоения, чтобы не перегружать ребёнка.
-        </p>
+        <h4>{p.tipTitle}</h4>
+        <p>{p.tipText}</p>
       </div>
     </Modal>
   );

@@ -1,4 +1,5 @@
 import Modal from "./Modal";
+import { useT } from "../utils/I18nContext";
 
 type Props = {
   open: boolean;
@@ -7,57 +8,36 @@ type Props = {
 };
 
 export default function WelcomeModal({ open, onClose, onOpenDocs }: Props) {
+  const t = useT();
+  const w = t.welcome;
+
   return (
-    <Modal
-      open={open}
-      title="Добро пожаловать в PECS Конструктор"
-      onClose={onClose}
-      width={520}
-    >
+    <Modal open={open} title={w.title} onClose={onClose} width={520}>
       <div className="welcome-v2">
-        <p>
-          Это бесплатный конструктор карточек <strong>PECS</strong> — системы
-          общения через изображения. Подходит для детей с аутизмом, задержкой
-          речи и любых ситуаций, когда слова пока не работают, а просьбу
-          выразить нужно.
-        </p>
+        <p>{w.intro}</p>
 
         <div className="welcome-steps">
-          <div className="welcome-step">
-            <span className="welcome-step-num">1</span>
-            <div>
-              <strong>Выберите карточки</strong>
-              <span>
-                Из готовой библиотеки или загрузите свои фотографии
-              </span>
+          {[
+            { title: w.step1Title, text: w.step1Text },
+            { title: w.step2Title, text: w.step2Text },
+            { title: w.step3Title, text: w.step3Text },
+          ].map((s, i) => (
+            <div key={i} className="welcome-step">
+              <span className="welcome-step-num">{i + 1}</span>
+              <div>
+                <strong>{s.title}</strong>
+                <span>{s.text}</span>
+              </div>
             </div>
-          </div>
-          <div className="welcome-step">
-            <span className="welcome-step-num">2</span>
-            <div>
-              <strong>Соберите набор</strong>
-              <span>
-                Перетаскивайте карточки в правую панель и меняйте порядок
-              </span>
-            </div>
-          </div>
-          <div className="welcome-step">
-            <span className="welcome-step-num">3</span>
-            <div>
-              <strong>Распечатайте PDF</strong>
-              <span>
-                Сетка 2×2, 3×3 или 4×4, с подписями или без — на обычной A4
-              </span>
-            </div>
-          </div>
+          ))}
         </div>
 
         <div className="welcome-actions">
           <button className="btn-ghost" onClick={onOpenDocs}>
-            Узнать больше о PECS
+            {w.learnMore}
           </button>
           <button className="btn-primary" onClick={onClose}>
-            Начать
+            {w.start}
           </button>
         </div>
       </div>

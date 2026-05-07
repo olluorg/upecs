@@ -2,36 +2,38 @@ import { jsPDF } from "jspdf";
 import type { Card, PrintOpts, PrintSize } from "../types";
 import { loadImage } from "./loadImage";
 
+export type LabelResolver = (card: Card) => string;
+
 const GRID: Record<PrintSize, number> = { "2x2": 2, "3x3": 3, "4x4": 4 };
 
-export async function buildPdf(cards: Card[], opts: PrintOpts): Promise<jsPDF> {
+export async function buildPdf(cards: Card[], opts: PrintOpts, getLabel?: LabelResolver): Promise<jsPDF> {
   const doc = new jsPDF({
     orientation: opts.orientation,
     unit: "mm",
     format: "a4",
   });
-  await drawCards(doc, cards, opts);
+  await drawCards(doc, cards, opts, getLabel);
   return doc;
 }
 
-export async function downloadPdf(cards: Card[], opts: PrintOpts) {
-  const doc = await buildPdf(cards, opts);
+export async function downloadPdf(cards: Card[], opts: PrintOpts, getLabel?: LabelResolver) {
+  const doc = await buildPdf(cards, opts, getLabel);
   doc.save("pecs.pdf");
 }
 
-export async function pdfDataUri(cards: Card[], opts: PrintOpts): Promise<string> {
-  const doc = await buildPdf(cards, opts);
+export async function pdfDataUri(cards: Card[], opts: PrintOpts, getLabel?: LabelResolver): Promise<string> {
+  const doc = await buildPdf(cards, opts, getLabel);
   return doc.output("datauristring");
 }
 
-export async function pdfBlob(cards: Card[], opts: PrintOpts): Promise<Blob> {
-  const doc = await buildPdf(cards, opts);
+export async function pdfBlob(cards: Card[], opts: PrintOpts, getLabel?: LabelResolver): Promise<Blob> {
+  const doc = await buildPdf(cards, opts, getLabel);
   return doc.output("blob");
 }
 
-export async function printPdf(cards: Card[], opts: PrintOpts): Promise<void> {
+export async function printPdf(cards: Card[], opts: PrintOpts, getLabel?: LabelResolver): Promise<void> {
   if (cards.length === 0) return;
-  const doc = await buildPdf(cards, opts);
+  const doc = await buildPdf(cards, opts, getLabel);
   doc.autoPrint();
   const blob = doc.output("blob");
   const url = URL.createObjectURL(blob);
@@ -58,7 +60,7 @@ export async function printPdf(cards: Card[], opts: PrintOpts): Promise<void> {
   }, 60_000);
 }
 
-async function drawCards(doc: jsPDF, cards: Card[], opts: PrintOpts) {
+async function drawCards(doc: jsPDF, cards: Card[], opts: PrintOpts, getLabel?: LabelResolver) {
   const grid = GRID[opts.size];
   const perPage = grid * grid;
   const margin = 8;
@@ -76,7 +78,7 @@ async function drawCards(doc: jsPDF, cards: Card[], opts: PrintOpts) {
     const x = margin + col * (cellW + gap);
     const y = margin + row * (cellH + gap);
 
-    const dataUrl = await renderCardCanvas(cards[i], cellW, cellH, opts.showLabels);
+    const dataUrl = await renderCardCanvas(cards[i], cellW, cellH, opts.showLabels, getLabel);
     doc.addImage(dataUrl, "PNG", x, y, cellW, cellH);
   }
 }
@@ -86,6 +88,7 @@ async function renderCardCanvas(
   wMm: number,
   hMm: number,
   showLabel: boolean,
+  getLabel?: LabelResolver,
 ): Promise<string> {
   const dpi = 6; // 1mm ≈ 6px ~ 150dpi
   const w = Math.round(wMm * dpi);
@@ -116,6 +119,7 @@ async function renderCardCanvas(
     h: h - padding * 2 - labelArea,
   };
 
+  const resolvedLabel = getLabel ? getLabel(card) : card.label;
   const img = await loadImage(card.image);
   if (img && img.width > 0 && img.height > 0) {
     const ratio = Math.min(imgBox.w / img.width, imgBox.h / img.height);
@@ -125,7 +129,7 @@ async function renderCardCanvas(
     const dy = imgBox.y + (imgBox.h - dh) / 2;
     ctx.drawImage(img, dx, dy, dw, dh);
   } else {
-    drawPlaceholder(ctx, imgBox.x, imgBox.y, imgBox.w, imgBox.h, card.label);
+    drawPlaceholder(ctx, imgBox.x, imgBox.y, imgBox.w, imgBox.h, resolvedLabel);
   }
 
   if (showLabel) {
@@ -135,7 +139,7 @@ async function renderCardCanvas(
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     const textY = h - labelArea / 2 - padding / 2;
-    ctx.fillText(card.label, w / 2, textY);
+    ctx.fillText(resolvedLabel, w / 2, textY);
   }
 
   return canvas.toDataURL("image/png");

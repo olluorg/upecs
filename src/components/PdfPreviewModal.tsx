@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import type { Card, PrintOpts } from "../types";
-import { downloadPdf, pdfBlob } from "../utils/generatePdf";
+import { downloadPdf, pdfBlob, type LabelResolver } from "../utils/generatePdf";
 import { IconDownload, IconPrint } from "./Icons";
+import { useT } from "../utils/I18nContext";
 
 type Props = {
   open: boolean;
@@ -10,9 +11,12 @@ type Props = {
   cards: Card[];
   opts: PrintOpts;
   onPrint: () => void;
+  getLabel?: LabelResolver;
 };
 
-export default function PdfPreviewModal({ open, onClose, cards, opts, onPrint }: Props) {
+export default function PdfPreviewModal({ open, onClose, cards, opts, onPrint, getLabel }: Props) {
+  const t = useT();
+  const p = t.pdfModal;
   const [url, setUrl] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
@@ -26,7 +30,7 @@ export default function PdfPreviewModal({ open, onClose, cards, opts, onPrint }:
 
     setBusy(true);
     setUrl(null);
-    pdfBlob(cards, opts)
+    pdfBlob(cards, opts, getLabel)
       .then((blob) => {
         if (canceled) return;
         createdUrl = URL.createObjectURL(blob);
@@ -41,39 +45,41 @@ export default function PdfPreviewModal({ open, onClose, cards, opts, onPrint }:
       canceled = true;
       if (createdUrl) URL.revokeObjectURL(createdUrl);
     };
-  }, [open, cards, opts]);
+  }, [open, cards, opts, getLabel]);
 
-  const subtitle = `${opts.size}, ${opts.showLabels ? "с подписями" : "без подписей"}, ${opts.orientation === "portrait" ? "книжная" : "альбомная"}`;
+  const labelsStr = opts.showLabels ? p.withLabels : p.withoutLabels;
+  const orientStr = opts.orientation === "portrait" ? p.portrait : p.landscape;
+  const subtitle = `${opts.size}, ${labelsStr}, ${orientStr}`;
 
   return (
-    <Modal open={open} title={`Предпросмотр PDF (${subtitle})`} onClose={onClose} width={780}>
+    <Modal open={open} title={`${p.title} (${subtitle})`} onClose={onClose} width={780}>
       <div className="pdf-preview">
-        {busy && <div className="muted">Готовлю предпросмотр...</div>}
+        {busy && <div className="muted">{p.loading}</div>}
         {!busy && url && (
-          <iframe title="PDF предпросмотр" src={url} className="pdf-frame" />
+          <iframe title={p.title} src={url} className="pdf-frame" />
         )}
         {!busy && !url && cards.length === 0 && (
-          <div className="muted">Сначала добавьте карточки в набор.</div>
+          <div className="muted">{p.empty}</div>
         )}
       </div>
 
       <div className="form-actions">
-        <button className="btn-ghost" onClick={onClose}>Назад</button>
+        <button className="btn-ghost" onClick={onClose}>{p.back}</button>
         <button
           className="btn-ghost"
           onClick={onPrint}
           disabled={cards.length === 0}
         >
           <IconPrint size={16} />
-          <span>Печать</span>
+          <span>{p.print}</span>
         </button>
         <button
           className="btn-primary"
-          onClick={() => downloadPdf(cards, opts)}
+          onClick={() => downloadPdf(cards, opts, getLabel)}
           disabled={cards.length === 0}
         >
           <IconDownload size={16} />
-          <span>Скачать PDF</span>
+          <span>{p.download}</span>
         </button>
       </div>
     </Modal>

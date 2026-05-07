@@ -3,6 +3,8 @@ import type { CSSProperties, KeyboardEvent as RKeyboardEvent } from "react";
 import { useDraggable } from "@dnd-kit/core";
 import type { Card as CardT } from "../types";
 import { IconPlus, IconCheck, IconPencil, IconTrash, IconDots } from "./Icons";
+import { useT } from "../utils/I18nContext";
+import { getCardLabel } from "../utils/cardLabel";
 
 type Props = {
   card: CardT;
@@ -23,6 +25,8 @@ export default function Card({
   onEdit,
   onDelete,
 }: Props) {
+  const t = useT();
+  const label = getCardLabel(t, card);
   const [failed, setFailed] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -68,10 +72,10 @@ export default function Card({
       <div className="card-img">
         {failed || !card.image ? (
           <div className="img-placeholder">
-            <span>{card.label}</span>
+            <span>{label}</span>
           </div>
         ) : (
-          <img src={card.image} alt={card.label} onError={() => setFailed(true)} />
+          <img src={card.image} alt={label} onError={() => setFailed(true)} />
         )}
         <div className="card-img-overlay">
           <button
@@ -89,7 +93,7 @@ export default function Card({
           </button>
         </div>
       </div>
-      <div className="card-label">{card.label}</div>
+      <div className="card-label">{label}</div>
       {card.custom && (onEdit || onDelete) && (
         <div ref={menuRef} className="card-menu-wrap">
           <button
@@ -108,7 +112,7 @@ export default function Card({
                   className="card-menu-item"
                   onClick={(e) => { e.stopPropagation(); setMenuOpen(false); onEdit(); }}
                 >
-                  <IconPencil size={13} /> Редактировать
+                  <IconPencil size={13} /> {t.common.edit}
                 </button>
               )}
               {onDelete && (
@@ -116,7 +120,7 @@ export default function Card({
                   className="card-menu-item danger"
                   onClick={(e) => { e.stopPropagation(); setMenuOpen(false); onDelete(); }}
                 >
-                  <IconTrash size={13} /> Удалить
+                  <IconTrash size={13} /> {t.common.delete}
                 </button>
               )}
             </div>

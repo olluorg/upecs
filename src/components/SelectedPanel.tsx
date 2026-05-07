@@ -9,6 +9,8 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import type { Card as CardT } from "../types";
 import { IconClose, IconDrag, IconPlus, IconTrash, IconDownload, IconEye, IconPrint } from "./Icons";
+import { useT } from "../utils/I18nContext";
+import { getCardLabel } from "../utils/cardLabel";
 
 type SetOption = { id: string; name: string };
 
@@ -37,6 +39,8 @@ export default function SelectedPanel({
   currentSetId,
   onSwitchSet,
 }: Props) {
+  const t = useT();
+  const s = t.selected;
   const { setNodeRef, isOver } = useDroppable({ id: "drop-selected" });
 
   return (
@@ -48,28 +52,26 @@ export default function SelectedPanel({
               className="set-switcher"
               value={currentSetId}
               onChange={(e) => onSwitchSet(e.target.value)}
-              aria-label="Переключить набор"
+              aria-label="Switch set"
             >
-              {sets.map((s) => (
-                <option key={s.id} value={s.id}>
-                  {s.name}
+              {sets.map((st) => (
+                <option key={st.id} value={st.id}>
+                  {st.name}
                 </option>
               ))}
             </select>
           ) : (
-            <h3>{sets[0]?.name ?? "Мой набор"}</h3>
+            <h3>{sets[0]?.name ?? s.fallbackName}</h3>
           )}
           <span className="sel-count-pill">({cards.length})</span>
         </div>
         <button className="link-btn danger" onClick={onClear} disabled={cards.length === 0}>
           <IconTrash size={14} />
-          <span>Очистить</span>
+          <span>{s.clear}</span>
         </button>
       </div>
 
-      <p className="muted small">
-        Перетаскивайте карточки из библиотеки или меняйте порядок
-      </p>
+      <p className="muted small">{s.dragHint}</p>
 
       <SortableContext items={cards.map((c) => c.id)} strategy={rectSortingStrategy}>
         <div className="sel-grid">
@@ -82,47 +84,37 @@ export default function SelectedPanel({
             onPointerDown={(e) => e.stopPropagation()}
           >
             <IconPlus size={20} />
-            <span>Добавить карточку</span>
+            <span>{s.addCard}</span>
           </button>
         </div>
       </SortableContext>
 
       <div className="sel-count-row">
         <span className="info-dot" />
-        <span>Выбрано: {cards.length} карточек</span>
+        <span>{s.selectedCount(cards.length)}</span>
       </div>
 
-      <button
-        className="btn-primary block"
-        onClick={onDownloadPdf}
-        disabled={cards.length === 0}
-      >
+      <button className="btn-primary block" onClick={onDownloadPdf} disabled={cards.length === 0}>
         <IconDownload size={16} />
-        <span>Скачать PDF</span>
+        <span>{s.download}</span>
       </button>
 
-      <button
-        className="btn-ghost block"
-        onClick={onPrint}
-        disabled={cards.length === 0}
-      >
+      <button className="btn-ghost block" onClick={onPrint} disabled={cards.length === 0}>
         <IconPrint size={16} />
-        <span>Печать</span>
+        <span>{s.print}</span>
       </button>
 
-      <button
-        className="btn-ghost block"
-        onClick={onPreviewPdf}
-        disabled={cards.length === 0}
-      >
+      <button className="btn-ghost block" onClick={onPreviewPdf} disabled={cards.length === 0}>
         <IconEye size={16} />
-        <span>Предпросмотр PDF</span>
+        <span>{s.preview}</span>
       </button>
     </div>
   );
 }
 
 function SortableTile({ card, onRemove }: { card: CardT; onRemove: () => void }) {
+  const t = useT();
+  const label = getCardLabel(t, card);
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: card.id,
   });
@@ -144,20 +136,20 @@ function SortableTile({ card, onRemove }: { card: CardT; onRemove: () => void })
         className="sel-x"
         onClick={onRemove}
         onPointerDown={(e) => e.stopPropagation()}
-        aria-label="Удалить"
+        aria-label="Remove"
       >
         <IconClose size={12} />
       </button>
       <div className="sel-img">
         {failed || !card.image ? (
           <div className="img-placeholder small">
-            <span>{card.label}</span>
+            <span>{label}</span>
           </div>
         ) : (
-          <img src={card.image} alt={card.label} onError={() => setFailed(true)} />
+          <img src={card.image} alt={label} onError={() => setFailed(true)} />
         )}
       </div>
-      <div className="sel-label">{card.label}</div>
+      <div className="sel-label">{label}</div>
     </div>
   );
 }

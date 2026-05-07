@@ -7,7 +7,19 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import type { Card } from "../types";
-import { IconClose, IconDrag, IconPlus, IconTrash, IconDownload, IconEye, IconPrint, IconChevronLeft, IconChevronRight } from "./Icons";
+import {
+  IconClose,
+  IconDrag,
+  IconPlus,
+  IconTrash,
+  IconDownload,
+  IconEye,
+  IconPrint,
+  IconChevronLeft,
+  IconChevronRight,
+} from "./Icons";
+import { useT } from "../utils/I18nContext";
+import { getCardLabel } from "../utils/cardLabel";
 
 type SetOption = { id: string; name: string };
 
@@ -38,6 +50,9 @@ export default function MySetView({
   currentSetId,
   onSwitchSet,
 }: Props) {
+  const t = useT();
+  const m = t.myset;
+
   return (
     <div className="myset">
       <div className="library-head">
@@ -48,7 +63,7 @@ export default function MySetView({
                 className="set-switcher big"
                 value={currentSetId}
                 onChange={(e) => onSwitchSet(e.target.value)}
-                aria-label="Переключить набор"
+                aria-label="Switch set"
               >
                 {sets.map((s) => (
                   <option key={s.id} value={s.id}>
@@ -57,32 +72,32 @@ export default function MySetView({
                 ))}
               </select>
             ) : (
-              <span>{sets[0]?.name ?? "Мой набор"}</span>
+              <span>{sets[0]?.name ?? t.selected.fallbackName}</span>
             )}
-            <span className="muted small">({cards.length})</span>
+            <span className="muted small">{m.subtitle(cards.length)}</span>
           </h1>
-          <p className="muted desktop-hint">Перетаскивайте карточки, чтобы изменить порядок</p>
-          <p className="muted mobile-hint">Используйте стрелки на карточках для изменения порядка</p>
+          <p className="muted desktop-hint">{m.dragHint}</p>
+          <p className="muted mobile-hint">{m.arrowHint}</p>
         </div>
         <div className="myset-actions">
           <button className="btn-ghost" onClick={onClear} disabled={cards.length === 0}>
-            <IconTrash size={14} /> Очистить
+            <IconTrash size={14} /> {m.clear}
           </button>
           <button className="btn-ghost" onClick={onPreviewPdf} disabled={cards.length === 0}>
-            <IconEye size={14} /> Предпросмотр
+            <IconEye size={14} /> {m.preview}
           </button>
           <button className="btn-ghost" onClick={onPrint} disabled={cards.length === 0}>
-            <IconPrint size={14} /> Печать
+            <IconPrint size={14} /> {m.print}
           </button>
           <button className="btn-primary" onClick={onDownloadPdf} disabled={cards.length === 0}>
-            <IconDownload size={14} /> Скачать PDF
+            <IconDownload size={14} /> {m.download}
           </button>
         </div>
       </div>
 
       {cards.length === 0 ? (
         <div className="empty large">
-          <p>В наборе пока пусто. Перейдите в библиотеку и добавьте карточки.</p>
+          <p>{m.empty}</p>
         </div>
       ) : (
         <SortableContext items={cards.map((c) => c.id)} strategy={rectSortingStrategy}>
@@ -104,7 +119,7 @@ export default function MySetView({
               onPointerDown={(e) => e.stopPropagation()}
             >
               <IconPlus size={26} />
-              <span>Добавить карточку</span>
+              <span>{m.addCard}</span>
             </button>
           </div>
         </SortableContext>
@@ -128,9 +143,11 @@ function SortableTile({
   onMoveLeft: () => void;
   onMoveRight: () => void;
 }) {
-  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
-    id: card.id,
-  });
+  const t = useT();
+  const m = t.myset;
+  const label = getCardLabel(t, card);
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
+    useSortable({ id: card.id });
   const [failed, setFailed] = useState(false);
 
   const style: CSSProperties = {
@@ -151,27 +168,27 @@ function SortableTile({
         className="sel-x"
         onClick={onRemove}
         onPointerDown={stopProp}
-        aria-label="Удалить"
+        aria-label={m.remove}
       >
         <IconClose size={14} />
       </button>
       <div className="myset-img">
         {failed || !card.image ? (
           <div className="img-placeholder">
-            <span>{card.label}</span>
+            <span>{label}</span>
           </div>
         ) : (
-          <img src={card.image} alt={card.label} onError={() => setFailed(true)} />
+          <img src={card.image} alt={label} onError={() => setFailed(true)} />
         )}
       </div>
-      <div className="myset-label">{card.label}</div>
+      <div className="myset-label">{label}</div>
       <div className="tile-arrows">
         <button
           className="tile-arrow"
           onClick={onMoveLeft}
           onPointerDown={stopProp}
           disabled={index === 0}
-          aria-label="Переместить влево"
+          aria-label={m.moveLeft}
         >
           <IconChevronLeft size={14} />
         </button>
@@ -180,7 +197,7 @@ function SortableTile({
           onClick={onMoveRight}
           onPointerDown={stopProp}
           disabled={index === total - 1}
-          aria-label="Переместить вправо"
+          aria-label={m.moveRight}
         >
           <IconChevronRight size={14} />
         </button>

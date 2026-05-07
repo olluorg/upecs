@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { CardSet } from "../types";
 import { IconPlus, IconFolder } from "./Icons";
+import { useT } from "../utils/I18nContext";
 
 type Props = {
   sets: CardSet[];
@@ -21,6 +22,7 @@ export default function SetsView({
   onDuplicate,
   onDelete,
 }: Props) {
+  const t = useT();
   const [renamingId, setRenamingId] = useState<string | null>(null);
   const [renameValue, setRenameValue] = useState("");
 
@@ -35,10 +37,10 @@ export default function SetsView({
     setRenamingId(null);
   };
   const handleCreate = () => {
-    onCreate(`Набор ${sets.length + 1}`);
+    onCreate(t.sets.setName(sets.length + 1));
   };
   const handleDelete = (s: CardSet) => {
-    if (window.confirm(`Удалить набор «${s.name}»? Карточки внутри останутся в библиотеке.`)) {
+    if (window.confirm(t.sets.deleteConfirm(s.name))) {
       onDelete(s.id);
     }
   };
@@ -47,13 +49,11 @@ export default function SetsView({
     <div className="sets-view">
       <div className="library-head">
         <div>
-          <h1>Мои наборы</h1>
-          <p className="muted">
-            Создавайте отдельные наборы под разные ситуации — завтрак, прогулка, школа.
-          </p>
+          <h1>{t.sets.title}</h1>
+          <p className="muted">{t.sets.subtitle}</p>
         </div>
         <button className="btn-primary" onClick={handleCreate}>
-          <IconPlus size={14} /> Новый набор
+          <IconPlus size={14} /> {t.sets.newSet}
         </button>
       </div>
 
@@ -84,15 +84,15 @@ export default function SetsView({
                 )}
                 <span className="set-count muted small">
                   {s.cardIds.length}{" "}
-                  {pluralize(s.cardIds.length, "карточка", "карточки", "карточек")}
+                  {pluralize(s.cardIds.length, t.common.cardOne, t.common.cardFew, t.common.cardMany)}
                 </span>
               </div>
               <div className="set-actions">
                 {isCurrent ? (
-                  <span className="set-badge">Текущий</span>
+                  <span className="set-badge">{t.common.current}</span>
                 ) : (
                   <button className="btn-ghost small-btn" onClick={() => onSelect(s.id)}>
-                    Открыть
+                    {t.common.open}
                   </button>
                 )}
                 <button
@@ -100,19 +100,19 @@ export default function SetsView({
                   onClick={() => startRename(s)}
                   disabled={isRenaming}
                 >
-                  Переименовать
+                  {t.common.rename}
                 </button>
                 <button
                   className="btn-ghost small-btn"
                   onClick={() => onDuplicate(s.id)}
                 >
-                  Дублировать
+                  {t.common.duplicate}
                 </button>
                 <button
                   className="btn-ghost small-btn danger-btn"
                   onClick={() => handleDelete(s)}
                 >
-                  Удалить
+                  {t.common.delete}
                 </button>
               </div>
             </div>
