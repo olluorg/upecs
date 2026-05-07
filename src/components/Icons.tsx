@@ -118,6 +118,12 @@ export const IconChevronLeft = ({ size, className }: Props) => (
   </svg>
 );
 
+export const IconChevronRight = ({ size, className }: Props) => (
+  <svg {...def(size)} className={className}>
+    <path d="M9 6l6 6-6 6" />
+  </svg>
+);
+
 export const IconArrowRight = ({ size, className }: Props) => (
   <svg {...def(size)} className={className}>
     <path d="M5 12h14M13 5l7 7-7 7" />

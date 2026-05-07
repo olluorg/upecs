@@ -7,13 +7,14 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import type { Card } from "../types";
-import { IconClose, IconDrag, IconPlus, IconTrash, IconDownload, IconEye, IconPrint } from "./Icons";
+import { IconClose, IconDrag, IconPlus, IconTrash, IconDownload, IconEye, IconPrint, IconChevronLeft, IconChevronRight } from "./Icons";
 
 type SetOption = { id: string; name: string };
 
 type Props = {
   cards: Card[];
   onRemove: (id: string) => void;
+  onMove: (id: string, direction: -1 | 1) => void;
   onClear: () => void;
   onAddCustom: () => void;
   onDownloadPdf: () => void;
@@ -27,6 +28,7 @@ type Props = {
 export default function MySetView({
   cards,
   onRemove,
+  onMove,
   onClear,
   onAddCustom,
   onDownloadPdf,
@@ -59,7 +61,8 @@ export default function MySetView({
             )}
             <span className="muted small">({cards.length})</span>
           </h1>
-          <p className="muted">Перетаскивайте карточки, чтобы изменить порядок</p>
+          <p className="muted desktop-hint">Перетаскивайте карточки, чтобы изменить порядок</p>
+          <p className="muted mobile-hint">Используйте стрелки на карточках для изменения порядка</p>
         </div>
         <div className="myset-actions">
           <button className="btn-ghost" onClick={onClear} disabled={cards.length === 0}>
@@ -84,8 +87,16 @@ export default function MySetView({
       ) : (
         <SortableContext items={cards.map((c) => c.id)} strategy={rectSortingStrategy}>
           <div className="myset-grid">
-            {cards.map((c) => (
-              <SortableTile key={c.id} card={c} onRemove={() => onRemove(c.id)} />
+            {cards.map((c, i) => (
+              <SortableTile
+                key={c.id}
+                card={c}
+                index={i}
+                total={cards.length}
+                onRemove={() => onRemove(c.id)}
+                onMoveLeft={() => onMove(c.id, -1)}
+                onMoveRight={() => onMove(c.id, 1)}
+              />
             ))}
             <button
               className="sel-add big"
@@ -102,7 +113,21 @@ export default function MySetView({
   );
 }
 
-function SortableTile({ card, onRemove }: { card: Card; onRemove: () => void }) {
+function SortableTile({
+  card,
+  index,
+  total,
+  onRemove,
+  onMoveLeft,
+  onMoveRight,
+}: {
+  card: Card;
+  index: number;
+  total: number;
+  onRemove: () => void;
+  onMoveLeft: () => void;
+  onMoveRight: () => void;
+}) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: card.id,
   });
@@ -115,6 +140,8 @@ function SortableTile({ card, onRemove }: { card: Card; onRemove: () => void }) 
     opacity: isDragging ? 0.4 : 1,
   };
 
+  const stopProp = (e: React.PointerEvent) => e.stopPropagation();
+
   return (
     <div ref={setNodeRef} style={style} className="myset-tile" {...attributes} {...listeners}>
       <span className="sel-handle" aria-hidden>
@@ -123,7 +150,7 @@ function SortableTile({ card, onRemove }: { card: Card; onRemove: () => void }) 
       <button
         className="sel-x"
         onClick={onRemove}
-        onPointerDown={(e) => e.stopPropagation()}
+        onPointerDown={stopProp}
         aria-label="Удалить"
       >
         <IconClose size={14} />
@@ -138,6 +165,26 @@ function SortableTile({ card, onRemove }: { card: Card; onRemove: () => void }) 
         )}
       </div>
       <div className="myset-label">{card.label}</div>
+      <div className="tile-arrows">
+        <button
+          className="tile-arrow"
+          onClick={onMoveLeft}
+          onPointerDown={stopProp}
+          disabled={index === 0}
+          aria-label="Переместить влево"
+        >
+          <IconChevronLeft size={14} />
+        </button>
+        <button
+          className="tile-arrow"
+          onClick={onMoveRight}
+          onPointerDown={stopProp}
+          disabled={index === total - 1}
+          aria-label="Переместить вправо"
+        >
+          <IconChevronRight size={14} />
+        </button>
+      </div>
     </div>
   );
 }

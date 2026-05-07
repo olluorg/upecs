@@ -156,6 +156,14 @@ export default function App() {
   const removeCard = (id: string) =>
     updateCurrent((prev) => prev.filter((x) => x !== id));
   const clearSet = () => updateCurrent(() => []);
+  const moveCard = (id: string, direction: -1 | 1) =>
+    updateCurrent((prev) => {
+      const idx = prev.indexOf(id);
+      if (idx < 0) return prev;
+      const next = idx + direction;
+      if (next < 0 || next >= prev.length) return prev;
+      return arrayMove(prev, idx, next);
+    });
 
   const addCustom = (card: Card) => {
     setCustomCards((prev) => [...prev, card]);
@@ -325,6 +333,7 @@ export default function App() {
               <MySetView
                 cards={selectedCards}
                 onRemove={removeCard}
+                onMove={moveCard}
                 onClear={clearSet}
                 onAddCustom={() => setModal("addCustom")}
                 onDownloadPdf={onDownloadPdf}
