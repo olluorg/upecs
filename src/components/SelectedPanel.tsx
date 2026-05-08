@@ -8,7 +8,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import type { Card as CardT } from "../types";
-import { IconClose, IconDrag, IconPlus, IconTrash } from "./Icons";
+import { IconClose, IconDrag, IconPlus, IconTrash, IconChevronRight } from "./Icons";
 import { useT } from "../utils/I18nContext";
 import { getCardLabel } from "../utils/cardLabel";
 
@@ -19,6 +19,7 @@ type Props = {
   onClear: () => void;
   onRemove: (id: string) => void;
   onAddCustom: () => void;
+  onCollapse: () => void;
   sets: SetOption[];
   currentSetId: string;
   onSwitchSet: (id: string) => void;
@@ -29,6 +30,7 @@ export default function SelectedPanel({
   onClear,
   onRemove,
   onAddCustom,
+  onCollapse,
   sets,
   currentSetId,
   onSwitchSet,
@@ -41,6 +43,9 @@ export default function SelectedPanel({
     <div ref={setNodeRef} className={`sel-panel ${isOver ? "is-over" : ""}`}>
       <div className="sel-head">
         <div className="sel-title">
+          <button className="sel-collapse-btn" onClick={onCollapse} title={t.common.collapse}>
+            <IconChevronRight size={14} />
+          </button>
           {sets.length > 1 ? (
             <select
               className="set-switcher"

@@ -47,6 +47,8 @@ const ru = {
     cancel: "Отмена",
     save: "Сохранить",
     add: "Добавить",
+    expand: "Развернуть",
+    collapse: "Свернуть",
     delete: "Удалить",
     rename: "Переименовать",
     duplicate: "Дублировать",

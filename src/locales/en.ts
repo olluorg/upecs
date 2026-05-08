@@ -49,6 +49,8 @@ const en: Translations = {
     cancel: "Cancel",
     save: "Save",
     add: "Add",
+    expand: "Expand",
+    collapse: "Collapse",
     delete: "Delete",
     rename: "Rename",
     duplicate: "Duplicate",

@@ -89,6 +89,9 @@ h4 {
 .app-body.no-right {
   grid-template-columns: 264px 1fr;
 }
+.app-body.right-mini {
+  grid-template-columns: 264px 1fr 72px;
+}
 
 /* ---------- Header ---------- */
 
@@ -700,6 +703,89 @@ h4 {
   gap: 8px;
   background: white;
 }
+
+/* Collapse/expand controls */
+.sel-collapse-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+.sel-collapse-btn:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+.mini-expand-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex-shrink: 0;
+  width: 100%;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  transition: background 0.15s, color 0.15s;
+}
+.mini-expand-btn:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+.right-toggle-count {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--primary-soft);
+  padding: 1px 6px;
+  border-radius: 999px;
+}
+
+/* Mini (collapsed) view */
+.right-col--mini .right-scroll {
+  padding: 8px 6px;
+}
+.right-col--mini .right-footer {
+  padding: 8px 6px;
+}
+.mini-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+.mini-card {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  flex-shrink: 0;
+}
+.mini-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.mini-card-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #eceef2;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: #9ca3af;
+}
+
 .sel-panel {
   display: flex;
   flex-direction: column;
@@ -1746,7 +1832,8 @@ h4 {
 
 @media (max-width: 1100px) {
   .app-body,
-  .app-body.no-right {
+  .app-body.no-right,
+  .app-body.right-mini {
     grid-template-columns: 220px 1fr;
   }
   .right-col {

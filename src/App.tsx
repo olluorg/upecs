@@ -35,7 +35,7 @@ import PrintTipsModal from "./components/PrintTipsModal";
 import WelcomeModal from "./components/WelcomeModal";
 import InstallBanner from "./components/InstallBanner";
 import { useInstallPrompt } from "./utils/useInstallPrompt";
-import { IconHeart, IconPrint, IconGrid } from "./components/Icons";
+import { IconHeart, IconPrint, IconGrid, IconChevronLeft } from "./components/Icons";
 import { useIdbState } from "./utils/useIdbState";
 import { useHashView } from "./utils/useHashView";
 import { useT } from "./utils/I18nContext";
@@ -92,6 +92,7 @@ export default function App() {
   const [activeDragCard, setActiveDragCard] = useState<Card | null>(null);
   const [activeDragKind, setActiveDragKind] = useState<"lib" | "sort" | null>(null);
   const [importData, setImportData] = useState<SharePayload | null>(null);
+  const [rightCollapsed, setRightCollapsed] = useIdbState<boolean>("rightCollapsed", false);
   const [toast, setToast] = useState<string | null>(null);
 
   const sensors = useSensors(
@@ -399,7 +400,7 @@ export default function App() {
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
       >
-        <div className={`app-body ${showRightPanel ? "" : "no-right"}`}>
+        <div className={`app-body ${showRightPanel ? (rightCollapsed ? "right-mini" : "") : "no-right"}`}>
           <Sidebar
             view={view}
             setView={setView}
@@ -479,34 +480,71 @@ export default function App() {
           </main>
 
           {showRightPanel && (
-            <aside className="right-col">
-              <div className="right-scroll">
-                <SelectedPanel
-                  cards={selectedCards}
-                  onClear={clearSet}
-                  onRemove={removeCard}
-                  onAddCustom={() => setModal("addCustom")}
-                  sets={setOptions}
-                  currentSetId={currentSetId}
-                  onSwitchSet={switchSet}
-                />
-              </div>
+            <aside className={`right-col ${rightCollapsed ? "right-col--mini" : ""}`}>
+              {rightCollapsed ? (
+                <>
+                  <button
+                    className="mini-expand-btn"
+                    onClick={() => setRightCollapsed(false)}
+                    title={t.common.expand}
+                  >
+                    <IconChevronLeft size={14} />
+                    {selectedIds.length > 0 && (
+                      <span className="right-toggle-count">{selectedIds.length}</span>
+                    )}
+                  </button>
+                  <div className="right-scroll">
+                    <div className="mini-cards">
+                      {selectedCards.map((card) => {
+                        const label = getCardLabel(t, card);
+                        return (
+                          <div key={card.id} className="mini-card" title={label}>
+                            {card.image ? (
+                              <img src={card.image} alt={label} />
+                            ) : (
+                              <div className="mini-card-placeholder">
+                                <span>{label.slice(0, 2)}</span>
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div className="right-scroll">
+                  <SelectedPanel
+                    cards={selectedCards}
+                    onClear={clearSet}
+                    onRemove={removeCard}
+                    onAddCustom={() => setModal("addCustom")}
+                    onCollapse={() => setRightCollapsed(true)}
+                    sets={setOptions}
+                    currentSetId={currentSetId}
+                    onSwitchSet={switchSet}
+                  />
+                </div>
+              )}
+
               <div className="right-footer">
                 <button
                   className="btn-primary block"
                   onClick={openPrintModal}
                   disabled={selectedIds.length === 0}
+                  title={t.selected.printAndSave}
                 >
                   <IconPrint size={16} />
-                  <span>{t.selected.printAndSave}</span>
+                  {!rightCollapsed && <span>{t.selected.printAndSave}</span>}
                 </button>
                 <button
                   className="btn-ghost block"
                   onClick={() => openBoard(currentSetId)}
                   disabled={selectedIds.length === 0}
+                  title={t.commboard.openBoard}
                 >
                   <IconGrid size={16} />
-                  <span>{t.commboard.openBoard}</span>
+                  {!rightCollapsed && <span>{t.commboard.openBoard}</span>}
                 </button>
               </div>
             </aside>
