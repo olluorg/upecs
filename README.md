@@ -37,7 +37,7 @@
 1. Клонируйте репозиторий:
    ```bash
    git clone git@github.com:olluorg/upecs.git
-   cd pecs-app
+   cd upecs
    ```
 
 2. Установите зависимости:
