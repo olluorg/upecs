@@ -10,6 +10,10 @@ type Props = {
   setShowLabels: (b: boolean) => void;
   orientation: Orientation;
   setOrientation: (o: Orientation) => void;
+  cutMarks: boolean;
+  setCutMarks: (b: boolean) => void;
+  cmyk: boolean;
+  setCmyk: (b: boolean) => void;
   selectedCount: number;
   onDownloadPdf: () => void;
   onPreviewPdf: () => void;
@@ -37,6 +41,10 @@ export default function PrintSettingsView(props: Props) {
           setShowLabels={props.setShowLabels}
           orientation={props.orientation}
           setOrientation={props.setOrientation}
+          cutMarks={props.cutMarks}
+          setCutMarks={props.setCutMarks}
+          cmyk={props.cmyk}
+          setCmyk={props.setCmyk}
         />
 
         <div className="settings-summary">

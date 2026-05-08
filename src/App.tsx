@@ -69,6 +69,11 @@ export default function App() {
     "orient",
     "portrait",
   );
+  const [cutMarks, setCutMarks, cutMarksLoaded] = useIdbState<boolean>(
+    "cutMarks",
+    false,
+  );
+  const [cmyk, setCmyk, cmykLoaded] = useIdbState<boolean>("cmyk", false);
   const [welcomeSeen, setWelcomeSeen, welcomeLoaded] = useIdbState<boolean>(
     "welcome",
     false,
@@ -138,6 +143,8 @@ export default function App() {
     sizeLoaded &&
     labelsLoaded &&
     orientLoaded &&
+    cutMarksLoaded &&
+    cmykLoaded &&
     welcomeLoaded &&
     lastBoardLoaded;
   const appReady = allLoaded && sets.length > 0;
@@ -272,8 +279,8 @@ export default function App() {
   };
 
   const printOpts = useMemo(
-    () => ({ size, orientation, showLabels }),
-    [size, orientation, showLabels],
+    () => ({ size, orientation, showLabels, cutMarks, cmyk }),
+    [size, orientation, showLabels, cutMarks, cmyk],
   );
   const getLabel = useMemo(() => (card: Card) => getCardLabel(t, card), [t]);
   const onDownloadPdf = () => downloadPdf(selectedCards, printOpts, getLabel);
@@ -458,6 +465,10 @@ export default function App() {
                 setShowLabels={setShowLabels}
                 orientation={orientation}
                 setOrientation={setOrientation}
+                cutMarks={cutMarks}
+                setCutMarks={setCutMarks}
+                cmyk={cmyk}
+                setCmyk={setCmyk}
                 selectedCount={selectedIds.length}
                 onDownloadPdf={onDownloadPdf}
                 onPreviewPdf={onPreviewPdf}
@@ -490,6 +501,10 @@ export default function App() {
                   setShowLabels={setShowLabels}
                   orientation={orientation}
                   setOrientation={setOrientation}
+                  cutMarks={cutMarks}
+                  setCutMarks={setCutMarks}
+                  cmyk={cmyk}
+                  setCmyk={setCmyk}
                 />
               </div>
             </aside>

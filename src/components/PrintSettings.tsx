@@ -1,4 +1,5 @@
 import type { PrintSize, Orientation } from "../types";
+import { IconScissors } from "./Icons";
 import { useT } from "../utils/I18nContext";
 
 type Props = {
@@ -8,6 +9,10 @@ type Props = {
   setShowLabels: (b: boolean) => void;
   orientation: Orientation;
   setOrientation: (o: Orientation) => void;
+  cutMarks: boolean;
+  setCutMarks: (b: boolean) => void;
+  cmyk: boolean;
+  setCmyk: (b: boolean) => void;
 };
 
 export default function PrintSettings({
@@ -17,6 +22,10 @@ export default function PrintSettings({
   setShowLabels,
   orientation,
   setOrientation,
+  cutMarks,
+  setCutMarks,
+  cmyk,
+  setCmyk,
 }: Props) {
   const t = useT();
   const s = t.settings;
@@ -84,6 +93,43 @@ export default function PrintSettings({
             <span className="orient landscape" /> {s.landscape}
           </button>
         </div>
+      </div>
+
+      <div className="field">
+        <div className="field-label">{s.cutMarksField}</div>
+        <div className="seg-2">
+          <button
+            className={`seg ${cutMarks ? "active" : ""}`}
+            onClick={() => setCutMarks(true)}
+          >
+            <IconScissors size={14} /> {s.withCutMarks}
+          </button>
+          <button
+            className={`seg ${!cutMarks ? "active" : ""}`}
+            onClick={() => setCutMarks(false)}
+          >
+            {s.withoutCutMarks}
+          </button>
+        </div>
+      </div>
+
+      <div className="field">
+        <div className="field-label">{s.cmykField}</div>
+        <div className="seg-2">
+          <button
+            className={`seg ${cmyk ? "active" : ""}`}
+            onClick={() => setCmyk(true)}
+          >
+            {s.cmykOn}
+          </button>
+          <button
+            className={`seg ${!cmyk ? "active" : ""}`}
+            onClick={() => setCmyk(false)}
+          >
+            {s.cmykOff}
+          </button>
+        </div>
+        {cmyk && <p className="field-note">{s.cmykNote}</p>}
       </div>
     </div>
   );

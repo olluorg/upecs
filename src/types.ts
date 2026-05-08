@@ -33,4 +33,6 @@ export type PrintOpts = {
   size: PrintSize;
   orientation: Orientation;
   showLabels: boolean;
+  cutMarks: boolean;
+  cmyk: boolean;
 };
