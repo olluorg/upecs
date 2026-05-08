@@ -33,7 +33,7 @@ const REG_BLACK = cmyk(0, 0, 0, 1);
 let _fontBytes: ArrayBuffer | null = null;
 async function loadInterFont(): Promise<ArrayBuffer> {
   if (!_fontBytes) _fontBytes = await fetch("/fonts/inter-bold.ttf").then((r) => r.arrayBuffer());
-  return _fontBytes;
+  return _fontBytes!;
 }
 
 export async function buildPdf(cards: Card[], opts: PrintOpts, getLabel?: LabelResolver): Promise<PDFDocument> {
@@ -58,7 +58,7 @@ export async function buildPdf(cards: Card[], opts: PrintOpts, getLabel?: LabelR
 
 async function docToBlob(pdfDoc: PDFDocument): Promise<Blob> {
   const bytes = await pdfDoc.save();
-  return new Blob([bytes], { type: "application/pdf" });
+  return new Blob([bytes.buffer as ArrayBuffer], { type: "application/pdf" });
 }
 
 export async function downloadPdf(cards: Card[], opts: PrintOpts, getLabel?: LabelResolver) {
