@@ -108,6 +108,8 @@ h4 {
   display: flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
+  color: inherit;
 }
 .logo-mark {
   width: 36px;

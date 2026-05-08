@@ -13,7 +13,7 @@ export default function Header({ onHowItWorks, onPrintTips }: Props) {
 
   return (
     <header className="header">
-      <div className="logo">
+      <a href="#library" className="logo">
         <span className="logo-mark">
           <img src="/logo.png" alt="PECS logo" width={36} height={36} />
         </span>
@@ -26,7 +26,7 @@ export default function Header({ onHowItWorks, onPrintTips }: Props) {
           </strong>
           <span>{t.header.logoSub}</span>
         </div>
-      </div>
+      </a>
 
       <nav className="header-nav">
         <button className="link-btn" onClick={onHowItWorks}>
