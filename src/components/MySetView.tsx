@@ -18,6 +18,7 @@ import {
   IconChevronLeft,
   IconChevronRight,
   IconGrid,
+  IconShare,
 } from "./Icons";
 import { useT } from "../utils/I18nContext";
 import { getCardLabel } from "../utils/cardLabel";
@@ -37,6 +38,7 @@ type Props = {
   currentSetId: string;
   onSwitchSet: (id: string) => void;
   onOpenBoard: () => void;
+  onShare: () => void;
 };
 
 export default function MySetView({
@@ -52,6 +54,7 @@ export default function MySetView({
   currentSetId,
   onSwitchSet,
   onOpenBoard,
+  onShare,
 }: Props) {
   const t = useT();
   const m = t.myset;
@@ -94,6 +97,9 @@ export default function MySetView({
           </button>
           <button className="btn-ghost" onClick={onOpenBoard} disabled={cards.length === 0}>
             <IconGrid size={14} /> {t.commboard.openBoard}
+          </button>
+          <button className="btn-ghost" onClick={onShare} disabled={cards.length === 0}>
+            <IconShare size={14} /> {t.share.button}
           </button>
           <button className="btn-primary" onClick={onDownloadPdf} disabled={cards.length === 0}>
             <IconDownload size={14} /> {m.download}

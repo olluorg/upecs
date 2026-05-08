@@ -2480,3 +2480,28 @@ h4 {
   color: var(--text);
 }
 
+
+/* ---------- Toast ---------- */
+
+.toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e1e2e;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.18);
+  z-index: 9999;
+  pointer-events: none;
+  white-space: nowrap;
+  animation: toast-in .15s ease;
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}

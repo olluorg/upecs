@@ -276,6 +276,15 @@ const en: Translations = {
       "Start with 2–3 favourite cards. Gradually add new ones as your child masters them, to avoid overwhelming them.",
   },
 
+  share: {
+    button: "Share",
+    copied: "Link copied!",
+    importTitle: "Import set",
+    importText: (name: string, count: number) =>
+      `You've received a set "${name}" with ${count} cards. Add to the app?`,
+    importBtn: "Add",
+  },
+
   commboard: {
     title: "Communication Board",
     back: "Back",

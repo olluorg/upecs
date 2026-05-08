@@ -43,6 +43,9 @@ import { useT } from "./utils/I18nContext";
 import { getCardLabel } from "./utils/cardLabel";
 import { idbGet } from "./utils/idb";
 import { downloadPdf, printPdf } from "./utils/generatePdf";
+import { encodeShare, decodeShare } from "./utils/shareSet";
+import type { SharePayload } from "./utils/shareSet";
+import ImportSetModal from "./components/ImportSetModal";
 
 const newId = (prefix: string) =>
   `${prefix}_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
@@ -84,10 +87,21 @@ export default function App() {
   const [editingCard, setEditingCard] = useState<Card | null>(null);
   const [activeDragCard, setActiveDragCard] = useState<Card | null>(null);
   const [activeDragKind, setActiveDragKind] = useState<"lib" | "sort" | null>(null);
+  const [importData, setImportData] = useState<SharePayload | null>(null);
+  const [toast, setToast] = useState<string | null>(null);
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
   );
+
+  // Detect ?share= on first load
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const raw = params.get("share");
+    if (!raw) return;
+    const decoded = decodeShare(raw);
+    if (decoded) setImportData(decoded);
+  }, []);
 
   // Initialize / migrate sets once IDB has loaded
   useEffect(() => {
@@ -234,6 +248,28 @@ export default function App() {
     });
   };
   const switchSet = (id: string) => setCurrentSetId(id);
+
+  const handleShare = (id: string) => {
+    const s = sets.find((x) => x.id === id);
+    if (!s) return;
+    const url = `${window.location.origin}/?share=${encodeShare(s.name, s.cardIds)}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setToast(t.share.copied);
+      setTimeout(() => setToast(null), 3000);
+    });
+  };
+
+  const handleImport = () => {
+    if (!importData) return;
+    const knownIds = new Set(allCards.map((c) => c.id));
+    const validIds = importData.c.filter((id) => knownIds.has(id));
+    const s: CardSet = { id: newId("set"), name: importData.n, cardIds: validIds };
+    setSets((prev) => [...prev, s]);
+    setCurrentSetId(s.id);
+    setImportData(null);
+    window.history.replaceState({}, "", window.location.pathname + window.location.hash);
+    setView("myset");
+  };
 
   const printOpts = useMemo(
     () => ({ size, orientation, showLabels }),
@@ -392,6 +428,7 @@ export default function App() {
                 currentSetId={currentSetId}
                 onSwitchSet={switchSet}
                 onOpenBoard={() => openBoard(currentSetId)}
+                onShare={() => handleShare(currentSetId)}
               />
             )}
             {view === "sets" && (
@@ -410,6 +447,7 @@ export default function App() {
                   switchSet(id);
                   openBoard(id);
                 }}
+                onShare={handleShare}
               />
             )}
             {view === "settings" && (
@@ -525,6 +563,17 @@ export default function App() {
       />
       <HowItWorksModal open={modal === "how"} onClose={() => setModal(null)} />
       <PrintTipsModal open={modal === "tips"} onClose={() => setModal(null)} />
+      <ImportSetModal
+        open={appReady && importData !== null}
+        name={importData?.n ?? ""}
+        cardCount={importData?.c.length ?? 0}
+        onImport={handleImport}
+        onClose={() => {
+          setImportData(null);
+          window.history.replaceState({}, "", window.location.pathname + window.location.hash);
+        }}
+      />
+      {toast && <div className="toast">{toast}</div>}
     </div>
   );
 }

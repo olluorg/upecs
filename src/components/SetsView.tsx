@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { CardSet } from "../types";
-import { IconPlus, IconFolder, IconGrid } from "./Icons";
+import { IconPlus, IconFolder, IconGrid, IconShare } from "./Icons";
 import { useT } from "../utils/I18nContext";
 
 type Props = {
@@ -12,6 +12,7 @@ type Props = {
   onDuplicate: (id: string) => void;
   onDelete: (id: string) => void;
   onOpenBoard: (id: string) => void;
+  onShare: (id: string) => void;
 };
 
 export default function SetsView({
@@ -23,6 +24,7 @@ export default function SetsView({
   onDuplicate,
   onDelete,
   onOpenBoard,
+  onShare,
 }: Props) {
   const t = useT();
   const [renamingId, setRenamingId] = useState<string | null>(null);
@@ -116,6 +118,13 @@ export default function SetsView({
                   onClick={() => onDuplicate(s.id)}
                 >
                   {t.common.duplicate}
+                </button>
+                <button
+                  className="btn-ghost small-btn"
+                  onClick={() => onShare(s.id)}
+                  title={t.share.button}
+                >
+                  <IconShare size={13} /> {t.share.button}
                 </button>
                 <button
                   className="btn-ghost small-btn danger-btn"

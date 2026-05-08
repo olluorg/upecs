@@ -217,6 +217,15 @@ export const IconGrid = ({ size, className }: Props) => (
   </svg>
 );
 
+export const IconShare = ({ size, className }: Props) => (
+  <svg {...def(size)} className={className}>
+    <circle cx="18" cy="5" r="3" />
+    <circle cx="6" cy="12" r="3" />
+    <circle cx="18" cy="19" r="3" />
+    <path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4" />
+  </svg>
+);
+
 export const IconSparkles = ({ size, className }: Props) => (
   <svg {...def(size)} className={className}>
     <path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8" />
