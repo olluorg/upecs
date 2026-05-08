@@ -292,7 +292,6 @@ export default function App() {
   const getLabel = useMemo(() => (card: Card) => getCardLabel(t, card), [t]);
   const openPrintModal = () => setModal("printPreview");
   const onDownloadPdf = openPrintModal;
-  const onPreviewPdf = openPrintModal;
   const onPrint = openPrintModal;
 
   const showRightPanel = view === "library";
@@ -442,7 +441,6 @@ export default function App() {
                 onClear={clearSet}
                 onAddCustom={() => setModal("addCustom")}
                 onDownloadPdf={onDownloadPdf}
-                onPreviewPdf={onPreviewPdf}
                 onPrint={onPrint}
                 sets={setOptions}
                 currentSetId={currentSetId}
@@ -484,7 +482,6 @@ export default function App() {
                 setCmyk={setCmyk}
                 selectedCount={selectedIds.length}
                 onDownloadPdf={onDownloadPdf}
-                onPreviewPdf={onPreviewPdf}
                 onPrint={onPrint}
               />
             )}

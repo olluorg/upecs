@@ -13,7 +13,6 @@ import {
   IconPlus,
   IconTrash,
   IconDownload,
-  IconEye,
   IconPrint,
   IconChevronLeft,
   IconChevronRight,
@@ -33,7 +32,6 @@ type Props = {
   onClear: () => void;
   onAddCustom: () => void;
   onDownloadPdf: () => void;
-  onPreviewPdf: () => void;
   onPrint: () => void;
   sets: SetOption[];
   currentSetId: string;
@@ -49,7 +47,6 @@ export default function MySetView({
   onClear,
   onAddCustom,
   onDownloadPdf,
-  onPreviewPdf,
   onPrint,
   sets,
   currentSetId,
@@ -89,9 +86,6 @@ export default function MySetView({
         <div className="myset-actions">
           <button className="btn-ghost" onClick={onClear} disabled={cards.length === 0}>
             <IconTrash size={14} /> {m.clear}
-          </button>
-          <button className="btn-ghost" onClick={onPreviewPdf} disabled={cards.length === 0}>
-            <IconEye size={14} /> {m.preview}
           </button>
           <button className="btn-ghost" onClick={onPrint} disabled={cards.length === 0}>
             <IconPrint size={14} /> {m.print}

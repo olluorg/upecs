@@ -1,6 +1,6 @@
 import type { PrintSize, Orientation } from "../types";
 import PrintSettings from "./PrintSettings";
-import { IconDownload, IconEye, IconPrint } from "./Icons";
+import { IconDownload, IconPrint } from "./Icons";
 import { useT } from "../utils/I18nContext";
 
 type Props = {
@@ -16,7 +16,6 @@ type Props = {
   setCmyk: (b: boolean) => void;
   selectedCount: number;
   onDownloadPdf: () => void;
-  onPreviewPdf: () => void;
   onPrint: () => void;
 };
 
@@ -52,13 +51,6 @@ export default function PrintSettingsView(props: Props) {
             {s.inSet} <b>{props.selectedCount} {s.cards}</b>
           </div>
           <div className="myset-actions">
-            <button
-              className="btn-ghost"
-              onClick={props.onPreviewPdf}
-              disabled={props.selectedCount === 0}
-            >
-              <IconEye size={14} /> {s.preview}
-            </button>
             <button
               className="btn-ghost"
               onClick={props.onPrint}
