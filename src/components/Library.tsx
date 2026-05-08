@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import type { Card as CardT } from "../types";
-import { CATEGORIES } from "../data/categories";
+import { CATEGORIES, CATEGORY_COLORS } from "../data/categories";
 import Card from "./Card";
 import {
   IconSearch, IconGrid, IconUtensils, IconCup, IconHand,
@@ -34,6 +34,7 @@ const CATEGORY_ICONS: Record<string, ReactNode> = {
 };
 
 const PER_PAGE = 24;
+const SCROLL_THRESHOLD = 300; // px from bottom before loading more
 const NAV_KEYS = new Set([
   "ArrowRight",
   "ArrowLeft",
@@ -81,7 +82,6 @@ export default function Library({
   const [count, setCount] = useState(getInitialCount);
   const [tabIdx, setTabIdx] = useState(0);
   const gridRef = useRef<HTMLDivElement>(null);
-  const sentinelRef = useRef<HTMLDivElement>(null);
   const tabIdxRef = useRef(0);
   const mouseInGridRef = useRef(false);
   const isFirstMount = useRef(true);
@@ -103,12 +103,14 @@ export default function Library({
   const total = cards.length;
   const visibleCount = Math.min(count, total);
   const visibleCards = cards.slice(0, visibleCount);
-  const hasMore = visibleCount < total;
 
-  // Fill visible area with cards, recalculate on resize
+  // Fill visible area on mount + load more on scroll. Single effect keeps ordering deterministic
+  // and avoids IntersectionObserver firing eagerly before fill() sets the right count.
   useEffect(() => {
     const grid = gridRef.current;
     if (!grid) return;
+    const main = grid.closest<HTMLElement>(".main");
+    if (!main) return;
     let rafId = 0;
 
     const fill = () => {
@@ -117,17 +119,28 @@ export default function Library({
       const tile = tiles[0];
       const tileH = tile.offsetHeight;
       if (!tileH) return;
-
       const cols = computeCols(grid, tile);
       const style = window.getComputedStyle(grid);
       const rowGap = parseFloat(style.rowGap || style.gap || "0");
-      const main = grid.closest<HTMLElement>(".main");
-      if (!main) return;
-
-      const availableH =
-        main.clientHeight - (grid.getBoundingClientRect().top - main.getBoundingClientRect().top);
-      const rows = Math.max(1, Math.ceil(availableH / (tileH + rowGap))) + 1;
+      // Subtract the space above the grid (header inside main, pills, padding)
+      // so we get only the height actually available for cards.
+      const gridOffsetFromTop = Math.max(
+        0,
+        grid.getBoundingClientRect().top - main.getBoundingClientRect().top,
+      );
+      const availableH = main.clientHeight - gridOffsetFromTop;
+      const rows = Math.ceil(availableH / (tileH + rowGap)) + 1; // +1 for partial last row
       setCount((prev) => Math.max(prev, cols * rows));
+    };
+
+    const handleScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const remaining = main.scrollHeight - main.scrollTop - main.clientHeight;
+        if (remaining < SCROLL_THRESHOLD) {
+          setCount((c) => c + PER_PAGE);
+        }
+      });
     };
 
     const handleResize = () => {
@@ -136,26 +149,15 @@ export default function Library({
     };
 
     fill();
+    main.addEventListener("scroll", handleScroll, { passive: true });
     const ro = new ResizeObserver(handleResize);
     ro.observe(grid);
-    return () => { cancelAnimationFrame(rafId); ro.disconnect(); };
+    return () => {
+      cancelAnimationFrame(rafId);
+      main.removeEventListener("scroll", handleScroll);
+      ro.disconnect();
+    };
   }, []);
-
-  // Infinite scroll: observe sentinel element
-  useEffect(() => {
-    const sentinel = sentinelRef.current;
-    if (!sentinel || !hasMore) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setCount((c) => c + PER_PAGE);
-        }
-      },
-      { rootMargin: "300px" },
-    );
-    observer.observe(sentinel);
-    return () => observer.disconnect();
-  }, [hasMore]);
 
   useEffect(() => {
     setTabIdx(0);
@@ -241,6 +243,7 @@ export default function Library({
             key={c.id}
             className={`pill ${category === c.id ? "active" : ""}`}
             onClick={() => setCategory(c.id)}
+            style={CATEGORY_COLORS[c.id] ? { "--cat-color": CATEGORY_COLORS[c.id] } as CSSProperties : undefined}
           >
             {CATEGORY_ICONS[c.id]}
             {t.categories[c.id] ?? c.label}
@@ -271,8 +274,6 @@ export default function Library({
               />
             ))}
           </div>
-
-          <div ref={sentinelRef} className="scroll-sentinel" />
 
           <div className="pager-info">
             {t.library.showing(1, visibleCount, total)}
