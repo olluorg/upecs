@@ -1738,7 +1738,7 @@ h4 {
 
 @media (max-width: 720px) {
   .app {
-    grid-template-rows: 56px 1fr auto 56px;
+    grid-template-rows: 56px 1fr 56px;
     height: 100vh;
     height: 100dvh;
   }
@@ -2415,6 +2415,11 @@ h4 {
 
 /* ---------- Install banner ---------- */
 .install-banner {
+  position: fixed;
+  bottom: 56px;
+  left: 0;
+  right: 0;
+  z-index: 200;
   display: flex;
   align-items: center;
   gap: 12px;
