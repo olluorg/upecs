@@ -36,6 +36,8 @@ export default function PrintAndPreviewModal({
   const [url, setUrl] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
+  const canPreview = navigator.pdfViewerEnabled;
+
   const opts = useMemo(
     () => ({ size, orientation, showLabels, cutMarks, cmyk }),
     [size, orientation, showLabels, cutMarks, cmyk],
@@ -48,7 +50,7 @@ export default function PrintAndPreviewModal({
   const isDesktop = () => window.matchMedia("(min-width: 721px)").matches;
 
   useEffect(() => {
-    const active = open && cards.length > 0 && (step === "preview" || isDesktop());
+    const active = open && cards.length > 0 && (step === "preview" || (isDesktop() && canPreview));
     if (!active) {
       setUrl(null);
       return;
@@ -90,18 +92,20 @@ export default function PrintAndPreviewModal({
             cmyk={cmyk} setCmyk={setCmyk}
           />
         </div>
-        <div className={`print-modal-preview ${step === "preview" ? "is-active" : ""}`}>
-          <div className="pdf-preview">
-            {busy && <div className="muted">{p.loading}</div>}
-            {!busy && url && <iframe title={p.title} src={url} className="pdf-frame" />}
-            {!busy && !url && cards.length === 0 && <div className="muted">{p.empty}</div>}
+        {canPreview && (
+          <div className={`print-modal-preview ${step === "preview" ? "is-active" : ""}`}>
+            <div className="pdf-preview">
+              {busy && <div className="muted">{p.loading}</div>}
+              {!busy && url && <iframe title={p.title} src={url} className="pdf-frame" />}
+              {!busy && !url && cards.length === 0 && <div className="muted">{p.empty}</div>}
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       <div className="form-actions">
         <div className="print-footer-mobile">
-          {step === "settings" ? (
+          {canPreview && step === "settings" ? (
             <>
               <button className="btn-ghost" onClick={onClose}>{t.common.cancel}</button>
               <button
@@ -112,9 +116,19 @@ export default function PrintAndPreviewModal({
                 {p.next}
               </button>
             </>
-          ) : (
+          ) : canPreview ? (
             <>
               <button className="btn-ghost" onClick={() => setStep("settings")}>{p.back}</button>
+              <button className="btn-ghost" onClick={onPrint} disabled={cards.length === 0}>
+                <IconPrint size={16} /><span>{p.print}</span>
+              </button>
+              <button className="btn-primary" onClick={handleDownload} disabled={cards.length === 0}>
+                <IconDownload size={16} /><span>{p.download}</span>
+              </button>
+            </>
+          ) : (
+            <>
+              <button className="btn-ghost" onClick={onClose}>{t.common.cancel}</button>
               <button className="btn-ghost" onClick={onPrint} disabled={cards.length === 0}>
                 <IconPrint size={16} /><span>{p.print}</span>
               </button>
