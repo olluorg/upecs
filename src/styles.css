@@ -2090,7 +2090,7 @@ h4 {
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  background: var(--bg);
+  background: white;
   border: 1.5px solid var(--cat-color, var(--border));
   border-radius: var(--radius-sm);
   padding: 6px 8px;
