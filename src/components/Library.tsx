@@ -43,6 +43,29 @@ const NAV_KEYS = new Set([
   "End",
 ]);
 
+function getInitialCount(): number {
+  const parts = window.location.hash.replace(/^#\/?/, "").split("/");
+  if (parts[0] !== "library") return PER_PAGE;
+  const p1 = parts[1];
+  const p2 = parts[2];
+  if (!p1) return PER_PAGE;
+  // Backward compat: #library/48
+  const p1Num = parseInt(p1, 10);
+  if (!isNaN(p1Num) && /^\d+$/.test(p1)) return Math.max(PER_PAGE, p1Num);
+  // New format: #library/category/48
+  if (p2) {
+    const n = parseInt(p2, 10);
+    if (!isNaN(n) && n > 0) return Math.max(PER_PAGE, n);
+  }
+  return PER_PAGE;
+}
+
+function buildLibraryHash(category: string, count: number): string {
+  if (category === "all" && count <= PER_PAGE) return "#library";
+  if (count <= PER_PAGE) return `#library/${category}`;
+  return `#library/${category}/${count}`;
+}
+
 export default function Library({
   cards,
   selectedIds,
@@ -55,26 +78,89 @@ export default function Library({
   onDeleteCard,
 }: Props) {
   const t = useT();
-  const [page, setPage] = useState(1);
+  const [count, setCount] = useState(getInitialCount);
   const [tabIdx, setTabIdx] = useState(0);
   const gridRef = useRef<HTMLDivElement>(null);
+  const sentinelRef = useRef<HTMLDivElement>(null);
   const tabIdxRef = useRef(0);
   const mouseInGridRef = useRef(false);
+  const isFirstMount = useRef(true);
 
+  // Reset count on filter change (skip initial mount to preserve hash-restored count)
   useEffect(() => {
-    setPage(1);
+    if (isFirstMount.current) {
+      isFirstMount.current = false;
+      return;
+    }
+    setCount(PER_PAGE);
   }, [category, query]);
 
+  // Sync category + count to hash without triggering hashchange
+  useEffect(() => {
+    history.replaceState(null, "", buildLibraryHash(category, count));
+  }, [category, count]);
+
   const total = cards.length;
-  const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
-  const safePage = Math.min(page, totalPages);
-  const start = (safePage - 1) * PER_PAGE;
-  const pageCards = cards.slice(start, start + PER_PAGE);
+  const visibleCount = Math.min(count, total);
+  const visibleCards = cards.slice(0, visibleCount);
+  const hasMore = visibleCount < total;
+
+  // Fill visible area with cards, recalculate on resize
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+    let rafId = 0;
+
+    const fill = () => {
+      const tiles = grid.querySelectorAll<HTMLElement>(".card-tile");
+      if (!tiles.length) return;
+      const tile = tiles[0];
+      const tileH = tile.offsetHeight;
+      if (!tileH) return;
+
+      const cols = computeCols(grid, tile);
+      const style = window.getComputedStyle(grid);
+      const rowGap = parseFloat(style.rowGap || style.gap || "0");
+      const main = grid.closest<HTMLElement>(".main");
+      if (!main) return;
+
+      const availableH =
+        main.clientHeight - (grid.getBoundingClientRect().top - main.getBoundingClientRect().top);
+      const rows = Math.max(1, Math.ceil(availableH / (tileH + rowGap))) + 1;
+      setCount((prev) => Math.max(prev, cols * rows));
+    };
+
+    const handleResize = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(fill);
+    };
+
+    fill();
+    const ro = new ResizeObserver(handleResize);
+    ro.observe(grid);
+    return () => { cancelAnimationFrame(rafId); ro.disconnect(); };
+  }, []);
+
+  // Infinite scroll: observe sentinel element
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel || !hasMore) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCount((c) => c + PER_PAGE);
+        }
+      },
+      { rootMargin: "300px" },
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [hasMore]);
 
   useEffect(() => {
     setTabIdx(0);
     tabIdxRef.current = 0;
-  }, [safePage, category, query]);
+  }, [count, category, query]);
 
   const updateTab = (i: number) => {
     tabIdxRef.current = i;
@@ -172,7 +258,7 @@ export default function Library({
             onMouseEnter={() => { mouseInGridRef.current = true; }}
             onMouseLeave={() => { mouseInGridRef.current = false; }}
           >
-            {pageCards.map((c, i) => (
+            {visibleCards.map((c, i) => (
               <Card
                 key={c.id}
                 card={c}
@@ -186,16 +272,10 @@ export default function Library({
             ))}
           </div>
 
-          {totalPages > 1 && (
-            <Pagination
-              page={safePage}
-              totalPages={totalPages}
-              onChange={setPage}
-            />
-          )}
+          <div ref={sentinelRef} className="scroll-sentinel" />
 
           <div className="pager-info">
-            {t.library.showing(start + 1, Math.min(start + PER_PAGE, total), total)}
+            {t.library.showing(1, visibleCount, total)}
           </div>
         </>
       )}
@@ -216,56 +296,4 @@ function computeCols(grid: HTMLElement, sample: HTMLElement): number {
   const sampleW = sample.offsetWidth;
   if (!sampleW) return 1;
   return Math.max(1, Math.floor((grid.clientWidth + gap) / (sampleW + gap)));
-}
-
-function Pagination({
-  page,
-  totalPages,
-  onChange,
-}: {
-  page: number;
-  totalPages: number;
-  onChange: (p: number) => void;
-}) {
-  const items = pageItems(page, totalPages);
-  return (
-    <div className="pager">
-      <button
-        className="pager-nav"
-        onClick={() => onChange(page - 1)}
-        disabled={page === 1}
-        aria-label="Prev"
-      >
-        ‹
-      </button>
-      {items.map((p, i) =>
-        p === "..." ? (
-          <span key={`d${i}`} className="pager-dots">…</span>
-        ) : (
-          <button
-            key={p}
-            className={`pager-num ${p === page ? "active" : ""}`}
-            onClick={() => onChange(p)}
-          >
-            {p}
-          </button>
-        ),
-      )}
-      <button
-        className="pager-nav"
-        onClick={() => onChange(page + 1)}
-        disabled={page === totalPages}
-        aria-label="Next"
-      >
-        ›
-      </button>
-    </div>
-  );
-}
-
-function pageItems(current: number, total: number): (number | "...")[] {
-  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
-  if (current <= 4) return [1, 2, 3, 4, 5, "...", total];
-  if (current >= total - 3) return [1, "...", total - 4, total - 3, total - 2, total - 1, total];
-  return [1, "...", current - 1, current, current + 1, "...", total];
 }
