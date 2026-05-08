@@ -32,7 +32,7 @@ const en: Translations = {
   },
 
   header: {
-    logoSub: "CONSTRUCTOR",
+    logoSub: "BUILDER",
     howItWorks: "How it works?",
     printTips: "Print & tips",
   },
