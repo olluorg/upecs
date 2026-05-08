@@ -117,7 +117,7 @@ export default function CommBoardView({ cards, onBack }: Props) {
     return cards.filter((c) => c.category === activeCategory);
   }, [cards, activeCategory]);
 
-  const speak = (text: string, rate = 0.8) => {
+  const speak = (text: string, rate = 0.3) => {
     if (!window.speechSynthesis) return;
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = t.lang === "RU" ? "ru-RU" : "en-US";
