@@ -60,6 +60,8 @@ function shouldShowBanner(): boolean {
 
 export interface InstallPromptResult {
   shouldShow: boolean;
+  /** Mobile device, app not yet installed — show header button regardless of visit count */
+  isInstallable: boolean;
   /** true = native prompt available; false = show manual instructions */
   canInstallNatively: boolean;
   isIos: boolean;
@@ -133,8 +135,13 @@ export function useInstallPrompt(): InstallPromptResult {
 
   const show = () => setShouldShow(true);
 
+  const dismissed = localStorage.getItem(KEY_DISMISSED);
+  const isInstallable =
+    isMobile() && !isStandalone() && dismissed !== "installed";
+
   return {
     shouldShow,
+    isInstallable,
     canInstallNatively: !!deferredPrompt,
     isIos: ios,
     install,

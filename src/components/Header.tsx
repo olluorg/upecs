@@ -12,10 +12,9 @@ type Props = {
 export default function Header({ onHowItWorks, onPrintTips, installPrompt }: Props) {
   const t = useT();
   const { lang, setLang } = useLang();
-  const { canInstallNatively, isIos, install, show } = installPrompt;
+  const { isInstallable, canInstallNatively, install, show } = installPrompt;
 
-  // Show the button when native install is ready, or on iOS/Android (manual instructions).
-  const showInstallBtn = canInstallNatively || isIos;
+  const showInstallBtn = isInstallable;
 
   const handleInstall = () => {
     if (canInstallNatively) {
