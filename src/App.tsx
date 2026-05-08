@@ -35,7 +35,7 @@ import PrintTipsModal from "./components/PrintTipsModal";
 import WelcomeModal from "./components/WelcomeModal";
 import InstallBanner from "./components/InstallBanner";
 import { useInstallPrompt } from "./utils/useInstallPrompt";
-import { IconHeart, IconPrint, IconGrid, IconChevronLeft } from "./components/Icons";
+import { IconPrint, IconGrid, IconChevronLeft } from "./components/Icons";
 import { useIdbState } from "./utils/useIdbState";
 import { useHashView } from "./utils/useHashView";
 import { useT } from "./utils/I18nContext";
@@ -375,10 +375,15 @@ export default function App() {
       <div className="splash">
         <div className="splash-logo">
           <span className="logo-mark">
-            <IconHeart size={20} />
+            <img src="/logo.png" alt="PECS logo" width={36} height={36} />
           </span>
           <div className="logo-text">
-            <strong>PECS</strong>
+            <strong>
+              <span style={{ color: "#3D93E6" }}>P</span>
+              <span style={{ color: "#75C54A" }}>E</span>
+              <span style={{ color: "#FFB41D" }}>C</span>
+              <span style={{ color: "#F05D4D" }}>S</span>
+            </strong>
             <span>{t.header.logoSub}</span>
           </div>
         </div>

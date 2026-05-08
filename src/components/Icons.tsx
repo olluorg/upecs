@@ -239,3 +239,38 @@ export const IconSparkles = ({ size, className }: Props) => (
     <path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8" />
   </svg>
 );
+
+export const IconUtensils = ({ size, className }: Props) => (
+  <svg {...def(size)} className={className}>
+    <path d="M8 2v5M8 10v12" />
+    <path d="M6 2v3M10 2v3M6 5a2 2 0 0 0 4 0" />
+    <path d="M16 2v20M16 6a4 4 0 0 0 4-4" />
+  </svg>
+);
+
+export const IconCup = ({ size, className }: Props) => (
+  <svg {...def(size)} className={className}>
+    <path d="M6 3h12l-2 14H8z" />
+    <path d="M5 21h14" />
+  </svg>
+);
+
+export const IconSmile = ({ size, className }: Props) => (
+  <svg {...def(size)} className={className}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M8.5 14s1.5 2.5 3.5 2.5 3.5-2.5 3.5-2.5" />
+    <line x1="9" y1="9.5" x2="9.01" y2="9.5" strokeWidth="2.5" strokeLinecap="round" />
+    <line x1="15" y1="9.5" x2="15.01" y2="9.5" strokeWidth="2.5" strokeLinecap="round" />
+  </svg>
+);
+
+export const IconDice = ({ size, className }: Props) => (
+  <svg {...def(size)} className={className}>
+    <rect x="3" y="3" width="18" height="18" rx="4" />
+    <circle cx="8.5" cy="8.5" r="1.2" fill="currentColor" stroke="none" />
+    <circle cx="15.5" cy="8.5" r="1.2" fill="currentColor" stroke="none" />
+    <circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none" />
+    <circle cx="8.5" cy="15.5" r="1.2" fill="currentColor" stroke="none" />
+    <circle cx="15.5" cy="15.5" r="1.2" fill="currentColor" stroke="none" />
+  </svg>
+);

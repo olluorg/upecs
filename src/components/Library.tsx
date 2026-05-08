@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import type { ReactNode } from "react";
 import type { Card as CardT } from "../types";
 import { CATEGORIES } from "../data/categories";
 import Card from "./Card";
-import { IconSearch } from "./Icons";
+import {
+  IconSearch, IconGrid, IconUtensils, IconCup, IconHand,
+  IconUsers, IconDice, IconHeart, IconSmile, IconDots,
+} from "./Icons";
 import { useT } from "../utils/I18nContext";
 
 type Props = {
@@ -15,6 +19,18 @@ type Props = {
   onToggle: (id: string) => void;
   onEditCard?: (card: CardT) => void;
   onDeleteCard?: (id: string) => void;
+};
+
+const CATEGORY_ICONS: Record<string, ReactNode> = {
+  all:     <IconGrid    size={13} />,
+  food:    <IconUtensils size={13} />,
+  drink:   <IconCup     size={13} />,
+  actions: <IconHand    size={13} />,
+  people:  <IconUsers   size={13} />,
+  toys:    <IconDice    size={13} />,
+  needs:   <IconHeart   size={13} />,
+  emotions:<IconSmile   size={13} />,
+  other:   <IconDots    size={13} />,
 };
 
 const PER_PAGE = 24;
@@ -140,6 +156,7 @@ export default function Library({
             className={`pill ${category === c.id ? "active" : ""}`}
             onClick={() => setCategory(c.id)}
           >
+            {CATEGORY_ICONS[c.id]}
             {t.categories[c.id] ?? c.label}
           </button>
         ))}

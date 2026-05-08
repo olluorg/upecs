@@ -1,4 +1,4 @@
-import { IconHelp, IconPrint, IconHeart } from "./Icons";
+import { IconHelp, IconPrint } from "./Icons";
 import { useLang, useT } from "../utils/I18nContext";
 import { LOCALE_KEYS, LOCALES } from "../locales";
 
@@ -15,10 +15,15 @@ export default function Header({ onHowItWorks, onPrintTips }: Props) {
     <header className="header">
       <div className="logo">
         <span className="logo-mark">
-          <IconHeart size={18} />
+          <img src="/logo.png" alt="PECS logo" width={36} height={36} />
         </span>
         <div className="logo-text">
-          <strong>PECS</strong>
+          <strong>
+            <span style={{ color: "#3D93E6" }}>P</span>
+            <span style={{ color: "#75C54A" }}>E</span>
+            <span style={{ color: "#FFB41D" }}>C</span>
+            <span style={{ color: "#F05D4D" }}>S</span>
+          </strong>
           <span>{t.header.logoSub}</span>
         </div>
       </div>
