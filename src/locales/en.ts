@@ -482,6 +482,15 @@ const en: Translations = {
           },
         ],
       },
+      {
+        id: "about",
+        tocLabel: "About",
+        heading: "8. About",
+        body: [
+          "The PECS card builder is a free, open-source tool. The site <a href=\"https://upecs.ru\" target=\"_blank\" rel=\"noopener\">upecs.ru</a> is hosted on GitHub: <a href=\"https://github.com/olluorg/upecs\" target=\"_blank\" rel=\"noopener\">github.com/olluorg/upecs</a>.",
+          "Author: Sergey Knyazev. Contact: Telegram <a href=\"https://t.me/sknyazev\" target=\"_blank\" rel=\"noopener\">@sknyazev</a>.",
+        ],
+      },
     ],
   },
 };

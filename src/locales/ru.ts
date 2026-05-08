@@ -480,6 +480,15 @@ const ru = {
           },
         ],
       },
+      {
+        id: "about",
+        tocLabel: "О проекте",
+        heading: "8. О проекте",
+        body: [
+          "Конструктор PECS-карточек — бесплатный инструмент с открытым исходным кодом. Сайт <a href=\"https://upecs.ru\" target=\"_blank\" rel=\"noopener\">upecs.ru</a> размещён на GitHub: <a href=\"https://github.com/olluorg/upecs\" target=\"_blank\" rel=\"noopener\">github.com/olluorg/upecs</a>.",
+          "Автор: Sergey Knyazev. Контакт: Telegram <a href=\"https://t.me/sknyazev\" target=\"_blank\" rel=\"noopener\">@sknyazev</a>.",
+        ],
+      },
     ],
   },
 } as const;
