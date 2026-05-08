@@ -34,6 +34,7 @@ import PdfPreviewModal from "./components/PdfPreviewModal";
 import HowItWorksModal from "./components/HowItWorksModal";
 import PrintTipsModal from "./components/PrintTipsModal";
 import WelcomeModal from "./components/WelcomeModal";
+import InstallBanner from "./components/InstallBanner";
 import { IconHeart } from "./components/Icons";
 import { useIdbState } from "./utils/useIdbState";
 import { useHashView } from "./utils/useHashView";
@@ -521,6 +522,7 @@ export default function App() {
       />
       <HowItWorksModal open={modal === "how"} onClose={() => setModal(null)} />
       <PrintTipsModal open={modal === "tips"} onClose={() => setModal(null)} />
+      <InstallBanner />
     </div>
   );
 }

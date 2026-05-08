@@ -2309,38 +2309,180 @@ h4 {
 }
 
 @media (max-width: 600px) {
+  /* Header */
   .commboard-header {
-    padding: 0 12px;
-    gap: 8px;
+    padding: 0 10px;
+    gap: 6px;
+    height: 52px;
   }
 
   .commboard-title {
-    font-size: 15px;
+    font-size: 14px;
+  }
+
+  .commboard-header-controls {
+    gap: 6px;
+  }
+
+  /* Hide text labels in header toggles, keep icons only */
+  .commboard-speak-toggle span:not(.toggle-pill),
+  .ai-toggle-btn span {
+    display: none;
+  }
+
+  .ai-toggle-btn {
+    padding: 4px 7px;
+    min-width: unset;
+  }
+
+  /* Sentence bar — vertical stack */
+  .commboard-sentence-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    padding: 8px 10px;
+    min-height: unset;
   }
 
   .sentence-prompt {
     display: none;
   }
 
+  .sentence-cards {
+    min-height: 60px;
+    padding: 4px 2px;
+  }
+
+  .sentence-actions {
+    border-left: none;
+    border-top: 1px solid var(--border);
+    padding-left: 0;
+    padding-top: 6px;
+    justify-content: flex-end;
+  }
+
+  .commboard-say-btn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  /* Sentence cards — always show remove button, no grey bg */
+  .sentence-card {
+    background: transparent;
+    border-color: var(--border);
+  }
+
+  .sentence-card-remove {
+    opacity: 1;
+  }
+
+  /* Body */
   .commboard-cats {
-    width: 80px;
+    width: 72px;
   }
 
   .commboard-cat-btn {
-    padding: 8px 6px;
+    padding: 8px 4px;
     flex-direction: column;
-    gap: 4px;
-    font-size: 11px;
+    gap: 3px;
+    font-size: 10px;
+  }
+
+  .cat-icon {
+    width: 18px;
+    height: 18px;
   }
 
   .commboard-grid {
     padding: 8px;
     gap: 8px;
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  }
+
+  .commboard-card {
+    padding: 8px 6px 7px;
   }
 
   .commboard-card-img {
     width: 52px;
     height: 52px;
+  }
+
+  .commboard-card-label {
+    font-size: 11px;
+  }
+}
+
+/* ---------- Install banner ---------- */
+.install-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: white;
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -2px 12px rgba(20, 24, 38, 0.08);
+}
+
+.install-banner-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.install-banner-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.install-banner-body strong {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.install-banner-body span {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.install-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.install-banner-btn {
+  font-size: 12px;
+  padding: 7px 14px;
+  white-space: nowrap;
+}
+
+.install-banner-close {
+  font-size: 16px;
+  color: var(--muted);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  line-height: 1;
+}
+
+.install-banner-close:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+
+@media (max-width: 720px) {
+  .install-banner {
+    bottom: 56px;
+    padding: 10px 14px;
   }
 }

@@ -37,6 +37,13 @@ const en: Translations = {
     printTips: "Print & tips",
   },
 
+  installBanner: {
+    title: "Add to Home Screen",
+    hint: "Install the app for quick access without the browser.",
+    hintIos: "Tap Share → Add to Home Screen in Safari.",
+    install: "Install",
+  },
+
   common: {
     cancel: "Cancel",
     save: "Save",
