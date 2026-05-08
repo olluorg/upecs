@@ -35,6 +35,7 @@ import HowItWorksModal from "./components/HowItWorksModal";
 import PrintTipsModal from "./components/PrintTipsModal";
 import WelcomeModal from "./components/WelcomeModal";
 import InstallBanner from "./components/InstallBanner";
+import { useInstallPrompt } from "./utils/useInstallPrompt";
 import { IconHeart } from "./components/Icons";
 import { useIdbState } from "./utils/useIdbState";
 import { useHashView } from "./utils/useHashView";
@@ -72,6 +73,7 @@ export default function App() {
   const [lastBoardSetId, setLastBoardSetId, lastBoardLoaded] = useIdbState<string>("lastBoardSetId", "");
 
   const t = useT();
+  const installPrompt = useInstallPrompt();
   const [view, commBoardSetId, setView] = useHashView();
   const boardSourceView = useRef<View>(
     (sessionStorage.getItem("boardSourceView") as View | null) ?? "library",
@@ -346,6 +348,7 @@ export default function App() {
       <Header
         onHowItWorks={() => setModal("how")}
         onPrintTips={() => setModal("tips")}
+        installPrompt={installPrompt}
       />
 
       <DndContext
@@ -522,7 +525,7 @@ export default function App() {
       />
       <HowItWorksModal open={modal === "how"} onClose={() => setModal(null)} />
       <PrintTipsModal open={modal === "tips"} onClose={() => setModal(null)} />
-      <InstallBanner />
+      <InstallBanner {...installPrompt} />
     </div>
   );
 }

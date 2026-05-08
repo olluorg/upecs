@@ -1,9 +1,10 @@
 import { useT } from "../utils/I18nContext";
-import { useInstallPrompt } from "../utils/useInstallPrompt";
+import type { InstallPromptResult } from "../utils/useInstallPrompt";
 
-export default function InstallBanner() {
+type Props = Pick<InstallPromptResult, "shouldShow" | "canInstallNatively" | "isIos" | "install" | "dismiss">;
+
+export default function InstallBanner({ shouldShow, canInstallNatively, isIos, install, dismiss }: Props) {
   const t = useT();
-  const { shouldShow, canInstallNatively, isIos, install, dismiss } = useInstallPrompt();
 
   if (!shouldShow) return null;
 

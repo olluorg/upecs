@@ -99,6 +99,13 @@ export const IconDownload = ({ size, className }: Props) => (
   </svg>
 );
 
+export const IconAddToScreen = ({ size, className }: Props) => (
+  <svg {...def(size)} className={className}>
+    <rect x="5" y="2" width="14" height="20" rx="2" />
+    <path d="M12 10v6M9 13l3 3 3-3" />
+  </svg>
+);
+
 export const IconEye = ({ size, className }: Props) => (
   <svg {...def(size)} className={className}>
     <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" />

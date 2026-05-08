@@ -16,6 +16,10 @@ function isIOS() {
   return /iphone|ipad|ipod/i.test(navigator.userAgent) && !(window as any).MSStream;
 }
 
+function isMobile() {
+  return /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent);
+}
+
 function isStandalone() {
   return (
     window.matchMedia("(display-mode: standalone)").matches ||
@@ -39,6 +43,7 @@ function trackVisit() {
 }
 
 function shouldShowBanner(): boolean {
+  if (!isMobile()) return false;
   if (isStandalone()) return false;
 
   const dismissed = localStorage.getItem(KEY_DISMISSED);
@@ -60,6 +65,8 @@ export interface InstallPromptResult {
   isIos: boolean;
   install: () => Promise<void>;
   dismiss: () => void;
+  /** Force-show the banner (e.g. from a header button) */
+  show: () => void;
 }
 
 export function useInstallPrompt(): InstallPromptResult {
@@ -124,11 +131,14 @@ export function useInstallPrompt(): InstallPromptResult {
     localStorage.setItem(KEY_DISMISSED, String(Date.now()));
   };
 
+  const show = () => setShouldShow(true);
+
   return {
     shouldShow,
     canInstallNatively: !!deferredPrompt,
     isIos: ios,
     install,
     dismiss,
+    show,
   };
 }

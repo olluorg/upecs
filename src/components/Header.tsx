@@ -1,15 +1,29 @@
-import { IconHelp, IconPrint, IconHeart } from "./Icons";
+import { IconHelp, IconPrint, IconHeart, IconAddToScreen } from "./Icons";
 import { useLang, useT } from "../utils/I18nContext";
 import { LOCALE_KEYS, LOCALES } from "../locales";
+import type { InstallPromptResult } from "../utils/useInstallPrompt";
 
 type Props = {
   onHowItWorks: () => void;
   onPrintTips: () => void;
+  installPrompt: InstallPromptResult;
 };
 
-export default function Header({ onHowItWorks, onPrintTips }: Props) {
+export default function Header({ onHowItWorks, onPrintTips, installPrompt }: Props) {
   const t = useT();
   const { lang, setLang } = useLang();
+  const { canInstallNatively, isIos, install, show } = installPrompt;
+
+  // Show the button when native install is ready, or on iOS/Android (manual instructions).
+  const showInstallBtn = canInstallNatively || isIos;
+
+  const handleInstall = () => {
+    if (canInstallNatively) {
+      install();
+    } else {
+      show();
+    }
+  };
 
   return (
     <header className="header">
@@ -24,6 +38,12 @@ export default function Header({ onHowItWorks, onPrintTips }: Props) {
       </div>
 
       <nav className="header-nav">
+        {showInstallBtn && (
+          <button className="link-btn" onClick={handleInstall} title={t.installBanner.title}>
+            <IconAddToScreen size={18} />
+            <span>{t.installBanner.install}</span>
+          </button>
+        )}
         <button className="link-btn" onClick={onHowItWorks}>
           <IconHelp size={18} />
           <span>{t.header.howItWorks}</span>
