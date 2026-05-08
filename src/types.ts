@@ -26,7 +26,7 @@ export type ModalKind =
   | "tips"
   | "addCustom"
   | "editCustom"
-  | "pdfPreview"
+  | "printPreview"
   | null;
 
 export type PrintOpts = {

@@ -187,6 +187,7 @@ const ru = {
     loading: "Готовлю предпросмотр…",
     empty: "Сначала добавьте карточки в набор.",
     back: "Назад",
+    next: "Далее →",
     print: "Печать",
     download: "Скачать PDF",
   },
@@ -199,6 +200,7 @@ const ru = {
     download: "Скачать PDF",
     print: "Печать",
     preview: "Предпросмотр PDF",
+    printAndSave: "Печать / PDF",
     clear: "Очистить",
   },
 

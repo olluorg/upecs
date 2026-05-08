@@ -27,22 +27,21 @@ import MySetView from "./components/MySetView";
 import SetsView from "./components/SetsView";
 import PrintSettingsView from "./components/PrintSettingsView";
 import InstructionsView from "./components/InstructionsView";
-import PrintSettings from "./components/PrintSettings";
+import PrintAndPreviewModal from "./components/PrintAndPreviewModal";
 import CommBoardView from "./components/CommBoardView";
 import AddCustomCardModal from "./components/AddCustomCardModal";
-import PdfPreviewModal from "./components/PdfPreviewModal";
 import HowItWorksModal from "./components/HowItWorksModal";
 import PrintTipsModal from "./components/PrintTipsModal";
 import WelcomeModal from "./components/WelcomeModal";
 import InstallBanner from "./components/InstallBanner";
 import { useInstallPrompt } from "./utils/useInstallPrompt";
-import { IconHeart } from "./components/Icons";
+import { IconHeart, IconPrint, IconGrid } from "./components/Icons";
 import { useIdbState } from "./utils/useIdbState";
 import { useHashView } from "./utils/useHashView";
 import { useT } from "./utils/I18nContext";
 import { getCardLabel } from "./utils/cardLabel";
 import { idbGet } from "./utils/idb";
-import { downloadPdf, printPdf } from "./utils/generatePdf";
+import { printPdf } from "./utils/generatePdf";
 import { encodeShare, decodeShare } from "./utils/shareSet";
 import type { SharePayload } from "./utils/shareSet";
 import ImportSetModal from "./components/ImportSetModal";
@@ -283,9 +282,10 @@ export default function App() {
     [size, orientation, showLabels, cutMarks, cmyk],
   );
   const getLabel = useMemo(() => (card: Card) => getCardLabel(t, card), [t]);
-  const onDownloadPdf = () => downloadPdf(selectedCards, printOpts, getLabel);
-  const onPreviewPdf = () => setModal("pdfPreview");
-  const onPrint = () => printPdf(selectedCards, printOpts, getLabel);
+  const openPrintModal = () => setModal("printPreview");
+  const onDownloadPdf = openPrintModal;
+  const onPreviewPdf = openPrintModal;
+  const onPrint = openPrintModal;
 
   const showRightPanel = view === "library";
 
@@ -480,32 +480,34 @@ export default function App() {
 
           {showRightPanel && (
             <aside className="right-col">
-              <SelectedPanel
-                cards={selectedCards}
-                onClear={clearSet}
-                onRemove={removeCard}
-                onAddCustom={() => setModal("addCustom")}
-                onDownloadPdf={onDownloadPdf}
-                onPreviewPdf={onPreviewPdf}
-                onPrint={onPrint}
-                onOpenBoard={() => openBoard(currentSetId)}
-                sets={setOptions}
-                currentSetId={currentSetId}
-                onSwitchSet={switchSet}
-              />
-              <div className="settings-card">
-                <PrintSettings
-                  size={size}
-                  setSize={setSize}
-                  showLabels={showLabels}
-                  setShowLabels={setShowLabels}
-                  orientation={orientation}
-                  setOrientation={setOrientation}
-                  cutMarks={cutMarks}
-                  setCutMarks={setCutMarks}
-                  cmyk={cmyk}
-                  setCmyk={setCmyk}
+              <div className="right-scroll">
+                <SelectedPanel
+                  cards={selectedCards}
+                  onClear={clearSet}
+                  onRemove={removeCard}
+                  onAddCustom={() => setModal("addCustom")}
+                  sets={setOptions}
+                  currentSetId={currentSetId}
+                  onSwitchSet={switchSet}
                 />
+              </div>
+              <div className="right-footer">
+                <button
+                  className="btn-primary block"
+                  onClick={openPrintModal}
+                  disabled={selectedIds.length === 0}
+                >
+                  <IconPrint size={16} />
+                  <span>{t.selected.printAndSave}</span>
+                </button>
+                <button
+                  className="btn-ghost block"
+                  onClick={() => openBoard(currentSetId)}
+                  disabled={selectedIds.length === 0}
+                >
+                  <IconGrid size={16} />
+                  <span>{t.commboard.openBoard}</span>
+                </button>
               </div>
             </aside>
           )}
@@ -568,12 +570,21 @@ export default function App() {
         initialCard={editingCard ?? undefined}
         onEdit={editCustom}
       />
-      <PdfPreviewModal
-        open={modal === "pdfPreview"}
+      <PrintAndPreviewModal
+        open={modal === "printPreview"}
         onClose={() => setModal(null)}
         cards={selectedCards}
-        opts={printOpts}
-        onPrint={onPrint}
+        size={size}
+        setSize={setSize}
+        showLabels={showLabels}
+        setShowLabels={setShowLabels}
+        orientation={orientation}
+        setOrientation={setOrientation}
+        cutMarks={cutMarks}
+        setCutMarks={setCutMarks}
+        cmyk={cmyk}
+        setCmyk={setCmyk}
+        onPrint={() => { printPdf(selectedCards, printOpts, getLabel); setModal(null); }}
         getLabel={getLabel}
       />
       <HowItWorksModal open={modal === "how"} onClose={() => setModal(null)} />

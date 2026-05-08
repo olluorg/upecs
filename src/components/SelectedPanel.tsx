@@ -8,7 +8,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import type { Card as CardT } from "../types";
-import { IconClose, IconDrag, IconPlus, IconTrash, IconDownload, IconEye, IconPrint, IconGrid } from "./Icons";
+import { IconClose, IconDrag, IconPlus, IconTrash } from "./Icons";
 import { useT } from "../utils/I18nContext";
 import { getCardLabel } from "../utils/cardLabel";
 
@@ -19,10 +19,6 @@ type Props = {
   onClear: () => void;
   onRemove: (id: string) => void;
   onAddCustom: () => void;
-  onDownloadPdf: () => void;
-  onPreviewPdf: () => void;
-  onPrint: () => void;
-  onOpenBoard: () => void;
   sets: SetOption[];
   currentSetId: string;
   onSwitchSet: (id: string) => void;
@@ -33,10 +29,6 @@ export default function SelectedPanel({
   onClear,
   onRemove,
   onAddCustom,
-  onDownloadPdf,
-  onPreviewPdf,
-  onPrint,
-  onOpenBoard,
   sets,
   currentSetId,
   onSwitchSet,
@@ -95,26 +87,6 @@ export default function SelectedPanel({
         <span className="info-dot" />
         <span>{s.selectedCount(cards.length)}</span>
       </div>
-
-      <button className="btn-primary block" onClick={onDownloadPdf} disabled={cards.length === 0}>
-        <IconDownload size={16} />
-        <span>{s.download}</span>
-      </button>
-
-      <button className="btn-ghost block" onClick={onPrint} disabled={cards.length === 0}>
-        <IconPrint size={16} />
-        <span>{s.print}</span>
-      </button>
-
-      <button className="btn-ghost block" onClick={onPreviewPdf} disabled={cards.length === 0}>
-        <IconEye size={16} />
-        <span>{s.preview}</span>
-      </button>
-
-      <button className="btn-ghost block" onClick={onOpenBoard} disabled={cards.length === 0}>
-        <IconGrid size={16} />
-        <span>{t.commboard.openBoard}</span>
-      </button>
     </div>
   );
 }

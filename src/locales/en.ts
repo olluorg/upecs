@@ -189,6 +189,7 @@ const en: Translations = {
     loading: "Preparing preview…",
     empty: "Add cards to your set first.",
     back: "Back",
+    next: "Next →",
     print: "Print",
     download: "Download PDF",
   },
@@ -201,6 +202,7 @@ const en: Translations = {
     download: "Download PDF",
     print: "Print",
     preview: "Preview PDF",
+    printAndSave: "Print / PDF",
     clear: "Clear",
   },
 
