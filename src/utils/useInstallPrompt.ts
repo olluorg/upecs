@@ -60,15 +60,8 @@ function shouldShowBanner(): boolean {
 
 export interface InstallPromptResult {
   shouldShow: boolean;
-  /** Mobile device, app not yet installed — show header button regardless of visit count */
-  isInstallable: boolean;
-  /** true = native prompt available; false = show manual instructions */
-  canInstallNatively: boolean;
-  isIos: boolean;
   install: () => Promise<void>;
   dismiss: () => void;
-  /** Force-show the banner (e.g. from a header button) */
-  show: () => void;
 }
 
 export function useInstallPrompt(): InstallPromptResult {
@@ -80,7 +73,6 @@ export function useInstallPrompt(): InstallPromptResult {
     trackVisit();
     if (!shouldShowBanner()) return;
 
-    // If the event was already captured at module level, use it immediately.
     if (_deferredPrompt) {
       setDeferredPrompt(_deferredPrompt);
       setShouldShow(true);
@@ -92,7 +84,6 @@ export function useInstallPrompt(): InstallPromptResult {
       return;
     }
 
-    // Listen for events that fire after React mounts (first visit after SW registers).
     const handler = (e: Event) => {
       e.preventDefault();
       _deferredPrompt = e;
@@ -100,19 +91,7 @@ export function useInstallPrompt(): InstallPromptResult {
       setShouldShow(true);
     };
     window.addEventListener("beforeinstallprompt", handler as EventListener);
-
-    // Fallback: if the browser never fires the event (e.g., already installed,
-    // or not supported), show manual instructions after a short wait.
-    const fallbackTimer = setTimeout(() => {
-      if (!_deferredPrompt && !ios && shouldShowBanner()) {
-        setShouldShow(true);
-      }
-    }, 3000);
-
-    return () => {
-      window.removeEventListener("beforeinstallprompt", handler as EventListener);
-      clearTimeout(fallbackTimer);
-    };
+    return () => window.removeEventListener("beforeinstallprompt", handler as EventListener);
   }, [ios]);
 
   const install = async () => {
@@ -133,19 +112,5 @@ export function useInstallPrompt(): InstallPromptResult {
     localStorage.setItem(KEY_DISMISSED, String(Date.now()));
   };
 
-  const show = () => setShouldShow(true);
-
-  const dismissed = localStorage.getItem(KEY_DISMISSED);
-  const isInstallable =
-    isMobile() && !isStandalone() && dismissed !== "installed";
-
-  return {
-    shouldShow,
-    isInstallable,
-    canInstallNatively: !!deferredPrompt,
-    isIos: ios,
-    install,
-    dismiss,
-    show,
-  };
+  return { shouldShow, install, dismiss };
 }

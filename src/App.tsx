@@ -348,7 +348,6 @@ export default function App() {
       <Header
         onHowItWorks={() => setModal("how")}
         onPrintTips={() => setModal("tips")}
-        installPrompt={installPrompt}
       />
 
       <DndContext
@@ -480,6 +479,7 @@ export default function App() {
         </DragOverlay>
       </DndContext>
 
+      <InstallBanner {...installPrompt} />
       <nav className="mobile-nav">
         <button className={view === "library" ? "active" : ""} onClick={() => setView("library")}>
           {t.mobile.library}
@@ -525,7 +525,6 @@ export default function App() {
       />
       <HowItWorksModal open={modal === "how"} onClose={() => setModal(null)} />
       <PrintTipsModal open={modal === "tips"} onClose={() => setModal(null)} />
-      <InstallBanner {...installPrompt} />
     </div>
   );
 }
