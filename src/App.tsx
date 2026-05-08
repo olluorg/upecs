@@ -164,10 +164,10 @@ export default function App() {
     const q = query.trim().toLowerCase();
     return allCards.filter((c) => {
       if (category !== "all" && c.category !== category) return false;
-      if (q && !c.label.toLowerCase().includes(q)) return false;
+      if (q && !getCardLabel(t, c).toLowerCase().includes(q)) return false;
       return true;
     });
-  }, [allCards, category, query]);
+  }, [allCards, category, query, t]);
 
   const selectedCards = useMemo(() => {
     const map = new Map(allCards.map((c) => [c.id, c]));
