@@ -5,13 +5,22 @@ const KEY_DATES = "pwa_visit_dates";
 const KEY_DISMISSED = "pwa_dismissed_at";
 const SESSION_KEY = "pwa_visit_tracked";
 
+// Capture the event at module level — before React mounts — to avoid race conditions.
+let _deferredPrompt: any = null;
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  _deferredPrompt = e;
+});
+
 function isIOS() {
   return /iphone|ipad|ipod/i.test(navigator.userAgent) && !(window as any).MSStream;
 }
 
 function isStandalone() {
-  return window.matchMedia("(display-mode: standalone)").matches ||
-    (navigator as any).standalone === true;
+  return (
+    window.matchMedia("(display-mode: standalone)").matches ||
+    (navigator as any).standalone === true
+  );
 }
 
 function trackVisit() {
@@ -33,6 +42,7 @@ function shouldShowBanner(): boolean {
   if (isStandalone()) return false;
 
   const dismissed = localStorage.getItem(KEY_DISMISSED);
+  if (dismissed === "installed") return false;
   if (dismissed) {
     const msSince = Date.now() - Number(dismissed);
     if (msSince < 30 * 24 * 60 * 60 * 1000) return false;
@@ -43,46 +53,69 @@ function shouldShowBanner(): boolean {
   return count >= 3 || dates.length >= 2;
 }
 
-interface InstallPromptResult {
+export interface InstallPromptResult {
   shouldShow: boolean;
+  /** true = native prompt available; false = show manual instructions */
+  canInstallNatively: boolean;
   isIos: boolean;
   install: () => Promise<void>;
   dismiss: () => void;
 }
 
 export function useInstallPrompt(): InstallPromptResult {
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(() => _deferredPrompt);
   const [shouldShow, setShouldShow] = useState(false);
-  const isIos = isIOS();
+  const ios = isIOS();
 
   useEffect(() => {
     trackVisit();
+    if (!shouldShowBanner()) return;
 
-    const ready = shouldShowBanner();
-    if (!ready) return;
-
-    if (isIos) {
+    // If the event was already captured at module level, use it immediately.
+    if (_deferredPrompt) {
+      setDeferredPrompt(_deferredPrompt);
       setShouldShow(true);
       return;
     }
 
+    if (ios) {
+      setShouldShow(true);
+      return;
+    }
+
+    // Listen for events that fire after React mounts (first visit after SW registers).
     const handler = (e: Event) => {
       e.preventDefault();
+      _deferredPrompt = e;
       setDeferredPrompt(e);
       setShouldShow(true);
     };
     window.addEventListener("beforeinstallprompt", handler as EventListener);
-    return () => window.removeEventListener("beforeinstallprompt", handler as EventListener);
-  }, [isIos]);
+
+    // Fallback: if the browser never fires the event (e.g., already installed,
+    // or not supported), show manual instructions after a short wait.
+    const fallbackTimer = setTimeout(() => {
+      if (!_deferredPrompt && !ios && shouldShowBanner()) {
+        setShouldShow(true);
+      }
+    }, 3000);
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handler as EventListener);
+      clearTimeout(fallbackTimer);
+    };
+  }, [ios]);
 
   const install = async () => {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    setDeferredPrompt(null);
-    setShouldShow(false);
-    if (outcome === "accepted") {
-      localStorage.setItem(KEY_DISMISSED, "installed");
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      _deferredPrompt = null;
+      setDeferredPrompt(null);
+      setShouldShow(false);
+      if (outcome === "accepted") {
+        localStorage.setItem(KEY_DISMISSED, "installed");
+      }
     }
   };
 
@@ -91,5 +124,11 @@ export function useInstallPrompt(): InstallPromptResult {
     localStorage.setItem(KEY_DISMISSED, String(Date.now()));
   };
 
-  return { shouldShow, isIos, install, dismiss };
+  return {
+    shouldShow,
+    canInstallNatively: !!deferredPrompt,
+    isIos: ios,
+    install,
+    dismiss,
+  };
 }

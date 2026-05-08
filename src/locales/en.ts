@@ -41,6 +41,7 @@ const en: Translations = {
     title: "Add to Home Screen",
     hint: "Install the app for quick access without the browser.",
     hintIos: "Tap Share → Add to Home Screen in Safari.",
+    hintAndroid: "Open browser menu (⋮) → Add to Home Screen.",
     install: "Install",
   },
 
