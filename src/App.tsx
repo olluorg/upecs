@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import type { CSSProperties } from "react";
 import {
   DndContext,
   DragOverlay,
@@ -40,6 +41,7 @@ import { useIdbState } from "./utils/useIdbState";
 import { useHashView } from "./utils/useHashView";
 import { useT } from "./utils/I18nContext";
 import { getCardLabel } from "./utils/cardLabel";
+import { CATEGORY_COLORS } from "./data/categories";
 import { idbGet } from "./utils/idb";
 import { printPdf } from "./utils/generatePdf";
 import { encodeShare, decodeShare } from "./utils/shareSet";
@@ -85,7 +87,12 @@ export default function App() {
   const boardSourceView = useRef<View>(
     (sessionStorage.getItem("boardSourceView") as View | null) ?? "library",
   );
-  const [category, setCategory] = useState("all");
+  const [category, setCategory] = useState(() => {
+    const parts = window.location.hash.replace(/^#\/?/, "").split("/");
+    if (parts[0] !== "library" || !parts[1] || /^\d+$/.test(parts[1])) return "all";
+    const valid = new Set(["all","food","drink","actions","people","toys","needs","emotions","other"]);
+    return valid.has(parts[1]) ? parts[1] : "all";
+  });
   const [query, setQuery] = useState("");
   const [modal, setModal] = useState<ModalKind>(null);
   const [editingCard, setEditingCard] = useState<Card | null>(null);
@@ -503,7 +510,7 @@ export default function App() {
                       {selectedCards.map((card) => {
                         const label = getCardLabel(t, card);
                         return (
-                          <div key={card.id} className="mini-card" title={label}>
+                          <div key={card.id} className="mini-card" title={label} style={CATEGORY_COLORS[card.category] ? { "--cat-color": CATEGORY_COLORS[card.category] } as CSSProperties : undefined}>
                             {card.image ? (
                               <img src={card.image} alt={label} />
                             ) : (

@@ -11,6 +11,7 @@ import type { Card as CardT } from "../types";
 import { IconClose, IconDrag, IconPlus, IconTrash, IconChevronRight } from "./Icons";
 import { useT } from "../utils/I18nContext";
 import { getCardLabel } from "../utils/cardLabel";
+import { CATEGORY_COLORS } from "../data/categories";
 
 type SetOption = { id: string; name: string };
 
@@ -104,11 +105,13 @@ function SortableTile({ card, onRemove }: { card: CardT; onRemove: () => void })
   });
   const [failed, setFailed] = useState(false);
 
+  const catColor = CATEGORY_COLORS[card.category];
   const style: CSSProperties = {
     transform: CSS.Transform.toString(transform),
     transition,
     zIndex: isDragging ? 5 : undefined,
     opacity: isDragging ? 0.4 : 1,
+    ...(catColor ? { "--cat-color": catColor } as CSSProperties : {}),
   };
 
   return (

@@ -20,7 +20,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import type { Card } from "../types";
-import { CATEGORIES } from "../data/categories";
+import { CATEGORIES, CATEGORY_COLORS } from "../data/categories";
 import { useT } from "../utils/I18nContext";
 import { getCardLabel } from "../utils/cardLabel";
 import { checkAIAvailability, composeSentence } from "../utils/chromeAI";
@@ -117,10 +117,11 @@ export default function CommBoardView({ cards, onBack }: Props) {
     return cards.filter((c) => c.category === activeCategory);
   }, [cards, activeCategory]);
 
-  const speak = (text: string) => {
+  const speak = (text: string, rate = 0.8) => {
     if (!window.speechSynthesis) return;
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = t.lang === "RU" ? "ru-RU" : "en-US";
+    utterance.rate = rate;
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utterance);
   };
@@ -308,7 +309,10 @@ export default function CommBoardView({ cards, onBack }: Props) {
 
       <DragOverlay dropAnimation={null}>
         {dragPayload?.type === "grid" && (
-          <div className="commboard-card drag-preview">
+          <div
+            className="commboard-card drag-preview"
+            style={CATEGORY_COLORS[dragPayload.card.category] ? { "--cat-color": CATEGORY_COLORS[dragPayload.card.category] } as CSSProperties : undefined}
+          >
             <div className="commboard-card-img">
               {dragPayload.card.image ? (
                 <img src={dragPayload.card.image} alt={getCardLabel(t, dragPayload.card)} />
@@ -460,8 +464,12 @@ function SentenceCardTile({
   onRemove: () => void;
   isOverlay?: boolean;
 }) {
+  const catColor = CATEGORY_COLORS[item.card.category];
   return (
-    <div className={`sentence-card ${isOverlay ? "is-overlay" : ""}`}>
+    <div
+      className={`sentence-card ${isOverlay ? "is-overlay" : ""}`}
+      style={catColor ? { "--cat-color": catColor } as CSSProperties : undefined}
+    >
       <button
         className="sentence-card-remove"
         onClick={(e) => { e.stopPropagation(); onRemove(); }}
@@ -498,11 +506,12 @@ function DraggableGridCard({
     id: `grid:${card.id}`,
   });
 
+  const catColor = CATEGORY_COLORS[card.category];
   return (
     <button
       ref={setNodeRef}
       className="commboard-card"
-      style={{ opacity: isDragging ? 0.4 : 1 }}
+      style={{ opacity: isDragging ? 0.4 : 1, ...(catColor ? { "--cat-color": catColor } as CSSProperties : {}) }}
       onClick={onClick}
       {...attributes}
       {...listeners}

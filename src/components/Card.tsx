@@ -5,6 +5,7 @@ import type { Card as CardT } from "../types";
 import { IconPlus, IconCheck, IconPencil, IconTrash, IconDots } from "./Icons";
 import { useT } from "../utils/I18nContext";
 import { getCardLabel } from "../utils/cardLabel";
+import { CATEGORY_COLORS } from "../data/categories";
 
 type Props = {
   card: CardT;
@@ -46,8 +47,10 @@ export default function Card({
     id: `lib:${card.id}`,
   });
 
+  const catColor = CATEGORY_COLORS[card.category];
   const style: CSSProperties = {
     opacity: isDragging ? 0.4 : 1,
+    ...(catColor ? { "--cat-color": catColor } as CSSProperties : {}),
   };
 
   const handleKey = (e: RKeyboardEvent<HTMLDivElement>) => {
