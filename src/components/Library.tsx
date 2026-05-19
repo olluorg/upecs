@@ -6,6 +6,8 @@ import Card from "./Card";
 import {
   IconSearch, IconGrid, IconUtensils, IconCup, IconHand,
   IconUsers, IconDice, IconHeart, IconSmile, IconDots,
+  IconList, IconFolder, IconHome, IconScissors, IconPencil,
+  IconPlus, IconStar,
 } from "./Icons";
 import { useT } from "../utils/I18nContext";
 
@@ -30,6 +32,17 @@ const CATEGORY_ICONS: Record<string, ReactNode> = {
   toys:    <IconDice    size={13} />,
   needs:   <IconHeart   size={13} />,
   emotions:<IconSmile   size={13} />,
+  numbers: <IconList    size={13} />,
+  animals: <IconStar    size={13} />,
+  transport:<IconFolder  size={13} />,
+  clothes: <IconScissors size={13} />,
+  school:  <IconPencil  size={13} />,
+  medicine:<IconPlus    size={13} />,
+  places:  <IconFolder  size={13} />,
+  household:<IconHome   size={13} />,
+  objects: <IconFolder  size={13} />,
+  shapes:  <IconGrid    size={13} />,
+  colors:  <IconDots    size={13} />,
   other:   <IconDots    size={13} />,
 };
 

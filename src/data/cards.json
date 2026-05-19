@@ -1,230 +1,6540 @@
 [
   {
-    "id": "cookie",
-    "label": "Печенье",
-    "image": "/cards/cookie.png",
-    "category": "food"
+    "id": "zero",
+    "label": "0",
+    "image": "/cards/zero.jpg",
+    "category": "numbers",
+    "weight": 300
   },
   {
-    "id": "candy",
-    "label": "Конфета",
-    "image": "/cards/candy.png",
-    "category": "food"
+    "id": "one",
+    "label": "1",
+    "image": "/cards/one.jpg",
+    "category": "numbers",
+    "weight": 360
   },
   {
-    "id": "chips",
-    "label": "Чипсы",
-    "image": "/cards/chips.png",
-    "category": "food"
+    "id": "two",
+    "label": "2",
+    "image": "/cards/two.jpg",
+    "category": "numbers",
+    "weight": 360
   },
   {
-    "id": "apple",
-    "label": "Яблоко",
-    "image": "/cards/apple.png",
-    "category": "food"
+    "id": "three",
+    "label": "3",
+    "image": "/cards/three.jpg",
+    "category": "numbers",
+    "weight": 360
+  },
+  {
+    "id": "four",
+    "label": "4",
+    "image": "/cards/four.jpg",
+    "category": "numbers",
+    "weight": 300
+  },
+  {
+    "id": "five",
+    "label": "5",
+    "image": "/cards/five.jpg",
+    "category": "numbers",
+    "weight": 300
+  },
+  {
+    "id": "six",
+    "label": "6",
+    "image": "/cards/six.jpg",
+    "category": "numbers",
+    "weight": 300
+  },
+  {
+    "id": "seven",
+    "label": "7",
+    "image": "/cards/seven.jpg",
+    "category": "numbers",
+    "weight": 300
+  },
+  {
+    "id": "eight",
+    "label": "8",
+    "image": "/cards/eight.jpg",
+    "category": "numbers",
+    "weight": 300
+  },
+  {
+    "id": "nine",
+    "label": "9",
+    "image": "/cards/nine.jpg",
+    "category": "numbers",
+    "weight": 300
+  },
+  {
+    "id": "apricot",
+    "label": "Абрикос",
+    "image": "/cards/apricot.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "avocado",
+    "label": "Авокадо",
+    "image": "/cards/avocado.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "bus",
+    "label": "Автобус",
+    "image": "/cards/bus.jpg",
+    "category": "transport",
+    "weight": 560
+  },
+  {
+    "id": "car-transporter",
+    "label": "Автовоз",
+    "image": "/cards/car-transporter.jpg",
+    "category": "transport",
+    "weight": 260
+  },
+  {
+    "id": "actor",
+    "label": "Актер",
+    "image": "/cards/actor.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "shark",
+    "label": "Акула",
+    "image": "/cards/shark.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "album",
+    "label": "Альбом",
+    "image": "/cards/album.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "blood-test",
+    "label": "Анализ крови",
+    "image": "/cards/blood-test.jpg",
+    "category": "medicine",
+    "weight": 180
+  },
+  {
+    "id": "urine-test",
+    "label": "Анализ мочи",
+    "image": "/cards/urine-test.jpg",
+    "category": "medicine",
+    "weight": 180
+  },
+  {
+    "id": "pineapple",
+    "label": "Ананас",
+    "image": "/cards/pineapple.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "antiseptic",
+    "label": "Антисептик",
+    "image": "/cards/antiseptic.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "orange",
+    "label": "Апельсин",
+    "image": "/cards/orange.jpg",
+    "category": "food",
+    "weight": 680
+  },
+  {
+    "id": "orange-juice",
+    "label": "Апельсиновый сок",
+    "image": "/cards/orange-juice.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "applique",
+    "label": "Аппликация",
+    "image": "/cards/applique.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "pharmacy",
+    "label": "Аптека",
+    "image": "/cards/pharmacy.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "watermelon",
+    "label": "Арбуз",
+    "image": "/cards/watermelon.jpg",
+    "category": "food",
+    "weight": 680
+  },
+  {
+    "id": "architect",
+    "label": "Архитектор",
+    "image": "/cards/architect.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "airport",
+    "label": "Аэропорт",
+    "image": "/cards/airport.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "grandmother",
+    "label": "Бабушка",
+    "image": "/cards/grandmother.jpg",
+    "category": "people",
+    "weight": 800
+  },
+  {
+    "id": "trunk",
+    "label": "Багажник",
+    "image": "/cards/trunk.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "eggplant",
+    "label": "Баклажан",
+    "image": "/cards/eggplant.jpg",
+    "category": "food",
+    "weight": 420
   },
   {
     "id": "banana",
     "label": "Банан",
-    "image": "/cards/banana.png",
-    "category": "food"
+    "image": "/cards/banana.jpg",
+    "category": "food",
+    "weight": 845
   },
   {
-    "id": "bread",
-    "label": "Хлеб",
-    "image": "/cards/bread.png",
-    "category": "food"
+    "id": "banana-chips",
+    "label": "Банановые чипсы",
+    "image": "/cards/banana-chips.jpg",
+    "category": "food",
+    "weight": 420
   },
   {
-    "id": "cheese",
-    "label": "Сыр",
-    "image": "/cards/cheese.png",
-    "category": "food"
+    "id": "drum",
+    "label": "Барабан",
+    "image": "/cards/drum.jpg",
+    "category": "toys",
+    "weight": 380
   },
   {
-    "id": "carrot",
-    "label": "Морковь",
-    "image": "/cards/carrot.png",
-    "category": "food"
+    "id": "ram",
+    "label": "Баран",
+    "image": "/cards/ram.jpg",
+    "category": "animals",
+    "weight": 480
   },
   {
-    "id": "chicken",
-    "label": "Курица",
-    "image": "/cards/chicken.png",
-    "category": "food"
+    "id": "bagel",
+    "label": "Баранка",
+    "image": "/cards/bagel.jpg",
+    "category": "food",
+    "weight": 420
   },
   {
-    "id": "pasta",
-    "label": "Паста",
-    "image": "/cards/pasta.png",
-    "category": "food"
+    "id": "badger",
+    "label": "Барсук",
+    "image": "/cards/badger.jpg",
+    "category": "animals",
+    "weight": 420
   },
   {
-    "id": "icecream",
-    "label": "Мороженое",
-    "image": "/cards/icecream.png",
-    "category": "food"
+    "id": "loaf",
+    "label": "Батон",
+    "image": "/cards/loaf.jpg",
+    "category": "food",
+    "weight": 420
   },
-
   {
-    "id": "juice",
-    "label": "Сок",
-    "image": "/cards/juice.png",
-    "category": "drink"
+    "id": "bar",
+    "label": "Батончик",
+    "image": "/cards/bar.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "shoe-covers",
+    "label": "Бахилы",
+    "image": "/cards/shoe-covers.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "run",
+    "label": "Бегать",
+    "image": "/cards/run.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "hippo",
+    "label": "Бегемот",
+    "image": "/cards/hippo.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "beige",
+    "label": "Бежевый",
+    "image": "/cards/beige.jpg",
+    "category": "colors",
+    "weight": 200
+  },
+  {
+    "id": "squirrel",
+    "label": "Белка",
+    "image": "/cards/squirrel.jpg",
+    "category": "animals",
+    "weight": 600
+  },
+  {
+    "id": "white",
+    "label": "Белый",
+    "image": "/cards/white.jpg",
+    "category": "colors",
+    "weight": 340
+  },
+  {
+    "id": "worry",
+    "label": "Беспокойство",
+    "image": "/cards/worry.jpg",
+    "category": "emotions",
+    "weight": 680
+  },
+  {
+    "id": "concrete-mixer",
+    "label": "Бетономешалка",
+    "image": "/cards/concrete-mixer.jpg",
+    "category": "transport",
+    "weight": 260
+  },
+  {
+    "id": "library",
+    "label": "Библиотека",
+    "image": "/cards/library.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "librarian",
+    "label": "Библиотекарь",
+    "image": "/cards/librarian.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "ticket",
+    "label": "Билет",
+    "image": "/cards/ticket.jpg",
+    "category": "objects",
+    "weight": 220
+  },
+  {
+    "id": "bandage",
+    "label": "Бинт",
+    "image": "/cards/bandage.jpg",
+    "category": "medicine",
+    "weight": 520
+  },
+  {
+    "id": "turquoise",
+    "label": "Бирюзовый",
+    "image": "/cards/turquoise.jpg",
+    "category": "colors",
+    "weight": 200
+  },
+  {
+    "id": "gratitude",
+    "label": "Благодарность",
+    "image": "/cards/gratitude.jpg",
+    "category": "emotions",
+    "weight": 420
+  },
+  {
+    "id": "close-person",
+    "label": "Близкий",
+    "image": "/cards/close-person.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "pancakes",
+    "label": "Блины",
+    "image": "/cards/pancakes.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "blouse",
+    "label": "Блузка",
+    "image": "/cards/blouse.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "headache",
+    "label": "Боль в голове",
+    "image": "/cards/headache.jpg",
+    "category": "medicine",
+    "weight": 520
+  },
+  {
+    "id": "sore-throat",
+    "label": "Боль в горле",
+    "image": "/cards/sore-throat.jpg",
+    "category": "medicine",
+    "weight": 520
+  },
+  {
+    "id": "stomach-ache",
+    "label": "Боль в животе",
+    "image": "/cards/stomach-ache.jpg",
+    "category": "medicine",
+    "weight": 520
+  },
+  {
+    "id": "earache",
+    "label": "Боль в ухе",
+    "image": "/cards/earache.jpg",
+    "category": "medicine",
+    "weight": 520
+  },
+  {
+    "id": "hospital",
+    "label": "Больница",
+    "image": "/cards/hospital.jpg",
+    "category": "medicine",
+    "weight": 460
+  },
+  {
+    "id": "pain",
+    "label": "Больно",
+    "image": "/cards/pain.jpg",
+    "category": "medicine",
+    "weight": 900
+  },
+  {
+    "id": "big",
+    "label": "Большой",
+    "image": "/cards/big.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "borscht",
+    "label": "Борщ",
+    "image": "/cards/borscht.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "boots",
+    "label": "Ботинки",
+    "image": "/cards/boots.jpg",
+    "category": "clothes",
+    "weight": 620
+  },
+  {
+    "id": "brother",
+    "label": "Брат",
+    "image": "/cards/brother.jpg",
+    "category": "people",
+    "weight": 780
+  },
+  {
+    "id": "broccoli",
+    "label": "Брокколи",
+    "image": "/cards/broccoli.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "throw",
+    "label": "Бросать",
+    "image": "/cards/throw.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "trousers",
+    "label": "Брюки",
+    "image": "/cards/trousers.jpg",
+    "category": "clothes",
+    "weight": 620
+  },
+  {
+    "id": "bun",
+    "label": "Булка",
+    "image": "/cards/bun.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "sweet-bun",
+    "label": "Булочка сладкая",
+    "image": "/cards/sweet-bun.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "bulldozer",
+    "label": "Бульдозер",
+    "image": "/cards/bulldozer.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "burger",
+    "label": "Бургер",
+    "image": "/cards/burger.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "bottle",
+    "label": "Бутылка",
+    "image": "/cards/bottle.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "bull",
+    "label": "Бык",
+    "image": "/cards/bull.jpg",
+    "category": "animals",
+    "weight": 480
+  },
+  {
+    "id": "mittens",
+    "label": "Варежки",
+    "image": "/cards/mittens.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "dumplings",
+    "label": "Вареники",
+    "image": "/cards/dumplings.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "jam",
+    "label": "Варенье",
+    "image": "/cards/jam.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "cotton-wool",
+    "label": "Вата",
+    "image": "/cards/cotton-wool.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "waffle",
+    "label": "Вафля",
+    "image": "/cards/waffle.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "bucket",
+    "label": "Ведерко",
+    "image": "/cards/bucket.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "bicycle",
+    "label": "Велосипед",
+    "image": "/cards/bicycle.jpg",
+    "category": "transport",
+    "weight": 560
+  },
+  {
+    "id": "camel",
+    "label": "Верблюд",
+    "image": "/cards/camel.jpg",
+    "category": "animals",
+    "weight": 260
+  },
+  {
+    "id": "helicopter",
+    "label": "Вертолет",
+    "image": "/cards/helicopter.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "fun",
+    "label": "Веселье",
+    "image": "/cards/fun.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "veterinarian",
+    "label": "Ветеринар",
+    "image": "/cards/veterinarian.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "adult",
+    "label": "Взрослый",
+    "image": "/cards/adult.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "makeup-artist",
+    "label": "Визажист",
+    "image": "/cards/makeup-artist.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "fork",
+    "label": "Вилка",
+    "image": "/cards/fork.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "guilt",
+    "label": "Вина",
+    "image": "/cards/guilt.jpg",
+    "category": "emotions",
+    "weight": 420
+  },
+  {
+    "id": "vinaigrette",
+    "label": "Винегрет",
+    "image": "/cards/vinaigrette.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "grapes",
+    "label": "Виноград",
+    "image": "/cards/grapes.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "grape-juice",
+    "label": "Виноградный сок",
+    "image": "/cards/grape-juice.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "lemon-water",
+    "label": "Вода с лимоном",
+    "image": "/cards/lemon-water.jpg",
+    "category": "drink",
+    "weight": 420
   },
   {
     "id": "water",
     "label": "Вода",
-    "image": "/cards/water.png",
-    "category": "drink"
+    "image": "/cards/water.jpg",
+    "category": "drink",
+    "weight": 920
+  },
+  {
+    "id": "driver",
+    "label": "Водитель",
+    "image": "/cards/driver.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "driver-seat",
+    "label": "Водительское место",
+    "image": "/cards/driver-seat.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "soldier",
+    "label": "Военный",
+    "image": "/cards/soldier.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "kite",
+    "label": "Воздушный змей",
+    "image": "/cards/kite.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "balloon",
+    "label": "Воздушный шар",
+    "image": "/cards/balloon.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "take-it",
+    "label": "Возьми",
+    "image": "/cards/take-it.jpg",
+    "category": "actions",
+    "weight": 840
+  },
+  {
+    "id": "station",
+    "label": "Вокзал",
+    "image": "/cards/station.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "wolf",
+    "label": "Волк",
+    "image": "/cards/wolf.jpg",
+    "category": "animals",
+    "weight": 600
+  },
+  {
+    "id": "excitement",
+    "label": "Волнение",
+    "image": "/cards/excitement.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "spinning-top",
+    "label": "Волчок",
+    "image": "/cards/spinning-top.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "question",
+    "label": "Вопрос",
+    "image": "/cards/question.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "sparrow",
+    "label": "Воробей",
+    "image": "/cards/sparrow.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "crow",
+    "label": "Ворона",
+    "image": "/cards/crow.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "collar",
+    "label": "Воротник",
+    "image": "/cards/collar.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "teacher-assistant",
+    "label": "Воспитатель",
+    "image": "/cards/teacher-assistant.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "here",
+    "label": "Вот",
+    "image": "/cards/here.jpg",
+    "category": "needs",
+    "weight": 740
+  },
+  {
+    "id": "doctor",
+    "label": "Врач",
+    "image": "/cards/doctor.jpg",
+    "category": "people",
+    "weight": 740
+  },
+  {
+    "id": "choose",
+    "label": "Выбери",
+    "image": "/cards/choose.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "choose-2",
+    "label": "Выбирать",
+    "image": "/cards/choose-2.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "choose-clothes",
+    "label": "Выбрать одежду",
+    "image": "/cards/choose-clothes.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "go-to-the-board",
+    "label": "Выйти к доске",
+    "image": "/cards/go-to-the-board.jpg",
+    "category": "school",
+    "weight": 650
+  },
+  {
+    "id": "switch",
+    "label": "Выключатель",
+    "image": "/cards/switch.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "cut-out",
+    "label": "Вырезать",
+    "image": "/cards/cut-out.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "tall",
+    "label": "Высокий",
+    "image": "/cards/tall.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "wipe",
+    "label": "Вытирать",
+    "image": "/cards/wipe.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "soda",
+    "label": "Газировка",
+    "image": "/cards/soda.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "garage",
+    "label": "Гараж",
+    "image": "/cards/garage.jpg",
+    "category": "places",
+    "weight": 160
+  },
+  {
+    "id": "wardrobe-room",
+    "label": "Гардероб",
+    "image": "/cards/wardrobe-room.jpg",
+    "category": "places",
+    "weight": 160
+  },
+  {
+    "id": "where",
+    "label": "Где",
+    "image": "/cards/where.jpg",
+    "category": "needs",
+    "weight": 760
+  },
+  {
+    "id": "smooth",
+    "label": "Гладкий",
+    "image": "/cards/smooth.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "sip",
+    "label": "Глоток",
+    "image": "/cards/sip.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "beef",
+    "label": "Говядина",
+    "image": "/cards/beef.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "light-blue",
+    "label": "Голубой",
+    "image": "/cards/light-blue.jpg",
+    "category": "colors",
+    "weight": 200
+  },
+  {
+    "id": "dove",
+    "label": "Голубь",
+    "image": "/cards/dove.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "pride",
+    "label": "Гордость",
+    "image": "/cards/pride.jpg",
+    "category": "emotions",
+    "weight": 420
+  },
+  {
+    "id": "gorilla",
+    "label": "Горилла",
+    "image": "/cards/gorilla.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "peas",
+    "label": "Горох",
+    "image": "/cards/peas.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "hot-chocolate",
+    "label": "Горячий шоколад",
+    "image": "/cards/hot-chocolate.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "guest",
+    "label": "Гость",
+    "image": "/cards/guest.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "cook",
+    "label": "Готовить",
+    "image": "/cards/cook.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "ready",
+    "label": "Готово",
+    "image": "/cards/ready.jpg",
+    "category": "needs",
+    "weight": 830
+  },
+  {
+    "id": "thermometer",
+    "label": "Градусник",
+    "image": "/cards/thermometer.jpg",
+    "category": "medicine",
+    "weight": 460
+  },
+  {
+    "id": "pomegranate",
+    "label": "Гранат",
+    "image": "/cards/pomegranate.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "granola",
+    "label": "Гранола",
+    "image": "/cards/granola.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "croutons",
+    "label": "Гренки",
+    "image": "/cards/croutons.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "buckwheat",
+    "label": "Гречка",
+    "image": "/cards/buckwheat.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "mushrooms-2",
+    "label": "Грибы 2",
+    "image": "/cards/mushrooms-2.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "mushrooms",
+    "label": "Грибы",
+    "image": "/cards/mushrooms.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "loudly",
+    "label": "Громко",
+    "image": "/cards/loudly.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "truck",
+    "label": "Грузовик",
+    "image": "/cards/truck.jpg",
+    "category": "transport",
+    "weight": 460
+  },
+  {
+    "id": "strong-sadness",
+    "label": "Грусть сильная",
+    "image": "/cards/strong-sadness.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "sadness",
+    "label": "Грусть",
+    "image": "/cards/sadness.jpg",
+    "category": "emotions",
+    "weight": 740
+  },
+  {
+    "id": "pear",
+    "label": "Груша",
+    "image": "/cards/pear.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "dirty",
+    "label": "Грязно",
+    "image": "/cards/dirty.jpg",
+    "category": "needs",
+    "weight": 850
+  },
+  {
+    "id": "walk",
+    "label": "Гулять",
+    "image": "/cards/walk.jpg",
+    "category": "actions",
+    "weight": 860
+  },
+  {
+    "id": "goose",
+    "label": "Гусь",
+    "image": "/cards/goose.jpg",
+    "category": "animals",
+    "weight": 640
+  },
+  {
+    "id": "yes",
+    "label": "Да",
+    "image": "/cards/yes.jpg",
+    "category": "needs",
+    "weight": 950
+  },
+  {
+    "id": "let-us-do-it-together",
+    "label": "Давай вместе",
+    "image": "/cards/let-us-do-it-together.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "give",
+    "label": "Дай",
+    "image": "/cards/give.jpg",
+    "category": "actions",
+    "weight": 980
+  },
+  {
+    "id": "door",
+    "label": "Дверь",
+    "image": "/cards/door.jpg",
+    "category": "household",
+    "weight": 620
+  },
+  {
+    "id": "janitor",
+    "label": "Дворник",
+    "image": "/cards/janitor.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "girl",
+    "label": "Девочка",
+    "image": "/cards/girl.jpg",
+    "category": "people",
+    "weight": 720
+  },
+  {
+    "id": "grandfather",
+    "label": "Дедушка",
+    "image": "/cards/grandfather.jpg",
+    "category": "people",
+    "weight": 800
+  },
+  {
+    "id": "dolphin",
+    "label": "Дельфин",
+    "image": "/cards/dolphin.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "children",
+    "label": "Дети",
+    "image": "/cards/children.jpg",
+    "category": "people",
+    "weight": 720
+  },
+  {
+    "id": "baby-cookies",
+    "label": "Детское печенье",
+    "image": "/cards/baby-cookies.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "jeans",
+    "label": "Джинсы",
+    "image": "/cards/jeans.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "sofa",
+    "label": "Диван",
+    "image": "/cards/sofa.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "designer",
+    "label": "Дизайнер",
+    "image": "/cards/designer.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "long",
+    "label": "Длинный",
+    "image": "/cards/long.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "diary",
+    "label": "Дневник",
+    "image": "/cards/diary.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "house",
+    "label": "Дом",
+    "image": "/cards/house.jpg",
+    "category": "places",
+    "weight": 160
+  },
+  {
+    "id": "homework",
+    "label": "Домашнее задание",
+    "image": "/cards/homework.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "dominoes",
+    "label": "Домино",
+    "image": "/cards/dominoes.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "finish-drinking",
+    "label": "Допить",
+    "image": "/cards/finish-drinking.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "road",
+    "label": "Дорога",
+    "image": "/cards/road.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "board",
+    "label": "Доска",
+    "image": "/cards/board.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "friend",
+    "label": "Друг",
+    "image": "/cards/friend.jpg",
+    "category": "people",
+    "weight": 720
+  },
+  {
+    "id": "melon",
+    "label": "Дыня",
+    "image": "/cards/melon.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "uncle",
+    "label": "Дядя",
+    "image": "/cards/uncle.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "hedgehog",
+    "label": "Еж",
+    "image": "/cards/hedgehog.jpg",
+    "category": "animals",
+    "weight": 600
+  },
+  {
+    "id": "raccoon",
+    "label": "Енот",
+    "image": "/cards/raccoon.jpg",
+    "category": "animals",
+    "weight": 260
+  },
+  {
+    "id": "eat",
+    "label": "Есть",
+    "image": "/cards/eat.jpg",
+    "category": "actions",
+    "weight": 940
+  },
+  {
+    "id": "ride",
+    "label": "Ехать",
+    "image": "/cards/ride.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "more",
+    "label": "Еще",
+    "image": "/cards/more.jpg",
+    "category": "needs",
+    "weight": 960
+  },
+  {
+    "id": "pity",
+    "label": "Жалость",
+    "image": "/cards/pity.jpg",
+    "category": "emotions",
+    "weight": 420
+  },
+  {
+    "id": "fried-potatoes",
+    "label": "Жареная картошка",
+    "image": "/cards/fried-potatoes.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "hot",
+    "label": "Жарко",
+    "image": "/cards/hot.jpg",
+    "category": "needs",
+    "weight": 860
+  },
+  {
+    "id": "gum",
+    "label": "Жвачка",
+    "image": "/cards/gum.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "wait",
+    "label": "Ждать",
+    "image": "/cards/wait.jpg",
+    "category": "actions",
+    "weight": 860
+  },
+  {
+    "id": "yellow",
+    "label": "Желтый",
+    "image": "/cards/yellow.jpg",
+    "category": "colors",
+    "weight": 340
+  },
+  {
+    "id": "woman",
+    "label": "Женщина",
+    "image": "/cards/woman.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "foal",
+    "label": "Жеребенок",
+    "image": "/cards/foal.jpg",
+    "category": "animals",
+    "weight": 480
+  },
+  {
+    "id": "vest",
+    "label": "Жилет",
+    "image": "/cards/vest.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "giraffe",
+    "label": "Жираф",
+    "image": "/cards/giraffe.jpg",
+    "category": "animals",
+    "weight": 560
+  },
+  {
+    "id": "journalist",
+    "label": "Журналист",
+    "image": "/cards/journalist.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "envy",
+    "label": "Зависть",
+    "image": "/cards/envy.jpg",
+    "category": "emotions",
+    "weight": 420
+  },
+  {
+    "id": "tie",
+    "label": "Завязать",
+    "image": "/cards/tie.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "task",
+    "label": "Задание",
+    "image": "/cards/task.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "toy-bunny",
+    "label": "Зайчик игрушечный",
+    "image": "/cards/toy-bunny.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "close",
+    "label": "Закрой",
+    "image": "/cards/close.jpg",
+    "category": "actions",
+    "weight": 870
+  },
+  {
+    "id": "closed",
+    "label": "Закрытый",
+    "image": "/cards/closed.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "lock",
+    "label": "Замок",
+    "image": "/cards/lock.jpg",
+    "category": "objects",
+    "weight": 220
+  },
+  {
+    "id": "casserole",
+    "label": "Запеканка",
+    "image": "/cards/casserole.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "baked-apple",
+    "label": "Запеченное яблоко",
+    "image": "/cards/baked-apple.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "fasten",
+    "label": "Застегнуть",
+    "image": "/cards/fasten.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "hare",
+    "label": "Заяц",
+    "image": "/cards/hare.jpg",
+    "category": "animals",
+    "weight": 600
+  },
+  {
+    "id": "star",
+    "label": "Звезда",
+    "image": "/cards/star.jpg",
+    "category": "objects",
+    "weight": 220
+  },
+  {
+    "id": "call",
+    "label": "Звонить",
+    "image": "/cards/call.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "bell",
+    "label": "Звонок",
+    "image": "/cards/bell.jpg",
+    "category": "objects",
+    "weight": 220
+  },
+  {
+    "id": "zebra",
+    "label": "Зебра",
+    "image": "/cards/zebra.jpg",
+    "category": "animals",
+    "weight": 560
+  },
+  {
+    "id": "brilliant-green",
+    "label": "Зеленка",
+    "image": "/cards/brilliant-green.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "green-tea",
+    "label": "Зеленый чай",
+    "image": "/cards/green-tea.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "green",
+    "label": "Зеленый",
+    "image": "/cards/green.jpg",
+    "category": "colors",
+    "weight": 340
+  },
+  {
+    "id": "greens",
+    "label": "Зелень",
+    "image": "/cards/greens.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "mirror",
+    "label": "Зеркало",
+    "image": "/cards/mirror.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "marshmallow",
+    "label": "Зефир",
+    "image": "/cards/marshmallow.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "strong-anger",
+    "label": "Злость сильная",
+    "image": "/cards/strong-anger.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "anger",
+    "label": "Злость",
+    "image": "/cards/anger.jpg",
+    "category": "emotions",
+    "weight": 740
+  },
+  {
+    "id": "snake",
+    "label": "Змея",
+    "image": "/cards/snake.jpg",
+    "category": "animals",
+    "weight": 520
+  },
+  {
+    "id": "gold",
+    "label": "Золотой",
+    "image": "/cards/gold.jpg",
+    "category": "colors",
+    "weight": 200
+  },
+  {
+    "id": "umbrella",
+    "label": "Зонт",
+    "image": "/cards/umbrella.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "toothbrush",
+    "label": "Зубная щетка",
+    "image": "/cards/toothbrush.jpg",
+    "category": "objects",
+    "weight": 650
+  },
+  {
+    "id": "play",
+    "label": "Играть",
+    "image": "/cards/play.jpg",
+    "category": "actions",
+    "weight": 880
+  },
+  {
+    "id": "toy-dishes",
+    "label": "Игрушечная посуда",
+    "image": "/cards/toy-dishes.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "toy-phone",
+    "label": "Игрушечный телефон",
+    "image": "/cards/toy-phone.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "come-here",
+    "label": "Иди сюда",
+    "image": "/cards/come-here.jpg",
+    "category": "actions",
+    "weight": 820
+  },
+  {
+    "id": "raisins",
+    "label": "Изюм",
+    "image": "/cards/raisins.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "name",
+    "label": "Имя",
+    "image": "/cards/name.jpg",
+    "category": "objects",
+    "weight": 220
+  },
+  {
+    "id": "inhaler",
+    "label": "Ингалятор",
+    "image": "/cards/inhaler.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "turkey-meat",
+    "label": "Индейка",
+    "image": "/cards/turkey-meat.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "turkey",
+    "label": "Индюк",
+    "image": "/cards/turkey.jpg",
+    "category": "people",
+    "weight": 480
+  },
+  {
+    "id": "engineer",
+    "label": "Инженер",
+    "image": "/cards/engineer.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "interest",
+    "label": "Интерес",
+    "image": "/cards/interest.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "search",
+    "label": "Искать",
+    "image": "/cards/search.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "fright",
+    "label": "Испуг",
+    "image": "/cards/fright.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "drinkable-yogurt",
+    "label": "Йогурт питьевой",
+    "image": "/cards/drinkable-yogurt.jpg",
+    "category": "drink",
+    "weight": 720
+  },
+  {
+    "id": "iodine",
+    "label": "Йод",
+    "image": "/cards/iodine.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "boar",
+    "label": "Кабан",
+    "image": "/cards/boar.jpg",
+    "category": "animals",
+    "weight": 480
+  },
+  {
+    "id": "zucchini",
+    "label": "Кабачок",
+    "image": "/cards/zucchini.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "doctor-office",
+    "label": "Кабинет врача",
+    "image": "/cards/doctor-office.jpg",
+    "category": "medicine",
+    "weight": 460
+  },
+  {
+    "id": "office",
+    "label": "Кабинет",
+    "image": "/cards/office.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "how",
+    "label": "Как",
+    "image": "/cards/how.jpg",
+    "category": "needs",
+    "weight": 760
+  },
+  {
+    "id": "cocoa",
+    "label": "Какао",
+    "image": "/cards/cocoa.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "kaleidoscope",
+    "label": "Калейдоскоп",
+    "image": "/cards/kaleidoscope.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "mason",
+    "label": "Каменщик",
+    "image": "/cards/mason.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "iv-drip",
+    "label": "Капельница",
+    "image": "/cards/iv-drip.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "captain",
+    "label": "Капитан",
+    "image": "/cards/captain.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "drops",
+    "label": "Капли",
+    "image": "/cards/drops.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "cabbage",
+    "label": "Капуста",
+    "image": "/cards/cabbage.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "put-on-hood",
+    "label": "Капюшон надеть",
+    "image": "/cards/put-on-hood.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "hood",
+    "label": "Капюшон",
+    "image": "/cards/hood.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "pencil",
+    "label": "Карандаш",
+    "image": "/cards/pencil.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "pocket",
+    "label": "Карман",
+    "image": "/cards/pocket.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "potato",
+    "label": "Картофель",
+    "image": "/cards/potato.jpg",
+    "category": "food",
+    "weight": 740
+  },
+  {
+    "id": "cards",
+    "label": "Карточки",
+    "image": "/cards/cards.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "cashier",
+    "label": "Кассир",
+    "image": "/cards/cashier.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "pot",
+    "label": "Кастрюля",
+    "image": "/cards/pot.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "roll",
+    "label": "Катать",
+    "image": "/cards/roll.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "motorboat",
+    "label": "Катер",
+    "image": "/cards/motorboat.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "porridge",
+    "label": "Каша",
+    "image": "/cards/porridge.jpg",
+    "category": "food",
+    "weight": 790
+  },
+  {
+    "id": "cough",
+    "label": "Кашель",
+    "image": "/cards/cough.jpg",
+    "category": "medicine",
+    "weight": 520
+  },
+  {
+    "id": "square",
+    "label": "Квадрат",
+    "image": "/cards/square.jpg",
+    "category": "shapes",
+    "weight": 300
+  },
+  {
+    "id": "atv",
+    "label": "Квадроцикл",
+    "image": "/cards/atv.jpg",
+    "category": "transport",
+    "weight": 260
+  },
+  {
+    "id": "bowling-pins",
+    "label": "Кегли",
+    "image": "/cards/bowling-pins.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "cupcake",
+    "label": "Кекс",
+    "image": "/cards/cupcake.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "kangaroo",
+    "label": "Кенгуру",
+    "image": "/cards/kangaroo.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "cap",
+    "label": "Кепка",
+    "image": "/cards/cap.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "ketchup",
+    "label": "Кетчуп",
+    "image": "/cards/ketchup.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "kefir",
+    "label": "Кефир",
+    "image": "/cards/kefir.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "kiwi",
+    "label": "Киви",
+    "image": "/cards/kiwi.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "throw-2",
+    "label": "Кидать",
+    "image": "/cards/throw-2.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "kissel",
+    "label": "Кисель",
+    "image": "/cards/kissel.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "brush",
+    "label": "Кисточка",
+    "image": "/cards/brush.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "whale",
+    "label": "Кит",
+    "image": "/cards/whale.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "classroom",
+    "label": "Класс",
+    "image": "/cards/classroom.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "glue",
+    "label": "Клеить",
+    "image": "/cards/glue.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "glue-2",
+    "label": "Клей",
+    "image": "/cards/glue-2.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "strawberry",
+    "label": "Клубника",
+    "image": "/cards/strawberry.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "cranberry-drink",
+    "label": "Клюквенный морс",
+    "image": "/cards/cranberry-drink.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "key",
+    "label": "Ключ",
+    "image": "/cards/key.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "book",
+    "label": "Книга",
+    "image": "/cards/book.jpg",
+    "category": "school",
+    "weight": 720
+  },
+  {
+    "id": "koala",
+    "label": "Коала",
+    "image": "/cards/koala.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "carpet",
+    "label": "Ковер",
+    "image": "/cards/carpet.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "when",
+    "label": "Когда",
+    "image": "/cards/when.jpg",
+    "category": "needs",
+    "weight": 760
+  },
+  {
+    "id": "goat",
+    "label": "Коза",
+    "image": "/cards/goat.jpg",
+    "category": "animals",
+    "weight": 640
+  },
+  {
+    "id": "kid-goat",
+    "label": "Козленок",
+    "image": "/cards/kid-goat.jpg",
+    "category": "animals",
+    "weight": 480
+  },
+  {
+    "id": "cocktail",
+    "label": "Коктейль",
+    "image": "/cards/cocktail.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "sausage",
+    "label": "Колбаса",
+    "image": "/cards/sausage.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "tights",
+    "label": "Колготки",
+    "image": "/cards/tights.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "wheel",
+    "label": "Колесо",
+    "image": "/cards/wheel.jpg",
+    "category": "objects",
+    "weight": 220
+  },
+  {
+    "id": "stroller",
+    "label": "Коляска",
+    "image": "/cards/stroller.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "team",
+    "label": "Команда",
+    "image": "/cards/team.jpg",
+    "category": "objects",
+    "weight": 220
+  },
+  {
+    "id": "room",
+    "label": "Комната",
+    "image": "/cards/room.jpg",
+    "category": "places",
+    "weight": 160
+  },
+  {
+    "id": "compote",
+    "label": "Компот",
+    "image": "/cards/compote.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "computer",
+    "label": "Компьютер",
+    "image": "/cards/computer.jpg",
+    "category": "objects",
+    "weight": 220
+  },
+  {
+    "id": "pastry-chef",
+    "label": "Кондитер",
+    "image": "/cards/pastry-chef.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "building-blocks",
+    "label": "Конструктор",
+    "image": "/cards/building-blocks.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "cone",
+    "label": "Конус",
+    "image": "/cards/cone.jpg",
+    "category": "shapes",
+    "weight": 180
+  },
+  {
+    "id": "candy",
+    "label": "Конфета",
+    "image": "/cards/candy.jpg",
+    "category": "food",
+    "weight": 810
+  },
+  {
+    "id": "toy-boat",
+    "label": "Кораблик",
+    "image": "/cards/toy-boat.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "ship",
+    "label": "Корабль",
+    "image": "/cards/ship.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "hallway",
+    "label": "Коридор",
+    "image": "/cards/hallway.jpg",
+    "category": "places",
+    "weight": 160
+  },
+  {
+    "id": "brown",
+    "label": "Коричневый",
+    "image": "/cards/brown.jpg",
+    "category": "colors",
+    "weight": 200
+  },
+  {
+    "id": "feed",
+    "label": "Кормить",
+    "image": "/cards/feed.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "box",
+    "label": "Коробка",
+    "image": "/cards/box.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "cow",
+    "label": "Корова",
+    "image": "/cards/cow.jpg",
+    "category": "animals",
+    "weight": 640
+  },
+  {
+    "id": "short",
+    "label": "Короткий",
+    "image": "/cards/short.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "kitten",
+    "label": "Котенок",
+    "image": "/cards/kitten.jpg",
+    "category": "animals",
+    "weight": 740
+  },
+  {
+    "id": "cutlet",
+    "label": "Котлета",
+    "image": "/cards/cutlet.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "sweatshirt",
+    "label": "Кофта",
+    "image": "/cards/sweatshirt.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "cat",
+    "label": "Кошка",
+    "image": "/cards/cat.jpg",
+    "category": "animals",
+    "weight": 760
+  },
+  {
+    "id": "crab",
+    "label": "Краб",
+    "image": "/cards/crab.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "faucet",
+    "label": "Кран",
+    "image": "/cards/faucet.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "paints",
+    "label": "Краски",
+    "image": "/cards/paints.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "red",
+    "label": "Красный",
+    "image": "/cards/red.jpg",
+    "category": "colors",
+    "weight": 340
+  },
+  {
+    "id": "shrimp",
+    "label": "Креветка",
+    "image": "/cards/shrimp.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "cracker",
+    "label": "Крекер",
+    "image": "/cards/cracker.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "wheelchair",
+    "label": "Кресло-коляска",
+    "image": "/cards/wheelchair.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "cross",
+    "label": "Крест",
+    "image": "/cards/cross.jpg",
+    "category": "shapes",
+    "weight": 180
+  },
+  {
+    "id": "medical-bed",
+    "label": "Кровать медицинская",
+    "image": "/cards/medical-bed.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "bed",
+    "label": "Кровать",
+    "image": "/cards/bed.jpg",
+    "category": "household",
+    "weight": 620
+  },
+  {
+    "id": "crocodile",
+    "label": "Крокодил",
+    "image": "/cards/crocodile.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "rabbit",
+    "label": "Кролик",
+    "image": "/cards/rabbit.jpg",
+    "category": "animals",
+    "weight": 640
+  },
+  {
+    "id": "sneakers",
+    "label": "Кроссовки",
+    "image": "/cards/sneakers.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "croissant",
+    "label": "Круассан",
+    "image": "/cards/croissant.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "circle",
+    "label": "Круг",
+    "image": "/cards/circle.jpg",
+    "category": "shapes",
+    "weight": 300
+  },
+  {
+    "id": "spin",
+    "label": "Кружиться",
+    "image": "/cards/spin.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "rat",
+    "label": "Крыса",
+    "image": "/cards/rat.jpg",
+    "category": "animals",
+    "weight": 260
+  },
+  {
+    "id": "xylophone",
+    "label": "Ксилофон",
+    "image": "/cards/xylophone.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "who",
+    "label": "Кто",
+    "image": "/cards/who.jpg",
+    "category": "needs",
+    "weight": 760
+  },
+  {
+    "id": "cube",
+    "label": "Куб",
+    "image": "/cards/cube.jpg",
+    "category": "shapes",
+    "weight": 180
+  },
+  {
+    "id": "blocks",
+    "label": "Кубики",
+    "image": "/cards/blocks.jpg",
+    "category": "toys",
+    "weight": 740
+  },
+  {
+    "id": "where-to",
+    "label": "Куда",
+    "image": "/cards/where-to.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "male-cousin",
+    "label": "Кузен",
+    "image": "/cards/male-cousin.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "female-cousin",
+    "label": "Кузина",
+    "image": "/cards/female-cousin.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "doll",
+    "label": "Кукла",
+    "image": "/cards/doll.jpg",
+    "category": "toys",
+    "weight": 750
+  },
+  {
+    "id": "corn",
+    "label": "Кукуруза",
+    "image": "/cards/corn.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "corn-porridge",
+    "label": "Кукурузная каша",
+    "image": "/cards/corn-porridge.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "corn-sticks",
+    "label": "Кукурузные палочки",
+    "image": "/cards/corn-sticks.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "bathe",
+    "label": "Купаться",
+    "image": "/cards/bathe.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "dried-apricots",
+    "label": "Курага",
+    "image": "/cards/dried-apricots.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "chicken-nugget",
+    "label": "Куриный наггетс",
+    "image": "/cards/chicken-nugget.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "hen",
+    "label": "Курица-птица",
+    "image": "/cards/hen.jpg",
+    "category": "animals",
+    "weight": 260
+  },
+  {
+    "id": "chicken",
+    "label": "Курица",
+    "image": "/cards/chicken.jpg",
+    "category": "food",
+    "weight": 640
+  },
+  {
+    "id": "jacket",
+    "label": "Куртка",
+    "image": "/cards/jacket.jpg",
+    "category": "clothes",
+    "weight": 620
+  },
+  {
+    "id": "courier",
+    "label": "Курьер",
+    "image": "/cards/courier.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "exam-couch",
+    "label": "Кушетка",
+    "image": "/cards/exam-couch.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "lavash",
+    "label": "Лаваш",
+    "image": "/cards/lavash.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "lamp",
+    "label": "Лампа",
+    "image": "/cards/lamp.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "noodles",
+    "label": "Лапша",
+    "image": "/cards/noodles.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "eraser",
+    "label": "Ластик",
+    "image": "/cards/eraser.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "lion",
+    "label": "Лев",
+    "image": "/cards/lion.jpg",
+    "category": "animals",
+    "weight": 560
+  },
+  {
+    "id": "leggings",
+    "label": "Леггинсы",
+    "image": "/cards/leggings.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "light",
+    "label": "Легкий",
+    "image": "/cards/light.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "lollipop",
+    "label": "Леденец",
+    "image": "/cards/lollipop.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "lie-down",
+    "label": "Лежать",
+    "image": "/cards/lie-down.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "medicine",
+    "label": "Лекарство",
+    "image": "/cards/medicine.jpg",
+    "category": "medicine",
+    "weight": 520
+  },
+  {
+    "id": "leopard",
+    "label": "Леопард",
+    "image": "/cards/leopard.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "mold",
+    "label": "Лепить",
+    "image": "/cards/mold.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "clay-modeling",
+    "label": "Лепка",
+    "image": "/cards/clay-modeling.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "forest",
+    "label": "Лес",
+    "image": "/cards/forest.jpg",
+    "category": "places",
+    "weight": 160
+  },
+  {
+    "id": "fly",
+    "label": "Лететь",
+    "image": "/cards/fly.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "lemon",
+    "label": "Лимон",
+    "image": "/cards/lemon.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "lemonade",
+    "label": "Лимонад",
+    "image": "/cards/lemonade.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "ruler",
+    "label": "Линейка",
+    "image": "/cards/ruler.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "line",
+    "label": "Линия",
+    "image": "/cards/line.jpg",
+    "category": "shapes",
+    "weight": 180
+  },
+  {
+    "id": "fox",
+    "label": "Лиса",
+    "image": "/cards/fox.jpg",
+    "category": "animals",
+    "weight": 600
+  },
+  {
+    "id": "catch",
+    "label": "Ловить",
+    "image": "/cards/catch.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "speech-therapist",
+    "label": "Логопед",
+    "image": "/cards/speech-therapist.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "boat",
+    "label": "Лодка",
+    "image": "/cards/boat.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "spoon",
+    "label": "Ложка",
+    "image": "/cards/spoon.jpg",
+    "category": "household",
+    "weight": 620
+  },
+  {
+    "id": "shovel",
+    "label": "Лопатка",
+    "image": "/cards/shovel.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "salmon",
+    "label": "Лосось",
+    "image": "/cards/salmon.jpg",
+    "category": "animals",
+    "weight": 260
+  },
+  {
+    "id": "moose",
+    "label": "Лось",
+    "image": "/cards/moose.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "lotto-game",
+    "label": "Лото",
+    "image": "/cards/lotto-game.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "horse",
+    "label": "Лошадь",
+    "image": "/cards/horse.jpg",
+    "category": "animals",
+    "weight": 640
+  },
+  {
+    "id": "onion",
+    "label": "Лук",
+    "image": "/cards/onion.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "love",
+    "label": "Любовь",
+    "image": "/cards/love.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "people",
+    "label": "Люди",
+    "image": "/cards/people.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "frog",
+    "label": "Лягушка",
+    "image": "/cards/frog.jpg",
+    "category": "animals",
+    "weight": 520
+  },
+  {
+    "id": "swab",
+    "label": "Мазок",
+    "image": "/cards/swab.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "ointment",
+    "label": "Мазь",
+    "image": "/cards/ointment.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "tank-top",
+    "label": "Майка",
+    "image": "/cards/tank-top.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "mayonnaise",
+    "label": "Майонез",
+    "image": "/cards/mayonnaise.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "pasta",
+    "label": "Макароны",
+    "image": "/cards/pasta.jpg",
+    "category": "food",
+    "weight": 780
+  },
+  {
+    "id": "small",
+    "label": "Маленький",
+    "image": "/cards/small.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "raspberry",
+    "label": "Малина",
+    "image": "/cards/raspberry.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "baby",
+    "label": "Малыш",
+    "image": "/cards/baby.jpg",
+    "category": "people",
+    "weight": 700
+  },
+  {
+    "id": "boy",
+    "label": "Мальчик",
+    "image": "/cards/boy.jpg",
+    "category": "people",
+    "weight": 720
+  },
+  {
+    "id": "painter",
+    "label": "Маляр",
+    "image": "/cards/painter.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "mom",
+    "label": "Мама",
+    "image": "/cards/mom.jpg",
+    "category": "people",
+    "weight": 930
+  },
+  {
+    "id": "mango",
+    "label": "Манго",
+    "image": "/cards/mango.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "mandarin",
+    "label": "Мандарин",
+    "image": "/cards/mandarin.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "semolina",
+    "label": "Манка",
+    "image": "/cards/semolina.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "marker",
+    "label": "Маркер",
+    "image": "/cards/marker.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "marmalade",
+    "label": "Мармелад",
+    "image": "/cards/marmalade.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "mask",
+    "label": "Маска",
+    "image": "/cards/mask.jpg",
+    "category": "clothes",
+    "weight": 460
+  },
+  {
+    "id": "butter",
+    "label": "Масло",
+    "image": "/cards/butter.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "math",
+    "label": "Математика",
+    "image": "/cards/math.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "muffin",
+    "label": "Маффин",
+    "image": "/cards/muffin.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "wave-hand",
+    "label": "Махать рукой",
+    "image": "/cards/wave-hand.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "car",
+    "label": "Машина",
+    "image": "/cards/car.jpg",
+    "category": "transport",
+    "weight": 560
+  },
+  {
+    "id": "train-driver",
+    "label": "Машинист",
+    "image": "/cards/train-driver.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "toy-car",
+    "label": "Машинка",
+    "image": "/cards/toy-car.jpg",
+    "category": "toys",
+    "weight": 780
+  },
+  {
+    "id": "honey",
+    "label": "Мед",
+    "image": "/cards/honey.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "bear",
+    "label": "Медведь",
+    "image": "/cards/bear.jpg",
+    "category": "animals",
+    "weight": 600
+  },
+  {
+    "id": "medical-gloves",
+    "label": "Медицинские перчатки",
+    "image": "/cards/medical-gloves.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "nurse",
+    "label": "Медсестра",
+    "image": "/cards/nurse.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "jellyfish",
+    "label": "Медуза",
+    "image": "/cards/jellyfish.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "chalk",
+    "label": "Мел",
+    "image": "/cards/chalk.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "metro",
+    "label": "Метро",
+    "image": "/cards/metro.jpg",
+    "category": "transport",
+    "weight": 460
+  },
+  {
+    "id": "mechanic",
+    "label": "Механик",
+    "image": "/cards/mechanic.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "mineral-water",
+    "label": "Минеральная вода",
+    "image": "/cards/mineral-water.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "teddy-bear",
+    "label": "Мишка",
+    "image": "/cards/teddy-bear.jpg",
+    "category": "toys",
+    "weight": 700
+  },
+  {
+    "id": "i-do-not-like-it",
+    "label": "Мне не нравится",
+    "image": "/cards/i-do-not-like-it.jpg",
+    "category": "actions",
+    "weight": 790
+  },
+  {
+    "id": "i-like-it",
+    "label": "Мне нравится",
+    "image": "/cards/i-like-it.jpg",
+    "category": "actions",
+    "weight": 790
+  },
+  {
+    "id": "may-i",
+    "label": "Можно",
+    "image": "/cards/may-i.jpg",
+    "category": "needs",
+    "weight": 930
+  },
+  {
+    "id": "mosaic",
+    "label": "Мозаика",
+    "image": "/cards/mosaic.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "wet",
+    "label": "Мокро",
+    "image": "/cards/wet.jpg",
+    "category": "needs",
+    "weight": 850
+  },
+  {
+    "id": "zipper",
+    "label": "Молния",
+    "image": "/cards/zipper.jpg",
+    "category": "objects",
+    "weight": 220
+  },
+  {
+    "id": "milk",
+    "label": "Молоко",
+    "image": "/cards/milk.jpg",
+    "category": "drink",
+    "weight": 870
+  },
+  {
+    "id": "milkshake",
+    "label": "Молочный коктейль",
+    "image": "/cards/milkshake.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "carrot-juice",
+    "label": "Морковный сок",
+    "image": "/cards/carrot-juice.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "carrot",
+    "label": "Морковь",
+    "image": "/cards/carrot.jpg",
+    "category": "food",
+    "weight": 730
+  },
+  {
+    "id": "ice-cream",
+    "label": "Мороженое",
+    "image": "/cards/ice-cream.jpg",
+    "category": "food",
+    "weight": 710
+  },
+  {
+    "id": "berry-drink",
+    "label": "Морс",
+    "image": "/cards/berry-drink.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "guinea-pig",
+    "label": "Морская свинка",
+    "image": "/cards/guinea-pig.jpg",
+    "category": "animals",
+    "weight": 260
+  },
+  {
+    "id": "motorcycle",
+    "label": "Мотоцикл",
+    "image": "/cards/motorcycle.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "my-turn",
+    "label": "Моя очередь",
+    "image": "/cards/my-turn.jpg",
+    "category": "needs",
+    "weight": 780
+  },
+  {
+    "id": "man",
+    "label": "Мужчина",
+    "image": "/cards/man.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "music",
+    "label": "Музыка",
+    "image": "/cards/music.jpg",
+    "category": "objects",
+    "weight": 220
+  },
+  {
+    "id": "musician",
+    "label": "Музыкант",
+    "image": "/cards/musician.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "garbage-truck",
+    "label": "Мусоровоз",
+    "image": "/cards/garbage-truck.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "we",
+    "label": "Мы",
+    "image": "/cards/we.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "soap",
+    "label": "Мыло",
+    "image": "/cards/soap.jpg",
+    "category": "household",
+    "weight": 650
+  },
+  {
+    "id": "soap-bubbles",
+    "label": "Мыльные пузыри",
+    "image": "/cards/soap-bubbles.jpg",
+    "category": "toys",
+    "weight": 680
+  },
+  {
+    "id": "wash",
+    "label": "Мыть",
+    "image": "/cards/wash.jpg",
+    "category": "actions",
+    "weight": 810
+  },
+  {
+    "id": "mouse",
+    "label": "Мышь",
+    "image": "/cards/mouse.jpg",
+    "category": "animals",
+    "weight": 700
+  },
+  {
+    "id": "muesli",
+    "label": "Мюсли",
+    "image": "/cards/muesli.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "stuffed-toy",
+    "label": "Мягкая игрушка",
+    "image": "/cards/stuffed-toy.jpg",
+    "category": "toys",
+    "weight": 700
+  },
+  {
+    "id": "soft",
+    "label": "Мягкий",
+    "image": "/cards/soft.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "ball",
+    "label": "Мяч",
+    "image": "/cards/ball.jpg",
+    "category": "toys",
+    "weight": 770
+  },
+  {
+    "id": "doctor-kit",
+    "label": "Набор врача",
+    "image": "/cards/doctor-kit.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "kitchen-set",
+    "label": "Набор кухни",
+    "image": "/cards/kitchen-set.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "hope",
+    "label": "Надежда",
+    "image": "/cards/hope.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "put-on",
+    "label": "Надеть",
+    "image": "/cards/put-on.jpg",
+    "category": "clothes",
+    "weight": 790
+  },
+  {
+    "id": "stickers",
+    "label": "Наклейки",
+    "image": "/cards/stickers.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "pour",
+    "label": "Налить",
+    "image": "/cards/pour.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "bottled-drink",
+    "label": "Напиток в бутылке",
+    "image": "/cards/bottled-drink.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "drink-in-glass",
+    "label": "Напиток в стакане",
+    "image": "/cards/drink-in-glass.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "drink-with-straw",
+    "label": "Напиток с трубочкой",
+    "image": "/cards/drink-with-straw.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "runny-nose",
+    "label": "Насморк",
+    "image": "/cards/runny-nose.jpg",
+    "category": "medicine",
+    "weight": 520
+  },
+  {
+    "id": "board-game",
+    "label": "Настольная игра",
+    "image": "/cards/board-game.jpg",
+    "category": "toys",
+    "weight": 620
+  },
+  {
+    "id": "found",
+    "label": "Нашел",
+    "image": "/cards/found.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "not-ready",
+    "label": "Не готово",
+    "image": "/cards/not-ready.jpg",
+    "category": "needs",
+    "weight": 830
+  },
+  {
+    "id": "i-do-not-want",
+    "label": "Не хочу",
+    "image": "/cards/i-do-not-want.jpg",
+    "category": "needs",
+    "weight": 935
+  },
+  {
+    "id": "nebulizer",
+    "label": "Небулайзер",
+    "image": "/cards/nebulizer.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "displeasure",
+    "label": "Недовольство",
+    "image": "/cards/displeasure.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "tenderness",
+    "label": "Нежность",
+    "image": "/cards/tenderness.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "stranger",
+    "label": "Незнакомец",
+    "image": "/cards/stranger.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "awkwardness",
+    "label": "Неловкость",
+    "image": "/cards/awkwardness.jpg",
+    "category": "emotions",
+    "weight": 420
+  },
+  {
+    "id": "not-allowed",
+    "label": "Нельзя",
+    "image": "/cards/not-allowed.jpg",
+    "category": "needs",
+    "weight": 940
+  },
+  {
+    "id": "carry",
+    "label": "Нести",
+    "image": "/cards/carry.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "no",
+    "label": "Нет",
+    "image": "/cards/no.jpg",
+    "category": "needs",
+    "weight": 945
+  },
+  {
+    "id": "uncertainty",
+    "label": "Неуверенность",
+    "image": "/cards/uncertainty.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "low",
+    "label": "Низкий",
+    "image": "/cards/low.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "knife",
+    "label": "Нож",
+    "image": "/cards/knife.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "scissors",
+    "label": "Ножницы",
+    "image": "/cards/scissors.jpg",
+    "category": "objects",
+    "weight": 220
+  },
+  {
+    "id": "socks",
+    "label": "Носки",
+    "image": "/cards/socks.jpg",
+    "category": "clothes",
+    "weight": 620
+  },
+  {
+    "id": "rhinoceros",
+    "label": "Носорог",
+    "image": "/cards/rhinoceros.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "monkey",
+    "label": "Обезьяна",
+    "image": "/cards/monkey.jpg",
+    "category": "animals",
+    "weight": 560
+  },
+  {
+    "id": "hurt-feelings",
+    "label": "Обида",
+    "image": "/cards/hurt-feelings.jpg",
+    "category": "emotions",
+    "weight": 560
+  },
+  {
+    "id": "hug",
+    "label": "Обнимать",
+    "image": "/cards/hug.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "oval",
+    "label": "Овал",
+    "image": "/cards/oval.jpg",
+    "category": "shapes",
+    "weight": 180
+  },
+  {
+    "id": "oatmeal",
+    "label": "Овсянка",
+    "image": "/cards/oatmeal.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "sheep",
+    "label": "Овца",
+    "image": "/cards/sheep.jpg",
+    "category": "animals",
+    "weight": 640
+  },
+  {
+    "id": "cucumber",
+    "label": "Огурец",
+    "image": "/cards/cucumber.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "get-dressed",
+    "label": "Одеваться",
+    "image": "/cards/get-dressed.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "dirty-clothes",
+    "label": "Одежда грязная",
+    "image": "/cards/dirty-clothes.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "wet-clothes",
+    "label": "Одежда мокрая",
+    "image": "/cards/wet-clothes.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "dry-clothes",
+    "label": "Одежда сухая",
+    "image": "/cards/dry-clothes.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "clean-clothes",
+    "label": "Одежда чистая",
+    "image": "/cards/clean-clothes.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "blanket",
+    "label": "Одеяло",
+    "image": "/cards/blanket.jpg",
+    "category": "household",
+    "weight": 620
+  },
+  {
+    "id": "loneliness",
+    "label": "Одиночество",
+    "image": "/cards/loneliness.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "male-classmate",
+    "label": "Одноклассник",
+    "image": "/cards/male-classmate.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "female-classmate",
+    "label": "Одноклассница",
+    "image": "/cards/female-classmate.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "window",
+    "label": "Окно",
+    "image": "/cards/window.jpg",
+    "category": "household",
+    "weight": 620
+  },
+  {
+    "id": "fritters",
+    "label": "Оладьи",
+    "image": "/cards/fritters.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "deer",
+    "label": "Олень",
+    "image": "/cards/deer.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "omelet",
+    "label": "Омлет",
+    "image": "/cards/omelet.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "he",
+    "label": "Он",
+    "image": "/cards/he.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "she",
+    "label": "Она",
+    "image": "/cards/she.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "they",
+    "label": "Они",
+    "image": "/cards/they.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "lower",
+    "label": "Опускать",
+    "image": "/cards/lower.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "orange-color",
+    "label": "Оранжевый",
+    "image": "/cards/orange-color.jpg",
+    "category": "colors",
+    "weight": 200
+  },
+  {
+    "id": "eagle",
+    "label": "Орел",
+    "image": "/cards/eagle.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "nuts",
+    "label": "Орехи",
+    "image": "/cards/nuts.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "nut-bar",
+    "label": "Ореховый батончик",
+    "image": "/cards/nut-bar.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "checkup",
+    "label": "Осмотр",
+    "image": "/cards/checkup.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "stop-station",
+    "label": "Остановка",
+    "image": "/cards/stop-station.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "sharp",
+    "label": "Острый",
+    "image": "/cards/sharp.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "octopus",
+    "label": "Осьминог",
+    "image": "/cards/octopus.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "answer",
+    "label": "Ответ",
+    "image": "/cards/answer.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "disgust",
+    "label": "Отвращение",
+    "image": "/cards/disgust.jpg",
+    "category": "emotions",
+    "weight": 420
+  },
+  {
+    "id": "give-back",
+    "label": "Отдай",
+    "image": "/cards/give-back.jpg",
+    "category": "actions",
+    "weight": 830
+  },
+  {
+    "id": "rest",
+    "label": "Отдыхать",
+    "image": "/cards/rest.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "open",
+    "label": "Открой",
+    "image": "/cards/open.jpg",
+    "category": "actions",
+    "weight": 880
+  },
+  {
+    "id": "open-2",
+    "label": "Открытый",
+    "image": "/cards/open-2.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "waiter",
+    "label": "Официант",
+    "image": "/cards/waiter.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "guard",
+    "label": "Охранник",
+    "image": "/cards/guard.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "turn",
+    "label": "Очередь",
+    "image": "/cards/turn.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "puzzle",
+    "label": "Пазл",
+    "image": "/cards/puzzle.jpg",
+    "category": "toys",
+    "weight": 620
+  },
+  {
+    "id": "bag",
+    "label": "Пакет",
+    "image": "/cards/bag.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "ward",
+    "label": "Палата",
+    "image": "/cards/ward.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "coat",
+    "label": "Пальто",
+    "image": "/cards/coat.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "sun-hat",
+    "label": "Панама",
+    "image": "/cards/sun-hat.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "panda",
+    "label": "Панда",
+    "image": "/cards/panda.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "panic",
+    "label": "Паника",
+    "image": "/cards/panic.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "panther",
+    "label": "Пантера",
+    "image": "/cards/panther.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "dad",
+    "label": "Папа",
+    "image": "/cards/dad.jpg",
+    "category": "people",
+    "weight": 925
+  },
+  {
+    "id": "folder",
+    "label": "Папка",
+    "image": "/cards/folder.jpg",
+    "category": "objects",
+    "weight": 220
+  },
+  {
+    "id": "pair",
+    "label": "Пара",
+    "image": "/cards/pair.jpg",
+    "category": "objects",
+    "weight": 220
+  },
+  {
+    "id": "hairdresser",
+    "label": "Парикмахер",
+    "image": "/cards/hairdresser.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "ferry",
+    "label": "Паром",
+    "image": "/cards/ferry.jpg",
+    "category": "transport",
+    "weight": 260
+  },
+  {
+    "id": "desk",
+    "label": "Парта",
+    "image": "/cards/desk.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "pasta-2",
+    "label": "Паста",
+    "image": "/cards/pasta-2.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "fruit-pastila",
+    "label": "Пастила",
+    "image": "/cards/fruit-pastila.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "singer",
+    "label": "Певец",
+    "image": "/cards/singer.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "pediatrician",
+    "label": "Педиатр",
+    "image": "/cards/pediatrician.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "baker",
+    "label": "Пекарь",
+    "image": "/cards/baker.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "pelmeni",
+    "label": "Пельмени",
+    "image": "/cards/pelmeni.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "pencil-case",
+    "label": "Пенал",
+    "image": "/cards/pencil-case.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "break",
+    "label": "Перемена",
+    "image": "/cards/break.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "change-clothes",
+    "label": "Переодеться",
+    "image": "/cards/change-clothes.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "pepper",
+    "label": "Перец",
+    "image": "/cards/pepper.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "peach",
+    "label": "Персик",
+    "image": "/cards/peach.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "peach-juice",
+    "label": "Персиковый сок",
+    "image": "/cards/peach-juice.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "gloves",
+    "label": "Перчатки",
+    "image": "/cards/gloves.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "rooster",
+    "label": "Петух",
+    "image": "/cards/rooster.jpg",
+    "category": "animals",
+    "weight": 640
+  },
+  {
+    "id": "sing",
+    "label": "Петь",
+    "image": "/cards/sing.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "type",
+    "label": "Печатать",
+    "image": "/cards/type.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "cookie",
+    "label": "Печенье",
+    "image": "/cards/cookie.jpg",
+    "category": "food",
+    "weight": 825
+  },
+  {
+    "id": "crosswalk",
+    "label": "Пешеходный переход",
+    "image": "/cards/crosswalk.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "pajamas",
+    "label": "Пижама",
+    "image": "/cards/pajamas.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "pilot",
+    "label": "Пилот",
+    "image": "/cards/pilot.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "kick",
+    "label": "Пинать",
+    "image": "/cards/kick.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "penguin",
+    "label": "Пингвин",
+    "image": "/cards/penguin.jpg",
+    "category": "animals",
+    "weight": 260
+  },
+  {
+    "id": "pyramid",
+    "label": "Пирамида",
+    "image": "/cards/pyramid.jpg",
+    "category": "shapes",
+    "weight": 180
+  },
+  {
+    "id": "stacking-pyramid",
+    "label": "Пирамидка",
+    "image": "/cards/stacking-pyramid.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "pie",
+    "label": "Пирог",
+    "image": "/cards/pie.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "cake",
+    "label": "Пирожное",
+    "image": "/cards/cake.jpg",
+    "category": "food",
+    "weight": 660
+  },
+  {
+    "id": "write",
+    "label": "Писать",
+    "image": "/cards/write.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "letter",
+    "label": "Письмо",
+    "image": "/cards/letter.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "drink",
+    "label": "Пить",
+    "image": "/cards/drink.jpg",
+    "category": "actions",
+    "weight": 935
+  },
+  {
+    "id": "pizza",
+    "label": "Пицца",
+    "image": "/cards/pizza.jpg",
+    "category": "food",
+    "weight": 660
+  },
+  {
+    "id": "swim",
+    "label": "Плавать",
+    "image": "/cards/swim.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "tablet",
+    "label": "Планшет",
+    "image": "/cards/tablet.jpg",
+    "category": "toys",
+    "weight": 730
+  },
+  {
+    "id": "clay-for-class",
+    "label": "Пластилин для урока",
+    "image": "/cards/clay-for-class.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "clay",
+    "label": "Пластилин",
+    "image": "/cards/clay.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "bandage-strip",
+    "label": "Пластырь",
+    "image": "/cards/bandage-strip.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "dress",
+    "label": "Платье",
+    "image": "/cards/dress.jpg",
+    "category": "clothes",
+    "weight": 620
+  },
+  {
+    "id": "pilaf",
+    "label": "Плов",
+    "image": "/cards/pilaf.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "float",
+    "label": "Плыть",
+    "image": "/cards/float.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "plush-cat",
+    "label": "Плюшевый кот",
+    "image": "/cards/plush-cat.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "cook-2",
+    "label": "Повар",
+    "image": "/cards/cook-2.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "repeat",
+    "label": "Повтори",
+    "image": "/cards/repeat.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "repeat-2",
+    "label": "Повторять",
+    "image": "/cards/repeat-2.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "rattle",
+    "label": "Погремушка",
+    "image": "/cards/rattle.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "forklift",
+    "label": "Погрузчик",
+    "image": "/cards/forklift.jpg",
+    "category": "transport",
+    "weight": 260
+  },
+  {
+    "id": "lift",
+    "label": "Поднимать",
+    "image": "/cards/lift.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "raise-hand",
+    "label": "Поднять руку",
+    "image": "/cards/raise-hand.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "wait-2",
+    "label": "Подожди",
+    "image": "/cards/wait-2.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "teenager",
+    "label": "Подросток",
+    "image": "/cards/teenager.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "female-friend",
+    "label": "Подруга",
+    "image": "/cards/female-friend.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "pillow",
+    "label": "Подушка",
+    "image": "/cards/pillow.jpg",
+    "category": "household",
+    "weight": 620
+  },
+  {
+    "id": "toy-train",
+    "label": "Поезд игрушечный",
+    "image": "/cards/toy-train.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "train",
+    "label": "Поезд",
+    "image": "/cards/train.jpg",
+    "category": "transport",
+    "weight": 560
+  },
+  {
+    "id": "please",
+    "label": "Пожалуйста",
+    "image": "/cards/please.jpg",
+    "category": "needs",
+    "weight": 925
+  },
+  {
+    "id": "fire-truck",
+    "label": "Пожарная машина",
+    "image": "/cards/fire-truck.jpg",
+    "category": "transport",
+    "weight": 500
+  },
+  {
+    "id": "firefighter",
+    "label": "Пожарный",
+    "image": "/cards/firefighter.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "elderly-person",
+    "label": "Пожилой человек",
+    "image": "/cards/elderly-person.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "bye",
+    "label": "Пока",
+    "image": "/cards/bye.jpg",
+    "category": "needs",
+    "weight": 900
+  },
+  {
+    "id": "show-me",
+    "label": "Покажи",
+    "image": "/cards/show-me.jpg",
+    "category": "actions",
+    "weight": 850
+  },
+  {
+    "id": "buy",
+    "label": "Покупать",
+    "image": "/cards/buy.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "floor",
+    "label": "Пол",
+    "image": "/cards/floor.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "crawl",
+    "label": "Ползать",
+    "image": "/cards/crawl.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "water-plants",
+    "label": "Поливать",
+    "image": "/cards/water-plants.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "clinic",
+    "label": "Поликлиника",
+    "image": "/cards/clinic.jpg",
+    "category": "medicine",
+    "weight": 460
+  },
+  {
+    "id": "police-car",
+    "label": "Полицейская машина",
+    "image": "/cards/police-car.jpg",
+    "category": "transport",
+    "weight": 500
+  },
+  {
+    "id": "police-officer",
+    "label": "Полицейский",
+    "image": "/cards/police-officer.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "shelf",
+    "label": "Полка",
+    "image": "/cards/shelf.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "full",
+    "label": "Полный",
+    "image": "/cards/full.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "towel",
+    "label": "Полотенце",
+    "image": "/cards/towel.jpg",
+    "category": "household",
+    "weight": 650
+  },
+  {
+    "id": "half-glass",
+    "label": "Полстакана",
+    "image": "/cards/half-glass.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "semicircle",
+    "label": "Полукруг",
+    "image": "/cards/semicircle.jpg",
+    "category": "shapes",
+    "weight": 180
+  },
+  {
+    "id": "tomato",
+    "label": "Помидор",
+    "image": "/cards/tomato.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "help-me",
+    "label": "Помоги",
+    "image": "/cards/help-me.jpg",
+    "category": "actions",
+    "weight": 970
+  },
+  {
+    "id": "pony",
+    "label": "Пони",
+    "image": "/cards/pony.jpg",
+    "category": "animals",
+    "weight": 260
+  },
+  {
+    "id": "diarrhea",
+    "label": "Понос",
+    "image": "/cards/diarrhea.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "donut",
+    "label": "Пончик",
+    "image": "/cards/donut.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "popcorn",
+    "label": "Попкорн",
+    "image": "/cards/popcorn.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "parrot",
+    "label": "Попугай",
+    "image": "/cards/parrot.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "piglet",
+    "label": "Поросенок",
+    "image": "/cards/piglet.jpg",
+    "category": "animals",
+    "weight": 480
+  },
+  {
+    "id": "port",
+    "label": "Порт",
+    "image": "/cards/port.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "lost",
+    "label": "Потерял",
+    "image": "/cards/lost.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "ceiling",
+    "label": "Потолок",
+    "image": "/cards/ceiling.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "later",
+    "label": "Потом",
+    "image": "/cards/later.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "why",
+    "label": "Почему",
+    "image": "/cards/why.jpg",
+    "category": "needs",
+    "weight": 760
+  },
+  {
+    "id": "mail-carrier",
+    "label": "Почтальон",
+    "image": "/cards/mail-carrier.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "hello",
+    "label": "Привет",
+    "image": "/cards/hello.jpg",
+    "category": "needs",
+    "weight": 915
+  },
+  {
+    "id": "vaccination",
+    "label": "Прививка",
+    "image": "/cards/vaccination.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "doctor-appointment",
+    "label": "Прием врача",
+    "image": "/cards/doctor-appointment.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "trailer",
+    "label": "Прицеп",
+    "image": "/cards/trailer.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "comb-hair",
+    "label": "Причесываться",
+    "image": "/cards/comb-hair.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "programmer",
+    "label": "Программист",
+    "image": "/cards/programmer.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "salesperson",
+    "label": "Продавец",
+    "image": "/cards/salesperson.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "procedure",
+    "label": "Процедура",
+    "image": "/cards/procedure.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "slinky",
+    "label": "Пружинка",
+    "image": "/cards/slinky.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "jump",
+    "label": "Прыгать",
+    "image": "/cards/jump.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "rectangle",
+    "label": "Прямоугольник",
+    "image": "/cards/rectangle.jpg",
+    "category": "shapes",
+    "weight": 180
+  },
+  {
+    "id": "gingerbread",
+    "label": "Пряник",
+    "image": "/cards/gingerbread.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "hide",
+    "label": "Прятать",
+    "image": "/cards/hide.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "psychologist",
+    "label": "Психолог",
+    "image": "/cards/psychologist.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "button",
+    "label": "Пуговица",
+    "image": "/cards/button.jpg",
+    "category": "objects",
+    "weight": 220
+  },
+  {
+    "id": "remote-control",
+    "label": "Пульт",
+    "image": "/cards/remote-control.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "empty",
+    "label": "Пустой",
+    "image": "/cards/empty.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "bee",
+    "label": "Пчела",
+    "image": "/cards/bee.jpg",
+    "category": "animals",
+    "weight": 260
+  },
+  {
+    "id": "millet",
+    "label": "Пшено",
+    "image": "/cards/millet.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "vacuum",
+    "label": "Пылесосить",
+    "image": "/cards/vacuum.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "pouch-puree",
+    "label": "Пюре в пауче",
+    "image": "/cards/pouch-puree.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "puree",
+    "label": "Пюре",
+    "image": "/cards/puree.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "stew",
+    "label": "Рагу",
+    "image": "/cards/stew.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "joy",
+    "label": "Радость",
+    "image": "/cards/joy.jpg",
+    "category": "emotions",
+    "weight": 740
+  },
+  {
+    "id": "take-apart",
+    "label": "Разбирать",
+    "image": "/cards/take-apart.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "undress",
+    "label": "Раздеваться",
+    "image": "/cards/undress.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "irritation",
+    "label": "Раздражение",
+    "image": "/cards/irritation.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "disappointment",
+    "label": "Разочарование",
+    "image": "/cards/disappointment.jpg",
+    "category": "emotions",
+    "weight": 420
+  },
+  {
+    "id": "rocket",
+    "label": "Ракета",
+    "image": "/cards/rocket.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "coloring-book",
+    "label": "Раскраска",
+    "image": "/cards/coloring-book.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "color",
+    "label": "Раскрашивать",
+    "image": "/cards/color.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "schedule",
+    "label": "Расписание",
+    "image": "/cards/schedule.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "pickle-soup",
+    "label": "Рассольник",
+    "image": "/cards/pickle-soup.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "unfasten",
+    "label": "Расстегнуть",
+    "image": "/cards/unfasten.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "confusion",
+    "label": "Растерянность",
+    "image": "/cards/confusion.jpg",
+    "category": "emotions",
+    "weight": 420
+  },
+  {
+    "id": "comb",
+    "label": "Расческа",
+    "image": "/cards/comb.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "vomiting",
+    "label": "Рвота",
+    "image": "/cards/vomiting.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "child",
+    "label": "Ребенок",
+    "image": "/cards/child.jpg",
+    "category": "people",
+    "weight": 720
+  },
+  {
+    "id": "jealousy",
+    "label": "Ревность",
+    "image": "/cards/jealousy.jpg",
+    "category": "emotions",
+    "weight": 420
+  },
+  {
+    "id": "reception-desk",
+    "label": "Регистратура",
+    "image": "/cards/reception-desk.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "radish",
+    "label": "Редис",
+    "image": "/cards/radish.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "rubber-boots",
+    "label": "Резиновые сапоги",
+    "image": "/cards/rubber-boots.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "river",
+    "label": "Река",
+    "image": "/cards/river.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "rails",
+    "label": "Рельсы",
+    "image": "/cards/rails.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "seat-belt",
+    "label": "Ремень безопасности",
+    "image": "/cards/seat-belt.jpg",
+    "category": "objects",
+    "weight": 220
+  },
+  {
+    "id": "belt",
+    "label": "Ремень",
+    "image": "/cards/belt.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "x-ray",
+    "label": "Рентген",
+    "image": "/cards/x-ray.jpg",
+    "category": "medicine",
+    "weight": 180
+  },
+  {
+    "id": "prescription",
+    "label": "Рецепт",
+    "image": "/cards/prescription.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "solve",
+    "label": "Решать",
+    "image": "/cards/solve.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "rice",
+    "label": "Рис",
+    "image": "/cards/rice.jpg",
+    "category": "food",
+    "weight": 750
+  },
+  {
+    "id": "drawing",
+    "label": "Рисование",
+    "image": "/cards/drawing.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "draw",
+    "label": "Рисовать",
+    "image": "/cards/draw.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "robot",
+    "label": "Робот",
+    "image": "/cards/robot.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "parents",
+    "label": "Родители",
+    "image": "/cards/parents.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "relative",
+    "label": "Родственник",
+    "image": "/cards/relative.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "outlet",
+    "label": "Розетка",
+    "image": "/cards/outlet.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "pink",
+    "label": "Розовый",
+    "image": "/cards/pink.jpg",
+    "category": "colors",
+    "weight": 200
+  },
+  {
+    "id": "rolls",
+    "label": "Роллы",
+    "image": "/cards/rolls.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "chamomile-tea",
+    "label": "Ромашковый чай",
+    "image": "/cards/chamomile-tea.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "diamond-shape",
+    "label": "Ромб",
+    "image": "/cards/diamond-shape.jpg",
+    "category": "shapes",
+    "weight": 180
+  },
+  {
+    "id": "shirt",
+    "label": "Рубашка",
+    "image": "/cards/shirt.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "sleeve",
+    "label": "Рукав",
+    "image": "/cards/sleeve.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "steering-wheel",
+    "label": "Руль",
+    "image": "/cards/steering-wheel.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "pen",
+    "label": "Ручка",
+    "image": "/cards/pen.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "fish",
+    "label": "Рыба",
+    "image": "/cards/fish.jpg",
+    "category": "animals",
+    "weight": 700
+  },
+  {
+    "id": "fish-fillet",
+    "label": "Рыбное филе",
+    "image": "/cards/fish-fillet.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "school-backpack",
+    "label": "Рюкзак школьный",
+    "image": "/cards/school-backpack.jpg",
+    "category": "clothes",
+    "weight": 580
+  },
+  {
+    "id": "backpack",
+    "label": "Рюкзак",
+    "image": "/cards/backpack.jpg",
+    "category": "clothes",
+    "weight": 580
+  },
+  {
+    "id": "ryazhenka",
+    "label": "Ряженка",
+    "image": "/cards/ryazhenka.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "gardener",
+    "label": "Садовник",
+    "image": "/cards/gardener.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "vegetable-salad",
+    "label": "Салат овощной",
+    "image": "/cards/vegetable-salad.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "salad",
+    "label": "Салат",
+    "image": "/cards/salad.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "napkin",
+    "label": "Салфетка",
+    "image": "/cards/napkin.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "scooter",
+    "label": "Самокат",
+    "image": "/cards/scooter.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "toy-airplane",
+    "label": "Самолет игрушечный",
+    "image": "/cards/toy-airplane.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "airplane",
+    "label": "Самолет",
+    "image": "/cards/airplane.jpg",
+    "category": "transport",
+    "weight": 560
+  },
+  {
+    "id": "dump-truck",
+    "label": "Самосвал",
+    "image": "/cards/dump-truck.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "sandals",
+    "label": "Сандалии",
+    "image": "/cards/sandals.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "sled",
+    "label": "Сани",
+    "image": "/cards/sled.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "plumber",
+    "label": "Сантехник",
+    "image": "/cards/plumber.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "high-boots",
+    "label": "Сапоги",
+    "image": "/cards/high-boots.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "sugar",
+    "label": "Сахар",
+    "image": "/cards/sugar.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "beet",
+    "label": "Свекла",
+    "image": "/cards/beet.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "traffic-light",
+    "label": "Светофор",
+    "image": "/cards/traffic-light.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "candle",
+    "label": "Свеча",
+    "image": "/cards/candle.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "pork",
+    "label": "Свинина",
+    "image": "/cards/pork.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "pig",
+    "label": "Свинья",
+    "image": "/cards/pig.jpg",
+    "category": "animals",
+    "weight": 640
+  },
+  {
+    "id": "sweater",
+    "label": "Свитер",
+    "image": "/cards/sweater.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "seeds",
+    "label": "Семечки",
+    "image": "/cards/seeds.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "family",
+    "label": "Семья",
+    "image": "/cards/family.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "heart",
+    "label": "Сердце",
+    "image": "/cards/heart.jpg",
+    "category": "objects",
+    "weight": 220
+  },
+  {
+    "id": "silver",
+    "label": "Серебряный",
+    "image": "/cards/silver.jpg",
+    "category": "colors",
+    "weight": 200
+  },
+  {
+    "id": "gray",
+    "label": "Серый",
+    "image": "/cards/gray.jpg",
+    "category": "colors",
+    "weight": 200
+  },
+  {
+    "id": "sister",
+    "label": "Сестра",
+    "image": "/cards/sister.jpg",
+    "category": "people",
+    "weight": 780
+  },
+  {
+    "id": "sit-quietly",
+    "label": "Сидеть тихо",
+    "image": "/cards/sit-quietly.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "sit",
+    "label": "Сидеть",
+    "image": "/cards/sit.jpg",
+    "category": "actions",
+    "weight": 830
+  },
+  {
+    "id": "blue",
+    "label": "Синий",
+    "image": "/cards/blue.jpg",
+    "category": "colors",
+    "weight": 340
+  },
+  {
+    "id": "syrup",
+    "label": "Сироп",
+    "image": "/cards/syrup.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "say",
+    "label": "Скажи",
+    "image": "/cards/say.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "jump-rope",
+    "label": "Скакалка",
+    "image": "/cards/jump-rope.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "frying-pan",
+    "label": "Сковорода",
+    "image": "/cards/frying-pan.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "ambulance",
+    "label": "Скорая помощь",
+    "image": "/cards/ambulance.jpg",
+    "category": "transport",
+    "weight": 500
+  },
+  {
+    "id": "boredom",
+    "label": "Скука",
+    "image": "/cards/boredom.jpg",
+    "category": "emotions",
+    "weight": 560
+  },
+  {
+    "id": "scooter-2",
+    "label": "Скутер",
+    "image": "/cards/scooter-2.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "slime",
+    "label": "Слайм",
+    "image": "/cards/slime.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "plum",
+    "label": "Слива",
+    "image": "/cards/plum.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "broken",
+    "label": "Сломалось",
+    "image": "/cards/broken.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "elephant",
+    "label": "Слон",
+    "image": "/cards/elephant.jpg",
+    "category": "animals",
+    "weight": 560
+  },
+  {
+    "id": "listen",
+    "label": "Слушай",
+    "image": "/cards/listen.jpg",
+    "category": "actions",
+    "weight": 840
+  },
+  {
+    "id": "listen-to-teacher",
+    "label": "Слушать учителя",
+    "image": "/cards/listen-to-teacher.jpg",
+    "category": "school",
+    "weight": 650
+  },
+  {
+    "id": "listen-2",
+    "label": "Слушать",
+    "image": "/cards/listen-2.jpg",
+    "category": "actions",
+    "weight": 840
+  },
+  {
+    "id": "sour-cream",
+    "label": "Сметана",
+    "image": "/cards/sour-cream.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "look",
+    "label": "Смотреть",
+    "image": "/cards/look.jpg",
+    "category": "actions",
+    "weight": 850
+  },
+  {
+    "id": "look-2",
+    "label": "Смотри",
+    "image": "/cards/look-2.jpg",
+    "category": "actions",
+    "weight": 850
+  },
+  {
+    "id": "smoothie",
+    "label": "Смузи",
+    "image": "/cards/smoothie.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "embarrassment",
+    "label": "Смущение",
+    "image": "/cards/embarrassment.jpg",
+    "category": "emotions",
+    "weight": 560
+  },
+  {
+    "id": "first",
+    "label": "Сначала",
+    "image": "/cards/first.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "take-off",
+    "label": "Снять",
+    "image": "/cards/take-off.jpg",
+    "category": "clothes",
+    "weight": 790
+  },
+  {
+    "id": "dog",
+    "label": "Собака",
+    "image": "/cards/dog.jpg",
+    "category": "animals",
+    "weight": 760
+  },
+  {
+    "id": "assemble",
+    "label": "Собирать",
+    "image": "/cards/assemble.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "owl",
+    "label": "Сова",
+    "image": "/cards/owl.jpg",
+    "category": "animals",
+    "weight": 420
+  },
+  {
+    "id": "juice",
+    "label": "Сок",
+    "image": "/cards/juice.jpg",
+    "category": "drink",
+    "weight": 880
+  },
+  {
+    "id": "straw",
+    "label": "Соломка",
+    "image": "/cards/straw.jpg",
+    "category": "objects",
+    "weight": 220
+  },
+  {
+    "id": "salt",
+    "label": "Соль",
+    "image": "/cards/salt.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "sleepiness",
+    "label": "Сонливость",
+    "image": "/cards/sleepiness.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "shape-sorter",
+    "label": "Сортер",
+    "image": "/cards/shape-sorter.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "male-neighbor",
+    "label": "Сосед",
+    "image": "/cards/male-neighbor.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "female-neighbor",
+    "label": "Соседка",
+    "image": "/cards/female-neighbor.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "hot-dog-sausage",
+    "label": "Сосиска",
+    "image": "/cards/hot-dog-sausage.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "sauce",
+    "label": "Соус",
+    "image": "/cards/sauce.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "spaghetti",
+    "label": "Спагетти",
+    "image": "/cards/spaghetti.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "rescuer",
+    "label": "Спасатель",
+    "image": "/cards/rescuer.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "thank-you",
+    "label": "Спасибо",
+    "image": "/cards/thank-you.jpg",
+    "category": "needs",
+    "weight": 920
+  },
+  {
+    "id": "sleep",
+    "label": "Спать",
+    "image": "/cards/sleep.jpg",
+    "category": "actions",
+    "weight": 920
+  },
+  {
+    "id": "calm",
+    "label": "Спокойствие",
+    "image": "/cards/calm.jpg",
+    "category": "emotions",
+    "weight": 680
+  },
+  {
+    "id": "gym",
+    "label": "Спортзал",
+    "image": "/cards/gym.jpg",
+    "category": "places",
+    "weight": 160
+  },
+  {
+    "id": "tracksuit",
+    "label": "Спортивный костюм",
+    "image": "/cards/tracksuit.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "athlete",
+    "label": "Спортсмен",
+    "image": "/cards/athlete.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "station-2",
+    "label": "Станция",
+    "image": "/cards/station-2.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "wall",
+    "label": "Стена",
+    "image": "/cards/wall.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "stethoscope",
+    "label": "Стетоскоп",
+    "image": "/cards/stethoscope.jpg",
+    "category": "medicine",
+    "weight": 180
+  },
+  {
+    "id": "doctor-desk",
+    "label": "Стол врача",
+    "image": "/cards/doctor-desk.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "table",
+    "label": "Стол",
+    "image": "/cards/table.jpg",
+    "category": "household",
+    "weight": 620
+  },
+  {
+    "id": "cafeteria",
+    "label": "Столовая",
+    "image": "/cards/cafeteria.jpg",
+    "category": "places",
+    "weight": 160
+  },
+  {
+    "id": "dentist",
+    "label": "Стоматолог",
+    "image": "/cards/dentist.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "stop",
+    "label": "Стоп",
+    "image": "/cards/stop.jpg",
+    "category": "actions",
+    "weight": 890
+  },
+  {
+    "id": "stand",
+    "label": "Стоять",
+    "image": "/cards/stand.jpg",
+    "category": "actions",
+    "weight": 820
+  },
+  {
+    "id": "fear",
+    "label": "Страх",
+    "image": "/cards/fear.jpg",
+    "category": "emotions",
+    "weight": 740
+  },
+  {
+    "id": "arrow",
+    "label": "Стрелка",
+    "image": "/cards/arrow.jpg",
+    "category": "shapes",
+    "weight": 180
+  },
+  {
+    "id": "builder",
+    "label": "Строитель",
+    "image": "/cards/builder.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "build",
+    "label": "Строить",
+    "image": "/cards/build.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "patient-chair",
+    "label": "Стул пациента",
+    "image": "/cards/patient-chair.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "school-chair",
+    "label": "Стул школьный",
+    "image": "/cards/school-chair.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "chair",
+    "label": "Стул",
+    "image": "/cards/chair.jpg",
+    "category": "household",
+    "weight": 620
+  },
+  {
+    "id": "shame",
+    "label": "Стыд",
+    "image": "/cards/shame.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "shoulder-bag",
+    "label": "Сумка через плечо",
+    "image": "/cards/shoulder-bag.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "bag-2",
+    "label": "Сумка",
+    "image": "/cards/bag-2.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "soup",
+    "label": "Суп",
+    "image": "/cards/soup.jpg",
+    "category": "food",
+    "weight": 800
+  },
+  {
+    "id": "crackers",
+    "label": "Сухарики",
+    "image": "/cards/crackers.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "rusk",
+    "label": "Сухарь",
+    "image": "/cards/rusk.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "dried-fruit",
+    "label": "Сухофрукты",
+    "image": "/cards/dried-fruit.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "sushi",
+    "label": "Суши",
+    "image": "/cards/sushi.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "sushka",
+    "label": "Сушка",
+    "image": "/cards/sushka.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "happiness",
+    "label": "Счастье",
+    "image": "/cards/happiness.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "counting",
+    "label": "Счет",
+    "image": "/cards/counting.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "count",
+    "label": "Считать",
+    "image": "/cards/count.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "cheese",
+    "label": "Сыр",
+    "image": "/cards/cheese.jpg",
+    "category": "food",
+    "weight": 770
+  },
+  {
+    "id": "syrniki",
+    "label": "Сырники",
+    "image": "/cards/syrniki.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "curd-snack",
+    "label": "Сырок",
+    "image": "/cards/curd-snack.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "sandwich",
+    "label": "Сэндвич",
+    "image": "/cards/sandwich.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "pill",
+    "label": "Таблетка",
+    "image": "/cards/pill.jpg",
+    "category": "medicine",
+    "weight": 520
+  },
+  {
+    "id": "taxi",
+    "label": "Такси",
+    "image": "/cards/taxi.jpg",
+    "category": "transport",
+    "weight": 500
+  },
+  {
+    "id": "taxi-driver",
+    "label": "Таксист",
+    "image": "/cards/taxi-driver.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "there",
+    "label": "Там",
+    "image": "/cards/there.jpg",
+    "category": "needs",
+    "weight": 740
+  },
+  {
+    "id": "dance",
+    "label": "Танцевать",
+    "image": "/cards/dance.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "slippers",
+    "label": "Тапки",
+    "image": "/cards/slippers.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "plate",
+    "label": "Тарелка",
+    "image": "/cards/plate.jpg",
+    "category": "household",
+    "weight": 620
+  },
+  {
+    "id": "hard",
+    "label": "Твердый",
+    "image": "/cards/hard.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "cottage-cheese",
+    "label": "Творог",
+    "image": "/cards/cottage-cheese.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "curd-yogurt",
+    "label": "Творожок",
+    "image": "/cards/curd-yogurt.jpg",
+    "category": "food",
+    "weight": 720
+  },
+  {
+    "id": "your-turn",
+    "label": "Твоя очередь",
+    "image": "/cards/your-turn.jpg",
+    "category": "objects",
+    "weight": 780
+  },
+  {
+    "id": "tv",
+    "label": "Телевизор",
+    "image": "/cards/tv.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "calf",
+    "label": "Теленок",
+    "image": "/cards/calf.jpg",
+    "category": "animals",
+    "weight": 480
+  },
+  {
+    "id": "phone",
+    "label": "Телефон",
+    "image": "/cards/phone.jpg",
+    "category": "household",
+    "weight": 710
+  },
+  {
+    "id": "fever",
+    "label": "Температура",
+    "image": "/cards/fever.jpg",
+    "category": "medicine",
+    "weight": 520
+  },
+  {
+    "id": "warm-drink",
+    "label": "Теплый напиток",
+    "image": "/cards/warm-drink.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "thermometer-2",
+    "label": "Термометр",
+    "image": "/cards/thermometer-2.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "notebook",
+    "label": "Тетрадь",
+    "image": "/cards/notebook.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "aunt",
+    "label": "Тетя",
+    "image": "/cards/aunt.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "meatballs",
+    "label": "Тефтели",
+    "image": "/cards/meatballs.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "tiger",
+    "label": "Тигр",
+    "image": "/cards/tiger.jpg",
+    "category": "animals",
+    "weight": 560
+  },
+  {
+    "id": "quietly",
+    "label": "Тихо",
+    "image": "/cards/quietly.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "push",
+    "label": "Толкать",
+    "image": "/cards/push.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "crowd",
+    "label": "Толпа",
+    "image": "/cards/crowd.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "hoodie",
+    "label": "Толстовка",
+    "image": "/cards/hoodie.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "thick",
+    "label": "Толстый",
+    "image": "/cards/thick.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "tomato-juice",
+    "label": "Томатный сок",
+    "image": "/cards/tomato-juice.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "thin",
+    "label": "Тонкий",
+    "image": "/cards/thin.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "blood-pressure-monitor",
+    "label": "Тонометр",
+    "image": "/cards/blood-pressure-monitor.jpg",
+    "category": "medicine",
+    "weight": 180
+  },
+  {
+    "id": "stomp",
+    "label": "Топать",
+    "image": "/cards/stomp.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "cake-2",
+    "label": "Торт",
+    "image": "/cards/cake-2.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "longing",
+    "label": "Тоска",
+    "image": "/cards/longing.jpg",
+    "category": "emotions",
+    "weight": 420
+  },
+  {
+    "id": "toast",
+    "label": "Тост",
+    "image": "/cards/toast.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "sharpener",
+    "label": "Точилка",
+    "image": "/cards/sharpener.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "point",
+    "label": "Точка",
+    "image": "/cards/point.jpg",
+    "category": "shapes",
+    "weight": 180
+  },
+  {
+    "id": "nausea",
+    "label": "Тошнота",
+    "image": "/cards/nausea.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "herbal-tea",
+    "label": "Травяной чай",
+    "image": "/cards/herbal-tea.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "tractor",
+    "label": "Трактор",
+    "image": "/cards/tractor.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "tram",
+    "label": "Трамвай",
+    "image": "/cards/tram.jpg",
+    "category": "transport",
+    "weight": 460
+  },
+  {
+    "id": "anxiety",
+    "label": "Тревога",
+    "image": "/cards/anxiety.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "track",
+    "label": "Трек",
+    "image": "/cards/track.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "coach",
+    "label": "Тренер",
+    "image": "/cards/coach.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "triangle",
+    "label": "Треугольник",
+    "image": "/cards/triangle.jpg",
+    "category": "shapes",
+    "weight": 300
+  },
+  {
+    "id": "trolleybus",
+    "label": "Троллейбус",
+    "image": "/cards/trolleybus.jpg",
+    "category": "transport",
+    "weight": 260
+  },
+  {
+    "id": "underwear",
+    "label": "Трусы",
+    "image": "/cards/underwear.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "school-toilet",
+    "label": "Туалет в школе",
+    "image": "/cards/school-toilet.jpg",
+    "category": "places",
+    "weight": 910
+  },
+  {
+    "id": "tuna",
+    "label": "Тунец",
+    "image": "/cards/tuna.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "dull",
+    "label": "Тупой",
+    "image": "/cards/dull.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "here-2",
+    "label": "Тут",
+    "image": "/cards/here-2.jpg",
+    "category": "needs",
+    "weight": 740
+  },
+  {
+    "id": "shoes",
+    "label": "Туфли",
+    "image": "/cards/shoes.jpg",
+    "category": "clothes",
+    "weight": 620
+  },
+  {
+    "id": "do-it-yourself",
+    "label": "Ты сам",
+    "image": "/cards/do-it-yourself.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "you",
+    "label": "Ты",
+    "image": "/cards/you.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "pumpkin",
+    "label": "Тыква",
+    "image": "/cards/pumpkin.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "heavy",
+    "label": "Тяжелый",
+    "image": "/cards/heavy.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "pull",
+    "label": "Тянуть",
+    "image": "/cards/pull.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "clean-up",
+    "label": "Убирать",
+    "image": "/cards/clean-up.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "cleaner",
+    "label": "Уборщик",
+    "image": "/cards/cleaner.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "confidence",
+    "label": "Уверенность",
+    "image": "/cards/confidence.jpg",
+    "category": "emotions",
+    "weight": 300
+  },
+  {
+    "id": "surprise",
+    "label": "Удивление",
+    "image": "/cards/surprise.jpg",
+    "category": "emotions",
+    "weight": 680
+  },
+  {
+    "id": "ultrasound",
+    "label": "УЗИ",
+    "image": "/cards/ultrasound.jpg",
+    "category": "medicine",
+    "weight": 180
+  },
+  {
+    "id": "narrow",
+    "label": "Узкий",
+    "image": "/cards/narrow.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "go-away",
+    "label": "Уйди",
+    "image": "/cards/go-away.jpg",
+    "category": "actions",
+    "weight": 810
+  },
+  {
+    "id": "injection",
+    "label": "Укол",
+    "image": "/cards/injection.jpg",
+    "category": "medicine",
+    "weight": 520
+  },
+  {
+    "id": "reading-lesson",
+    "label": "Урок чтения",
+    "image": "/cards/reading-lesson.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "lesson",
+    "label": "Урок",
+    "image": "/cards/lesson.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "tiredness",
+    "label": "Усталость",
+    "image": "/cards/tiredness.jpg",
+    "category": "needs",
+    "weight": 800
+  },
+  {
+    "id": "duckling",
+    "label": "Утенок",
+    "image": "/cards/duckling.jpg",
+    "category": "animals",
+    "weight": 480
+  },
+  {
+    "id": "duck",
+    "label": "Утка",
+    "image": "/cards/duck.jpg",
+    "category": "animals",
+    "weight": 640
+  },
+  {
+    "id": "textbook",
+    "label": "Учебник",
+    "image": "/cards/textbook.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "teacher",
+    "label": "Учитель",
+    "image": "/cards/teacher.jpg",
+    "category": "school",
+    "weight": 760
+  },
+  {
+    "id": "study",
+    "label": "Учиться",
+    "image": "/cards/study.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "pharmacist",
+    "label": "Фармацевт",
+    "image": "/cards/pharmacist.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "beans",
+    "label": "Фасоль",
+    "image": "/cards/beans.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "paramedic",
+    "label": "Фельдшер",
+    "image": "/cards/paramedic.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "farmer",
+    "label": "Фермер",
+    "image": "/cards/farmer.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "date-fruit",
+    "label": "Финик",
+    "image": "/cards/date-fruit.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "purple",
+    "label": "Фиолетовый",
+    "image": "/cards/purple.jpg",
+    "category": "colors",
+    "weight": 200
+  },
+  {
+    "id": "felt-tip-pen",
+    "label": "Фломастер",
+    "image": "/cards/felt-tip-pen.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "phonendoscope",
+    "label": "Фонендоскоп",
+    "image": "/cards/phonendoscope.jpg",
+    "category": "medicine",
+    "weight": 180
+  },
+  {
+    "id": "molds",
+    "label": "Формочки",
+    "image": "/cards/molds.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "photographer",
+    "label": "Фотограф",
+    "image": "/cards/photographer.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "take-a-photo",
+    "label": "Фотографировать",
+    "image": "/cards/take-a-photo.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "fruit-puree",
+    "label": "Фруктовое пюре",
+    "image": "/cards/fruit-puree.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "semi-truck",
+    "label": "Фура",
+    "image": "/cards/semi-truck.jpg",
+    "category": "transport",
+    "weight": 260
+  },
+  {
+    "id": "t-shirt",
+    "label": "Футболка",
+    "image": "/cards/t-shirt.jpg",
+    "category": "clothes",
+    "weight": 620
+  },
+  {
+    "id": "robe",
+    "label": "Халат",
+    "image": "/cards/robe.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "surgeon",
+    "label": "Хирург",
+    "image": "/cards/surgeon.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "bread",
+    "label": "Хлеб",
+    "image": "/cards/bread.jpg",
+    "category": "food",
+    "weight": 835
+  },
+  {
+    "id": "crispbread",
+    "label": "Хлебец",
+    "image": "/cards/crispbread.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "clap",
+    "label": "Хлопать",
+    "image": "/cards/clap.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "walk-2",
+    "label": "Ходить",
+    "image": "/cards/walk-2.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "owner",
+    "label": "Хозяин",
+    "image": "/cards/owner.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "cold",
+    "label": "Холодно",
+    "image": "/cards/cold.jpg",
+    "category": "needs",
+    "weight": 860
+  },
+  {
+    "id": "cold-drink",
+    "label": "Холодный напиток",
+    "image": "/cards/cold-drink.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "hamster",
+    "label": "Хомяк",
+    "image": "/cards/hamster.jpg",
+    "category": "animals",
+    "weight": 260
+  },
+  {
+    "id": "hot-dog",
+    "label": "Хот-дог",
+    "image": "/cards/hot-dog.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "i-want-a-hug",
+    "label": "Хочу обнять",
+    "image": "/cards/i-want-a-hug.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "i-want-to-cry",
+    "label": "Хочу плакать",
+    "image": "/cards/i-want-to-cry.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "i-want-to-be-alone",
+    "label": "Хочу побыть один",
+    "image": "/cards/i-want-to-be-alone.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "i-want-to-leave",
+    "label": "Хочу уйти",
+    "image": "/cards/i-want-to-leave.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "i-want",
+    "label": "Хочу",
+    "image": "/cards/i-want.jpg",
+    "category": "actions",
+    "weight": 990
+  },
+  {
+    "id": "artist",
+    "label": "Художник",
+    "image": "/cards/artist.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "cauliflower",
+    "label": "Цветная капуста",
+    "image": "/cards/cauliflower.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "kiss",
+    "label": "Целовать",
+    "image": "/cards/kiss.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "cylinder",
+    "label": "Цилиндр",
+    "image": "/cards/cylinder.jpg",
+    "category": "shapes",
+    "weight": 180
+  },
+  {
+    "id": "chick",
+    "label": "Цыпленок",
+    "image": "/cards/chick.jpg",
+    "category": "animals",
+    "weight": 480
+  },
+  {
+    "id": "tea",
+    "label": "Чай",
+    "image": "/cards/tea.jpg",
+    "category": "drink",
+    "weight": 680
+  },
+  {
+    "id": "clock",
+    "label": "Часы",
+    "image": "/cards/clock.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "cup-of-water",
+    "label": "Чашка воды",
+    "image": "/cards/cup-of-water.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "cup",
+    "label": "Чашка",
+    "image": "/cards/cup.jpg",
+    "category": "household",
+    "weight": 620
+  },
+  {
+    "id": "person",
+    "label": "Человек",
+    "image": "/cards/person.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "turtle",
+    "label": "Черепаха",
+    "image": "/cards/turtle.jpg",
+    "category": "animals",
+    "weight": 520
+  },
+  {
+    "id": "blueberries",
+    "label": "Черника",
+    "image": "/cards/blueberries.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "black-tea",
+    "label": "Черный чай",
+    "image": "/cards/black-tea.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "black",
+    "label": "Черный",
+    "image": "/cards/black.jpg",
+    "category": "colors",
+    "weight": 340
+  },
+  {
+    "id": "garlic",
+    "label": "Чеснок",
+    "image": "/cards/garlic.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "chips",
+    "label": "Чипсы",
+    "image": "/cards/chips.jpg",
+    "category": "food",
+    "weight": 660
+  },
+  {
+    "id": "brush-teeth",
+    "label": "Чистить зубы",
+    "image": "/cards/brush-teeth.jpg",
+    "category": "actions",
+    "weight": 800
+  },
+  {
+    "id": "clean",
+    "label": "Чисто",
+    "image": "/cards/clean.jpg",
+    "category": "needs",
+    "weight": 850
+  },
+  {
+    "id": "read",
+    "label": "Читать",
+    "image": "/cards/read.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "reading",
+    "label": "Чтение",
+    "image": "/cards/reading.jpg",
+    "category": "school",
+    "weight": 250
+  },
+  {
+    "id": "what",
+    "label": "Что",
+    "image": "/cards/what.jpg",
+    "category": "needs",
+    "weight": 760
+  },
+  {
+    "id": "hat",
+    "label": "Шапка",
+    "image": "/cards/hat.jpg",
+    "category": "clothes",
+    "weight": 620
+  },
+  {
+    "id": "sphere",
+    "label": "Шар",
+    "image": "/cards/sphere.jpg",
+    "category": "shapes",
+    "weight": 180
+  },
+  {
+    "id": "scarf",
+    "label": "Шарф",
+    "image": "/cards/scarf.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "shawarma",
+    "label": "Шаурма",
+    "image": "/cards/shawarma.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "rough",
+    "label": "Шершавый",
+    "image": "/cards/rough.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "screen",
+    "label": "Ширма",
+    "image": "/cards/screen.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "wide",
+    "label": "Широкий",
+    "image": "/cards/wide.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "cabinet",
+    "label": "Шкаф",
+    "image": "/cards/cabinet.jpg",
+    "category": "household",
+    "weight": 340
+  },
+  {
+    "id": "school",
+    "label": "Школа",
+    "image": "/cards/school.jpg",
+    "category": "school",
+    "weight": 650
+  },
+  {
+    "id": "chocolate",
+    "label": "Шоколад",
+    "image": "/cards/chocolate.jpg",
+    "category": "food",
+    "weight": 660
+  },
+  {
+    "id": "chocolate-bar",
+    "label": "Шоколадка",
+    "image": "/cards/chocolate-bar.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "shorts",
+    "label": "Шорты",
+    "image": "/cards/shorts.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "syringe",
+    "label": "Шприц",
+    "image": "/cards/syringe.jpg",
+    "category": "medicine",
+    "weight": 130
+  },
+  {
+    "id": "tickle",
+    "label": "Щекотать",
+    "image": "/cards/tickle.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "puppy",
+    "label": "Щенок",
+    "image": "/cards/puppy.jpg",
+    "category": "animals",
+    "weight": 740
+  },
+  {
+    "id": "cabbage-soup",
+    "label": "Щи",
+    "image": "/cards/cabbage-soup.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "tow-truck",
+    "label": "Эвакуатор",
+    "image": "/cards/tow-truck.jpg",
+    "category": "transport",
+    "weight": 260
+  },
+  {
+    "id": "ecg",
+    "label": "ЭКГ",
+    "image": "/cards/ecg.jpg",
+    "category": "medicine",
+    "weight": 180
+  },
+  {
+    "id": "excavator",
+    "label": "Экскаватор",
+    "image": "/cards/excavator.jpg",
+    "category": "transport",
+    "weight": 260
+  },
+  {
+    "id": "electrician",
+    "label": "Электрик",
+    "image": "/cards/electrician.jpg",
+    "category": "people",
+    "weight": 460
+  },
+  {
+    "id": "commuter-train",
+    "label": "Электричка",
+    "image": "/cards/commuter-train.jpg",
+    "category": "transport",
+    "weight": 230
+  },
+  {
+    "id": "skirt",
+    "label": "Юбка",
+    "image": "/cards/skirt.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "spinning-top-2",
+    "label": "Юла",
+    "image": "/cards/spinning-top-2.jpg",
+    "category": "toys",
+    "weight": 380
+  },
+  {
+    "id": "i-do-not-understand",
+    "label": "Я не понимаю",
+    "image": "/cards/i-do-not-understand.jpg",
+    "category": "actions",
+    "weight": 800
+  },
+  {
+    "id": "i-will-do-it-myself",
+    "label": "Я сам",
+    "image": "/cards/i-will-do-it-myself.jpg",
+    "category": "actions",
+    "weight": 520
+  },
+  {
+    "id": "i",
+    "label": "Я",
+    "image": "/cards/i.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "apple",
+    "label": "Яблоко",
+    "image": "/cards/apple.jpg",
+    "category": "food",
+    "weight": 850
+  },
+  {
+    "id": "apple-chips",
+    "label": "Яблочные чипсы",
+    "image": "/cards/apple-chips.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "apple-juice",
+    "label": "Яблочный сок",
+    "image": "/cards/apple-juice.jpg",
+    "category": "drink",
+    "weight": 420
+  },
+  {
+    "id": "lamb",
+    "label": "Ягненок",
+    "image": "/cards/lamb.jpg",
+    "category": "animals",
+    "weight": 480
+  },
+  {
+    "id": "egg",
+    "label": "Яйцо",
+    "image": "/cards/egg.jpg",
+    "category": "food",
+    "weight": 420
+  },
+  {
+    "id": "lizard",
+    "label": "Ящерица",
+    "image": "/cards/lizard.jpg",
+    "category": "animals",
+    "weight": 420
   },
   {
     "id": "yogurt",
     "label": "Йогурт",
     "image": "/cards/yogurt.png",
-    "category": "drink"
-  },
-
-  {
-    "id": "ball",
-    "label": "Мяч",
-    "image": "/cards/ball.png",
-    "category": "toys"
-  },
-  {
-    "id": "car",
-    "label": "Машинка",
-    "image": "/cards/car.png",
-    "category": "toys"
-  },
-  {
-    "id": "tablet",
-    "label": "Планшет",
-    "image": "/cards/tablet.png",
-    "category": "toys"
+    "category": "drink",
+    "weight": 720
   },
   {
     "id": "cartoons",
     "label": "Мультики",
     "image": "/cards/cartoons.png",
-    "category": "toys"
-  },
-
-  {
-    "id": "give",
-    "label": "Дай",
-    "image": "/cards/give.png",
-    "category": "actions"
+    "category": "toys",
+    "weight": 700
   },
   {
-    "id": "more",
+    "id": "more-with-yo",
     "label": "Ещё",
-    "image": "/cards/more.png",
-    "category": "actions"
+    "image": "/cards/more-with-yo.png",
+    "category": "actions",
+    "weight": 960
   },
   {
-    "id": "open",
+    "id": "open-infinitive",
     "label": "Открыть",
-    "image": "/cards/open.png",
-    "category": "actions"
-  },
-  {
-    "id": "help",
-    "label": "Помоги",
-    "image": "/cards/help.png",
-    "category": "actions"
-  },
-  {
-    "id": "stop",
-    "label": "Стоп",
-    "image": "/cards/stop.png",
-    "category": "actions"
-  },
-  {
-    "id": "want",
-    "label": "Хочу",
-    "image": "/cards/want.png",
-    "category": "actions"
-  },
-  {
-    "id": "play",
-    "label": "Играть",
-    "image": "/cards/play.png",
-    "category": "actions"
-  },
-  {
-    "id": "walk",
-    "label": "Гулять",
-    "image": "/cards/walk.png",
-    "category": "actions"
-  },
-  {
-    "id": "look",
-    "label": "Смотреть",
-    "image": "/cards/look.png",
-    "category": "actions"
-  },
-
-  {
-    "id": "mom",
-    "label": "Мама",
-    "image": "/cards/mom.png",
-    "category": "people"
-  },
-  {
-    "id": "dad",
-    "label": "Папа",
-    "image": "/cards/dad.png",
-    "category": "people"
-  },
-
-  {
-    "id": "drink_v",
-    "label": "Пить",
-    "image": "/cards/drink_v.png",
-    "category": "needs"
-  },
-  {
-    "id": "eat",
-    "label": "Есть",
-    "image": "/cards/eat.png",
-    "category": "needs"
+    "image": "/cards/open-infinitive.png",
+    "category": "actions",
+    "weight": 870
   },
   {
     "id": "toilet",
     "label": "Туалет",
     "image": "/cards/toilet.png",
-    "category": "needs"
-  },
-  {
-    "id": "sleep",
-    "label": "Спать",
-    "image": "/cards/sleep.png",
-    "category": "needs"
-  },
-
-  {
-    "id": "happy",
-    "label": "Радость",
-    "image": "/cards/happy.png",
-    "category": "emotions"
-  },
-  {
-    "id": "sad",
-    "label": "Грусть",
-    "image": "/cards/sad.png",
-    "category": "emotions"
-  },
-  {
-    "id": "angry",
-    "label": "Злость",
-    "image": "/cards/angry.png",
-    "category": "emotions"
-  },
-  {
-    "id": "fear",
-    "label": "Страх",
-    "image": "/cards/fear.png",
-    "category": "emotions"
+    "category": "needs",
+    "weight": 910
   }
 ]

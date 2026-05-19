@@ -16,6 +16,7 @@ type Props = {
 
 const STAGE = 240;
 const OUTPUT = 768;
+const CUSTOM_CARD_WEIGHT = 10000;
 
 export default function AddCustomCardModal({ open, onClose, onAdd, initialCard, onEdit }: Props) {
   const t = useT();
@@ -119,6 +120,7 @@ export default function AddCustomCardModal({ open, onClose, onAdd, initialCard, 
       label: label.trim(),
       image: imageData,
       category,
+      weight: CUSTOM_CARD_WEIGHT,
       custom: true,
     };
     if (isEdit) { onEdit!(card); } else { onAdd(card); }

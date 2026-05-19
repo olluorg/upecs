@@ -3,6 +3,7 @@ export type Card = {
   label: string;
   image: string;
   category: string;
+  weight: number;
   custom?: boolean;
 };
 

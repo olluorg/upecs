@@ -51,6 +51,13 @@ import ImportSetModal from "./components/ImportSetModal";
 const newId = (prefix: string) =>
   `${prefix}_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
 
+const CUSTOM_CARD_WEIGHT = 10000;
+const DEFAULT_CARD_WEIGHT = 0;
+
+function cardWeight(card: Card): number {
+  return card.weight ?? (card.custom ? CUSTOM_CARD_WEIGHT : DEFAULT_CARD_WEIGHT);
+}
+
 export default function App() {
   const [sets, setSets, setsLoaded] = useIdbState<CardSet[]>("sets", []);
   const [currentSetId, setCurrentSetId, currentLoaded] = useIdbState<string>(
@@ -90,7 +97,28 @@ export default function App() {
   const [category, setCategory] = useState(() => {
     const parts = window.location.hash.replace(/^#\/?/, "").split("/");
     if (parts[0] !== "library" || !parts[1] || /^\d+$/.test(parts[1])) return "all";
-    const valid = new Set(["all","food","drink","actions","people","toys","needs","emotions","other"]);
+    const valid = new Set([
+      "all",
+      "food",
+      "drink",
+      "actions",
+      "people",
+      "toys",
+      "needs",
+      "emotions",
+      "numbers",
+      "animals",
+      "transport",
+      "clothes",
+      "school",
+      "medicine",
+      "places",
+      "household",
+      "objects",
+      "shapes",
+      "colors",
+      "other",
+    ]);
     return valid.has(parts[1]) ? parts[1] : "all";
   });
   const [query, setQuery] = useState("");
@@ -157,7 +185,13 @@ export default function App() {
   const appReady = allLoaded && sets.length > 0;
 
   const allCards: Card[] = useMemo(
-    () => [...(cardsData as Card[]), ...customCards],
+    () => [
+      ...(cardsData as Card[]),
+      ...customCards.map((card) => ({
+        ...card,
+        weight: card.weight ?? CUSTOM_CARD_WEIGHT,
+      })),
+    ],
     [customCards],
   );
 
@@ -169,11 +203,17 @@ export default function App() {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return allCards.filter((c) => {
-      if (category !== "all" && c.category !== category) return false;
-      if (q && !getCardLabel(t, c).toLowerCase().includes(q)) return false;
-      return true;
-    });
+    return allCards
+      .filter((c) => {
+        if (category !== "all" && c.category !== category) return false;
+        if (q && !getCardLabel(t, c).toLowerCase().includes(q)) return false;
+        return true;
+      })
+      .sort((a, b) => {
+        const weightDiff = cardWeight(b) - cardWeight(a);
+        if (weightDiff !== 0) return weightDiff;
+        return getCardLabel(t, a).localeCompare(getCardLabel(t, b), t.lang === "RU" ? "ru" : "en");
+      });
   }, [allCards, category, query, t]);
 
   const selectedCards = useMemo(() => {
