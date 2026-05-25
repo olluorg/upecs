@@ -24,6 +24,7 @@ import { CATEGORIES, CATEGORY_COLORS } from "../data/categories";
 import { useT } from "../utils/I18nContext";
 import { getCardLabel } from "../utils/cardLabel";
 import { checkAIAvailability, composeSentence } from "../utils/chromeAI";
+import { loadAudioManifest, speakText, speakCard, speakCards } from "../utils/speech";
 import {
   IconChevronLeft,
   IconVolume,
@@ -93,6 +94,7 @@ export default function CommBoardView({ cards, onBack }: Props) {
   }, [sentence]);
 
   useEffect(() => {
+    loadAudioManifest();
     checkAIAvailability().then((status) => {
       if (status === "readily") setAIStatus("ready");
       else if (status === "after-download") setAIStatus("downloading");
@@ -117,18 +119,11 @@ export default function CommBoardView({ cards, onBack }: Props) {
     return cards.filter((c) => c.category === activeCategory);
   }, [cards, activeCategory]);
 
-  const speak = (text: string, rate = 0.3) => {
-    if (!window.speechSynthesis) return;
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = t.lang === "RU" ? "ru-RU" : "en-US";
-    utterance.rate = rate;
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(utterance);
-  };
-
   const addToSentence = (card: Card) => {
     setSentence((prev) => [...prev, { uid: newUid(), card }]);
-    if (autoSpeak) speak(getCardLabel(t, card));
+    if (autoSpeak) {
+      speakCard({ id: card.id, label: getCardLabel(t, card), custom: card.custom }, t.lang);
+    }
   };
 
   const removeFromSentence = (uid: string) => {
@@ -136,24 +131,29 @@ export default function CommBoardView({ cards, onBack }: Props) {
   };
 
   const saySentence = async () => {
+    if (!sentence.length) return;
     const words = sentence.map((item) => getCardLabel(t, item.card));
-    if (!words.length) return;
+    const speakCardList = sentence.map((item) => ({
+      id: item.card.id,
+      label: getCardLabel(t, item.card),
+      custom: item.card.custom,
+    }));
 
     if (aiEnabled && aiStatus === "ready") {
       setComposing(true);
       try {
         const composed = await composeSentence(words, t.lang as "RU" | "EN");
         setComposedText(composed);
-        speak(composed);
+        speakText(composed, t.lang);
         if (composedTimer.current) clearTimeout(composedTimer.current);
         composedTimer.current = setTimeout(() => setComposedText(""), 6000);
       } catch {
-        speak(words.join(" "));
+        speakCards(speakCardList, t.lang);
       } finally {
         setComposing(false);
       }
     } else {
-      speak(words.join(" "));
+      speakCards(speakCardList, t.lang);
     }
   };
 
