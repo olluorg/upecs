@@ -6517,13 +6517,6 @@
     "weight": 700
   },
   {
-    "id": "more-with-yo",
-    "label": "Ещё",
-    "image": "/cards/more-with-yo.png",
-    "category": "actions",
-    "weight": 960
-  },
-  {
     "id": "open-infinitive",
     "label": "Открыть",
     "image": "/cards/open-infinitive.png",

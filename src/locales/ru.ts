@@ -993,7 +993,6 @@ const ru = {
     "lizard": "Ящерица",
       "yogurt": "Йогурт",
     "cartoons": "Мультики",
-    "more-with-yo": "Ещё",
     "open-infinitive": "Открыть",
     "toilet": "Туалет",
   } as Record<string, string>,
