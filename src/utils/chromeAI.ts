@@ -20,11 +20,11 @@ interface ModernSession {
 interface ModernLMConstructor {
   availability(): Promise<"available" | "downloadable" | "downloading" | "unavailable">;
   create(opts?: {
-    systemPrompt?: string;
+    initialPrompts?: { role: "system" | "user" | "assistant"; content: string }[];
     temperature?: number;
     topK?: number;
-    expectedInputLanguages?: string[];
-    expectedOutputLanguages?: string[];
+    expectedInputs?: { type: "text"; languages: string[] }[];
+    expectedOutputs?: { type: "text"; languages: string[] }[];
   }): Promise<ModernSession>;
 }
 
@@ -92,11 +92,12 @@ export async function composeSentence(
   // Chrome 138+
   if (window.LanguageModel) {
     const session = await window.LanguageModel.create({
-      systemPrompt,
+      // Modern API has no `systemPrompt` option — it's passed as a system role here.
+      initialPrompts: [{ role: "system", content: systemPrompt }],
       temperature: 0.4,
       topK: 10,
-      expectedInputLanguages: [lang === "RU" ? "ru" : "en"],
-      expectedOutputLanguages: ["en"], // ru not yet supported; system prompt overrides
+      expectedInputs: [{ type: "text", languages: [lang === "RU" ? "ru" : "en"] }],
+      expectedOutputs: [{ type: "text", languages: ["en"] }], // ru not yet supported; system prompt overrides
     });
     try {
       return (await session.prompt(input)).trim();
