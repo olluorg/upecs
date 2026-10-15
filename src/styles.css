@@ -2305,6 +2305,10 @@ h4 {
 
 .cat-label {
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Cards grid */
@@ -2313,7 +2317,7 @@ h4 {
   overflow-y: auto;
   padding: 14px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(var(--cb-card-min, 110px), 1fr));
   gap: 12px;
   align-content: start;
 }
@@ -2341,8 +2345,8 @@ h4 {
 }
 
 .commboard-card-img {
-  width: 72px;
-  height: 72px;
+  width: var(--cb-card-img, 72px);
+  height: var(--cb-card-img, 72px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2386,10 +2390,24 @@ h4 {
 
   .commboard-title {
     font-size: 14px;
+    /* Иначе длинный заголовок переносится и выдавливает кнопки за край экрана. */
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .commboard-header-controls {
-    gap: 6px;
+    gap: 2px;
+  }
+
+  .commboard-icon-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .commboard-speak-toggle {
+    gap: 4px;
   }
 
   /* Hide text labels in header toggles, keep icons only */
@@ -2464,7 +2482,7 @@ h4 {
   .commboard-grid {
     padding: 8px;
     gap: 8px;
-    grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(calc(var(--cb-card-min, 110px) * 0.7), 1fr));
   }
 
   .commboard-card {
@@ -2472,11 +2490,318 @@ h4 {
   }
 
   .commboard-card-img {
-    width: 52px;
-    height: 52px;
+    width: calc(var(--cb-card-img, 72px) * 0.72);
+    height: calc(var(--cb-card-img, 72px) * 0.72);
   }
 
   .commboard-card-label {
+    font-size: 11px;
+  }
+}
+
+/* Icon buttons in the board header / sentence actions */
+.commboard-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  background: transparent;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+  flex-shrink: 0;
+}
+
+.commboard-icon-btn:hover:not(:disabled) {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.commboard-icon-btn.active {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.commboard-icon-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Card search */
+.commboard-searchbar {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+
+.commboard-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 420px;
+  padding: 0 8px;
+  height: 34px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--muted);
+}
+
+.commboard-search:focus-within {
+  border-color: var(--primary);
+}
+
+.commboard-search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.commboard-search input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.commboard-search-clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--border-strong);
+  color: var(--panel);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* Speech settings popover */
+.commboard-settings {
+  position: relative;
+}
+
+.commboard-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 60;
+  width: 280px;
+  max-width: calc(100vw - 24px);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 28px rgba(20, 24, 38, 0.16);
+  animation: fade-in 0.15s ease;
+}
+
+.popover-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.popover-row label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.popover-value {
+  font-weight: 500;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.popover-row select {
+  width: 100%;
+  padding: 7px 8px;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+}
+
+.popover-row input[type="range"] {
+  width: 100%;
+  accent-color: var(--primary);
+}
+
+.popover-note {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.popover-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 4px;
+  border-top: 1px solid var(--border);
+}
+
+.popover-actions .btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  font-size: 13px;
+}
+
+.segmented {
+  display: flex;
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.segmented button {
+  flex: 1;
+  padding: 6px 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+
+.segmented button + button {
+  border-left: 1.5px solid var(--border-strong);
+}
+
+.segmented button.active {
+  background: var(--primary);
+  color: white;
+}
+
+/* Card currently being spoken */
+.sentence-card.is-speaking {
+  border-color: var(--success);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--success) 30%, transparent);
+}
+
+/* ---------- Child (kiosk) mode ---------- */
+
+.kiosk-exit-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border-strong);
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  flex-shrink: 0;
+  touch-action: none;
+  user-select: none;
+}
+
+.kiosk-exit-btn > :not(.kiosk-exit-fill) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Заполняется, пока кнопку держат: ребёнку случайный тап выхода не даст. */
+.kiosk-exit-fill {
+  position: absolute;
+  inset: 0;
+  width: 0;
+  background: var(--primary-soft);
+}
+
+.kiosk-exit-btn.holding .kiosk-exit-fill {
+  width: 100%;
+  transition: width var(--hold-ms, 2000ms) linear;
+}
+
+.kiosk-exit-btn.holding {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.commboard.is-kiosk .commboard-header {
+  height: 46px;
+}
+
+.commboard.is-kiosk .commboard-title {
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.commboard.is-kiosk .commboard-cats {
+  width: 172px;
+}
+
+.commboard.is-kiosk .commboard-cat-btn {
+  padding: 12px 14px;
+  font-size: 14px;
+}
+
+.commboard.is-kiosk .sentence-prompt {
+  display: none;
+}
+
+.commboard.is-kiosk .commboard-say-btn {
+  font-size: 17px;
+  padding: 12px 26px;
+}
+
+.commboard.is-kiosk .commboard-icon-btn {
+  width: 40px;
+  height: 40px;
+}
+
+@media (max-width: 600px) {
+  .commboard-searchbar {
+    padding: 6px 8px;
+  }
+
+  .commboard-search {
+    max-width: none;
+    height: 32px;
+  }
+
+  .commboard-popover {
+    position: fixed;
+    top: auto;
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+    width: auto;
+  }
+
+  .commboard.is-kiosk .commboard-cats {
+    width: 86px;
+  }
+
+  .commboard.is-kiosk .commboard-cat-btn {
+    padding: 10px 4px;
     font-size: 11px;
   }
 }

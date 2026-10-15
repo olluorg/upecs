@@ -274,3 +274,38 @@ export const IconDice = ({ size, className }: Props) => (
     <circle cx="15.5" cy="15.5" r="1.2" fill="currentColor" stroke="none" />
   </svg>
 );
+
+export const IconBackspace = ({ size, className }: Props) => (
+  <svg {...def(size)} className={className}>
+    <path d="M21 5H9L3 12l6 7h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1z" />
+    <path d="M17 9l-5 6M12 9l5 6" />
+  </svg>
+);
+
+export const IconRepeat = ({ size, className }: Props) => (
+  <svg {...def(size)} className={className}>
+    <path d="M17 2l4 4-4 4" />
+    <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+    <path d="M7 22l-4-4 4-4" />
+    <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+  </svg>
+);
+
+export const IconMaximize = ({ size, className }: Props) => (
+  <svg {...def(size)} className={className}>
+    <path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M16 21h3a2 2 0 0 0 2-2v-3M8 21H5a2 2 0 0 1-2-2v-3" />
+  </svg>
+);
+
+export const IconMinimize = ({ size, className }: Props) => (
+  <svg {...def(size)} className={className}>
+    <path d="M8 3v3a2 2 0 0 1-2 2H3M16 3v3a2 2 0 0 0 2 2h3M16 21v-3a2 2 0 0 1 2-2h3M8 21v-3a2 2 0 0 0-2-2H3" />
+  </svg>
+);
+
+export const IconLock = ({ size, className }: Props) => (
+  <svg {...def(size)} className={className}>
+    <rect x="4" y="10" width="16" height="11" rx="2" />
+    <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+  </svg>
+);
