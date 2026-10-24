@@ -6529,5 +6529,110 @@
     "image": "/cards/toilet.png",
     "category": "needs",
     "weight": 910
+  },
+  {
+    "id": "give-girl",
+    "label": "Дай",
+    "image": "/cards/give-girl.jpg",
+    "category": "actions",
+    "weight": 980
+  },
+  {
+    "id": "eat-girl",
+    "label": "Кушать",
+    "image": "/cards/eat-girl.jpg",
+    "category": "actions",
+    "weight": 940
+  },
+  {
+    "id": "sleep-girl",
+    "label": "Спать",
+    "image": "/cards/sleep-girl.jpg",
+    "category": "actions",
+    "weight": 920
+  },
+  {
+    "id": "play-girl",
+    "label": "Играть",
+    "image": "/cards/play-girl.jpg",
+    "category": "actions",
+    "weight": 880
+  },
+  {
+    "id": "quiet-girl",
+    "label": "Тихо",
+    "image": "/cards/quiet-girl.jpg",
+    "category": "needs",
+    "weight": 500
+  },
+  {
+    "id": "hurts-girl",
+    "label": "Болит/больно",
+    "image": "/cards/hurts-girl.jpg",
+    "category": "medicine",
+    "weight": 900
+  },
+  {
+    "id": "dont-know",
+    "label": "Не знаю",
+    "image": "/cards/dont-know.jpg",
+    "category": "emotions",
+    "weight": 850
+  },
+  {
+    "id": "look-girl",
+    "label": "Смотри",
+    "image": "/cards/look-girl.jpg",
+    "category": "actions",
+    "weight": 850
+  },
+  {
+    "id": "take-it-girl",
+    "label": "Возьми",
+    "image": "/cards/take-it-girl.jpg",
+    "category": "actions",
+    "weight": 840
+  },
+  {
+    "id": "get-dressed-girl",
+    "label": "Одеваться",
+    "image": "/cards/get-dressed-girl.jpg",
+    "category": "clothes",
+    "weight": 320
+  },
+  {
+    "id": "go-to-school",
+    "label": "Идти в школу",
+    "image": "/cards/go-to-school.jpg",
+    "category": "school",
+    "weight": 650
+  },
+  {
+    "id": "wait-girl",
+    "label": "Ждать",
+    "image": "/cards/wait-girl.jpg",
+    "category": "actions",
+    "weight": 860
+  },
+  {
+    "id": "no-throwing",
+    "label": "Нельзя бросать",
+    "image": "/cards/no-throwing.jpg",
+    "category": "actions",
+    "weight": 700
+  },
+  {
+    "id": "no-fighting",
+    "label": "Нельзя драться",
+    "image": "/cards/no-fighting.jpg",
+    "category": "actions",
+    "weight": 700
+  },
+  {
+    "id": "no-shouting",
+    "label": "Нельзя кричать",
+    "image": "/cards/no-shouting.jpg",
+    "category": "actions",
+    "weight": 700
   }
 ]
